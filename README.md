@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+## 1. 팀 소개
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 프론트엔드
+  길현민, 노정은, 주원영
+- 백엔드
+  김동규, 황유정
 
-## Available Scripts
+## 2. 서비스 소개
 
-In the project directory, you can run:
+- 세계 최초 브랜드 다큐맨터리 매거진! 전 세계의 균형 잡힌 브랜드를 한 호에 하나씩 소개하는 광고 없는 월간지입니다. 브랜드의 숨은 얘기는 물론 감성과 문화까지 담고있어 브랜드에 관심 있는 사람이라면 누구나 쉽게 볼 수 있습니다.
 
-### `npm start`
+- 새로운 비즈니스를 구상하는 브랜드 관계자부터 브랜드에 대한 감각을 익히고 싶어 하는 이들까지,브랜드에 관심을 가진 모두를 위해 진지하지만 읽기 쉬운 잡지를 만들어 판매하는 서비스입니다.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 3. 필수 구현 사항
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+1. 회원가입 & 로그인 기능
 
-### `npm test`
+2. 메인페이지 레이아웃
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+3. 상품리스트, 상세페이지 레이아웃
 
-### `npm run build`
+4. 장바구니 기능
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+5. Nav바 레이아웃
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## 4. 추가 구현 사항
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. 포인트 결제 기능
 
-### `npm run eject`
+2. 검색 기능
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## 5. 개선 사항
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. 현재 찜하기 기능이 없음
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+헤더에 My Like메뉴를 추가해 찜하기 기능을 추가하려고 한다.
+magazine탭&books탭, 상세페이지에서 찜하기를 할 수 있으며
+찜한 상품대로 myPage[ ] 이 대괄호 안에 카운트 된다.
+UI는 cart와 같은 모달창이다.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. 로그아웃이 myPage로 들어가야 가능
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+헤더에 Logout 메뉴를 추가해 MyPage로 들어가야하는 불편함을 개선하려고 한다.
