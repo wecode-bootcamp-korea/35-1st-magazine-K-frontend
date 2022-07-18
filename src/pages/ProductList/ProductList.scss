@@ -1,0 +1,39 @@
+@import '../../styles/variable.scss';
+
+.productlist {
+  @include flex(center, center, null);
+
+  .menuTapContainer {
+    @include flex(flex-start, flex-start, column);
+    flex: 1;
+    font-size: 2.5rem;
+    .magazineKTap {
+    }
+
+    .fashionTap {
+    }
+
+    .beautyTap {
+    }
+
+    .designLifestyleTap {
+    }
+  }
+
+  .productlistContainer {
+    @include flex(center, flex-start, null);
+    flex-wrap: wrap;
+    flex: 1;
+
+    .productWrapper {
+      .product1-1 {
+        width: 200px;
+        height: 300px;
+      }
+      .product1-2 {
+        width: 200px;
+        height: 300px;
+      }
+    }
+  }
+}
