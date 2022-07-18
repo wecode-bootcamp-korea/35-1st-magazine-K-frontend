@@ -1,0 +1,66 @@
+@import '../../styles/common.scss';
+@import '../../styles/reset.scss';
+@import '../../styles/variable.scss';
+
+.nav {
+  @include flex(space-between, center, null);
+  height: 50px;
+  font-size: 15px;
+  font-weight: 500;
+
+  .firstMenuContainer {
+    @include flex(center, center, null);
+    flex: 0.3;
+
+    .magazinIcon {
+      width: 19px;
+      height: 22px;
+      margin: 0 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .magazineMenu {
+      margin: 0 20px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+  .secondMenuContainer {
+    @include flex(center, center, null);
+    flex: 0.3;
+    margin-right: 50px;
+
+    .searchMenu {
+      display: inline-block;
+      margin: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .loginMenu {
+      display: inline-block;
+      margin: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+
+    .cartMenu {
+      display: inline-block;
+      margin: 10px;
+
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
