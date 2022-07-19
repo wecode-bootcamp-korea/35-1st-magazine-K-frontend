@@ -1,29 +1,18 @@
 [
   {
-    "id": 0,
-    "title": "LEMAIRE",
-    "issue_number": 90,
+    "title": "LE LABO",
+    "issue_number": 65,
     "main_category_name": "MAGAZINE K",
-    "price": 18,
-    "main_img_url_1": "/images/product1-1.jpg",
-    "main_img_url_2": "/images/product1-2.jpg"
-  },
-  {
-    "id": 1,
-    "title": "A.P.C",
-    "issue_number": 78,
-    "main_category_name": "MAGAZINE K",
-    "price": 18,
-    "main_img_url_1": "/images/product2-1.jpg",
-    "main_img_url_2": "/images/product2-2.jpg"
-  },
-  {
-    "id": 2,
-    "title": "LEMAIRE",
-    "issue_number": 90,
-    "main_category_name": "MAGAZINE K",
-    "price": 18,
+    "price": 15,
     "main_img_url_1": "/images/product3-1.jpg",
     "main_img_url_2": "/images/product3-2.jpg"
+  },
+  {
+    "title": "L'OCCITANE",
+    "issue_number": 45,
+    "main_category_name": "MAGAZINE K",
+    "price": 13,
+    "main_img_url_1": "/images/product4-1.jpg",
+    "main_img_url_2": "/images/product4-2.jpg"
   }
 ]

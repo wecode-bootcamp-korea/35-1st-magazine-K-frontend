@@ -3,6 +3,7 @@
 .productListPage {
   @include flex(center, flex-start, null);
   padding: 0 5rem;
+
   .menuTapContainer {
     @include flex(flex-start, flex-start, column);
     flex: 1;
@@ -10,20 +11,20 @@
     font-size: 2.7rem;
     font-weight: 500;
 
-    .magazineKTap {
+    .menuTapOn {
       margin-bottom: 0.5rem;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
-    .fashionTap {
+    .menuTapOff {
       margin-bottom: 0.5rem;
-    }
-
-    .beautyTap {
-      margin-bottom: 0.5rem;
-    }
-
-    .designLifestyleTap {
-      margin-bottom: 0.5rem;
+      color: #cccccc;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
@@ -35,12 +36,18 @@
 
     .product {
       margin-bottom: 5rem;
+
       .prodImgContainer {
+        @include flex(null, null, null);
+
         .prodImgWrapper {
-          .prod1Image {
-            width: 50%;
+          width: 50%;
+          padding: 0 0.5rem;
+
+          .prodImage {
+            width: 100%;
             height: 100%;
-            padding: 0 0.5rem;
+            object-fit: cover;
           }
         }
       }
@@ -50,9 +57,11 @@
         padding: 0.7rem 0.5rem 0.7rem 0.5rem;
         font-size: 0.8rem;
         font-weight: 500;
+
         .prodInfoWrapper {
           flex: 3;
           flex-wrap: wrap;
+
           .prodTitle {
             padding-right: 1rem;
           }
