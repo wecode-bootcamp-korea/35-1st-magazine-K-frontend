@@ -6,19 +6,19 @@ import './Main.scss';
 function Main() {
   const [slide, setSlide] = useState(1);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     setSlide(slide + 1);
-  //   }, 3000);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setSlide(slide + 1);
+    }, 3000);
 
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [slide]);
+    return () => {
+      clearInterval(interval);
+    };
+  }, [slide]);
 
-  // if (slide > 3) {
-  //   setSlide(1);
-  // }
+  if (slide > 3) {
+    setSlide(1);
+  }
 
   function prevSlide() {
     setSlide(slide - 1);
