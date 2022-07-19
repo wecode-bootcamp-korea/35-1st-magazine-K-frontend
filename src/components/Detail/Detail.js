@@ -1,7 +1,17 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Detail.scss';
 
 const Detail = ({ prdDetailData }) => {
+  const [count, setCount] = useState(1);
+
+  const MinusOne = () => {
+    setCount(count - 1);
+  };
+
+  const PlusOne = () => {
+    setCount(count + 1);
+  };
+
   return (
     <div className="prdDetailPage">
       <div className="prdDetailContainer">
@@ -13,9 +23,13 @@ const Detail = ({ prdDetailData }) => {
           <h1>{prdDetailData.title}</h1>
           <span className="prdPrice">₩{prdDetailData.price},000</span>
           <div className="prdCount">
-            <span>-</span>
-            <span>1</span>
-            <span>+</span>
+            <span onClick={MinusOne}>-</span>
+            <span>
+              {count < 1
+                ? (alert('최소 주문수량은 1개 입니다.'), setCount(1))
+                : count}
+            </span>
+            <span onClick={PlusOne}>+</span>
           </div>
           <div className="prdMetaInfo">
             <span>
@@ -41,7 +55,7 @@ const Detail = ({ prdDetailData }) => {
           </div>
         </div>
         <div className="prdDetailRight">
-          <button>₩18,000 ADD TO CART</button>
+          <button>₩{prdDetailData.price * count},000 ADD TO CART</button>
           <div className="prdDescription">
             <p>DESCRIPTION</p>
             <p>{prdDetailData.description}</p>
