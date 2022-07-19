@@ -1,0 +1,42 @@
+@import '../../styles/variable.scss';
+.loginPageWrapper {
+  @include flex(center, center, column);
+  min-height: 100vh;
+  .loginBox {
+    @include flex(center, center, column);
+    :nth-child(1)input {
+      border: 1px solid rgb(233, 233, 233);
+      width: 364px;
+      height: 42px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+    }
+    :nth-child(2)input {
+      border: 1px solid rgb(233, 233, 233);
+      width: 364px;
+      height: 42px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+    }
+    :nth-child(3)button {
+      background-color: black;
+      color: white;
+      width: 364px;
+      height: 42px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+    :nth-child(4) button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    :nth-child(4) :nth-child(n + 2):nth-child(-n + 4) {
+      margin-top: 40px;
+      margin-left: 10px;
+      padding-left: 10px;
+      margin-right: 10px;
+      border-left: 1px solid rgb(194, 194, 194);
+    }
+  }
+}
