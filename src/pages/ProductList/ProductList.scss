@@ -84,5 +84,21 @@
         }
       }
     }
+
+    .pageLinkContainer {
+      @include flex(center, center, null);
+      margin: 4rem 0;
+      .pageLinkPrev {
+        margin: 0 1rem;
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+
+      .pageLinkNext {
+        margin: 0 1rem;
+        width: 0.5rem;
+        height: 0.5rem;
+      }
+    }
   }
 }

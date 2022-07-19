@@ -9,8 +9,8 @@ const ProductList = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [menuTapList, setMenuTapList] = useState([]);
   const [prodList, setProdList] = useState([]);
-  const cate_no = searchParams.get('detail');
-  const pg = searchParams.get('mode');
+  const cate_no = searchParams.get('cate_no');
+  const pg = searchParams.get('pg');
 
   useEffect(() => {
     setSearchParams({ cate_no: 43, pg: 1 });
@@ -39,20 +39,16 @@ const ProductList = () => {
         {prodList.map(prod => (
           <Product key={prod.issue_number} prod={prod} />
         ))}
-        <ul>
+        <ul className="pageLinkContainer">
           <li>
-            <Link
-              to={`cate_no=${cate_no}&pg=${pg - 1}`}
-              className="pageLinkPrev"
-            >
-              <img src="/images/prev.png" alt="prev" />
+            <Link to={`cate_no=${cate_no}&pg=${parseInt(pg) - 1}`}>
+              <img className="pageLinkPrev" src="/images/prev.png" alt="prev" />
             </Link>
           </li>
           <li>
-            <Link
-              to={`cate_no=${cate_no}&pg=${pg + 1}`}
-              className="pageLinkNext"
-            />
+            <Link to={`cate_no=${cate_no}&pg=${parseInt(pg) + 1}`}>
+              <img className="pageLinkNext" src="/images/next.png" alt="next" />
+            </Link>
           </li>
         </ul>
       </div>
