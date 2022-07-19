@@ -2,13 +2,12 @@ import React from 'react';
 import './Detail.scss';
 
 const Detail = ({ prdDetailData }) => {
-  console.log(prdDetailData);
   return (
     <div className="prdDetailPage">
       <div className="prdDetailContainer">
         <div className="prdDetailLeft">
           <div className="prdCategoryBox">
-            <h4>{prdDetailData.category_name}</h4>
+            <h4>{prdDetailData.main_category_name}</h4>
             <h4>ISSUE NO.{prdDetailData.issue_number}</h4>
           </div>
           <h1>{prdDetailData.title}</h1>
