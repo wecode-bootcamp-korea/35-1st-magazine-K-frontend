@@ -1,0 +1,29 @@
+[
+  {
+    "id": 0,
+    "title": "LEMAIRE",
+    "issue_number": 90,
+    "main_category_name": "MAGAZINE K",
+    "price": 18,
+    "main_img_url_1": "/images/product1-1.jpg",
+    "main_img_url_2": "/images/product1-2.jpg"
+  },
+  {
+    "id": 1,
+    "title": "A.P.C",
+    "issue_number": 78,
+    "main_category_name": "MAGAZINE K",
+    "price": 18,
+    "main_img_url_1": "/images/product2-1.jpg",
+    "main_img_url_2": "/images/product2-2.jpg"
+  },
+  {
+    "id": 2,
+    "title": "LEMAIRE",
+    "issue_number": 90,
+    "main_category_name": "MAGAZINE K",
+    "price": 18,
+    "main_img_url_1": "/images/product3-1.jpg",
+    "main_img_url_2": "/images/product3-2.jpg"
+  }
+]

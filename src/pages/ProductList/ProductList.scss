@@ -1,38 +1,78 @@
-@import '../../styles/variable.scss';
+@import '../../styles/variables.scss';
 
-.productlist {
-  @include flex(center, center, null);
-
+.productListPage {
+  @include flex(center, flex-start, null);
+  padding: 0 5rem;
   .menuTapContainer {
     @include flex(flex-start, flex-start, column);
     flex: 1;
-    font-size: 2.5rem;
+    margin: 1rem 0 0 0;
+    font-size: 2.7rem;
+    font-weight: 500;
+
     .magazineKTap {
+      margin-bottom: 0.5rem;
     }
 
     .fashionTap {
+      margin-bottom: 0.5rem;
     }
 
     .beautyTap {
+      margin-bottom: 0.5rem;
     }
 
     .designLifestyleTap {
+      margin-bottom: 0.5rem;
     }
   }
 
-  .productlistContainer {
+  .prodlistContainer {
     @include flex(center, flex-start, null);
     flex-wrap: wrap;
     flex: 1;
+    height: auto;
 
-    .productWrapper {
-      .product1-1 {
-        width: 200px;
-        height: 300px;
+    .product {
+      margin-bottom: 5rem;
+      .prodImgContainer {
+        .prodImgWrapper {
+          .prod1Image {
+            width: 50%;
+            height: 100%;
+            padding: 0 0.5rem;
+          }
+        }
       }
-      .product1-2 {
-        width: 200px;
-        height: 300px;
+
+      .prodInfoContainer {
+        @include flex(space-between, '', null);
+        padding: 0.7rem 0.5rem 0.7rem 0.5rem;
+        font-size: 0.8rem;
+        font-weight: 500;
+        .prodInfoWrapper {
+          flex: 3;
+          flex-wrap: wrap;
+          .prodTitle {
+            padding-right: 1rem;
+          }
+          .IssueNum {
+            padding-right: 1rem;
+          }
+          .categoryName {
+            padding-right: 1rem;
+          }
+          .price {
+            padding-right: 1rem;
+          }
+        }
+        .addToCart {
+          border-bottom: 1px solid black;
+
+          &:hover {
+            cursor: pointer;
+          }
+        }
       }
     }
   }
