@@ -46,7 +46,7 @@ const ProductList = () => {
         ))}
       </div>
       <div className="prodlistContainer">
-        {prodList.slice(offset, limit * page).map((prod, idx) => (
+        {prodList.slice(offset, limit * page).map(prod => (
           <Product key={prod.issue_number} prod={prod} />
         ))}
         <ul className="pageLinkContainer">
