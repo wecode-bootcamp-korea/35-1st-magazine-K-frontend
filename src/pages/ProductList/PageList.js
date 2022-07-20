@@ -1,15 +1,20 @@
 import React from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import './PageList.scss';
 
-const PageList = ({ total, limit, setPage, moveNext, movePrev, cate_no }) => {
-  const navigate = useNavigate();
+const PageList = ({ total, limit, movePage, pgNext, pgPrev, cate_no }) => {
   const pageNum = Math.ceil(total / limit);
+
   return (
-    <>
+    <ul className="pageLinkContainer">
       <li>
-        <Link to={`?cate_no=${cate_no}&pg=${movePrev}`} disabled>
-          <img className="pageLinkPrev" src="/images/prev.png" alt="prev" />
-        </Link>
+        <img
+          className="pageLinkPrev"
+          src="/images/prev.png"
+          alt="prev"
+          onClick={() => {
+            movePage(cate_no, pgPrev);
+          }}
+        />
       </li>
       {Array(pageNum)
         .fill()
@@ -19,8 +24,7 @@ const PageList = ({ total, limit, setPage, moveNext, movePrev, cate_no }) => {
               key={idx}
               className="pageLink"
               onClick={() => {
-                setPage(idx + 1);
-                navigate(`?cate_no=${cate_no}&pg=${idx + 1}`);
+                movePage(cate_no, idx + 1);
               }}
             >
               {idx + 1}
@@ -28,11 +32,16 @@ const PageList = ({ total, limit, setPage, moveNext, movePrev, cate_no }) => {
           );
         })}
       <li>
-        <Link to={`?cate_no=${cate_no}&pg=${moveNext}`}>
-          <img className="pageLinkNext" src="/images/next.png" alt="next" />
-        </Link>
+        <img
+          className="pageLinkNext"
+          src="/images/next.png"
+          alt="next"
+          onClick={() => {
+            movePage(cate_no, pgNext);
+          }}
+        />
       </li>
-    </>
+    </ul>
   );
 };
 
