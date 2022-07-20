@@ -3,16 +3,16 @@ import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import './Nav.scss';
 
-const Login = ({ isLogin }) => {
+const LoginTap = ({ isLogin }) => {
   const navigate = useNavigate();
   return (
     <div
-      className="loginMenu"
+      className="Menu"
       onClick={() => {
-        isLogin ? navigate('/Login') : navigate('/MyPage');
+        isLogin ? navigate('/MyPage') : navigate('/Login');
       }}
     >
-      {isLogin ? 'Login' : 'My Page'}
+      {isLogin ? 'My Page' : 'Login'}
     </div>
   );
 };
@@ -42,9 +42,9 @@ const Nav = () => {
         </div>
       </div>
       <div className="secondMenuContainer">
-        <div className="searchMenu">Search</div>
-        <Login isLogin={isLogin} />
-        <div className="cartMenu">Cart[0]</div>
+        <div className="Menu">Search</div>
+        <LoginTap isLogin={isLogin} />
+        <div className="Menu">Cart[0]</div>
       </div>
     </nav>
   );

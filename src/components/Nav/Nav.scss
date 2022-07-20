@@ -1,6 +1,9 @@
-@import '../../styles/common.scss';
-@import '../../styles/reset.scss';
 @import '../../styles/variable.scss';
+@mixin hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
 
 .nav {
   @include flex(space-between, center, null);
@@ -16,18 +19,12 @@
       width: 19px;
       height: 22px;
       margin: 0 20px;
-
-      &:hover {
-        cursor: pointer;
-      }
+      @include hover;
     }
 
     .magazineMenu {
       margin: 0 20px;
-
-      &:hover {
-        cursor: pointer;
-      }
+      @include hover;
     }
   }
 
@@ -36,31 +33,9 @@
     flex: 0.3;
     margin-right: 50px;
 
-    .searchMenu {
-      display: inline-block;
+    .Menu {
       margin: 10px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .loginMenu {
-      display: inline-block;
-      margin: 10px;
-
-      &:hover {
-        cursor: pointer;
-      }
-    }
-
-    .cartMenu {
-      display: inline-block;
-      margin: 10px;
-
-      &:hover {
-        cursor: pointer;
-      }
+      @include hover;
     }
   }
 }
