@@ -8,7 +8,7 @@ const Cart = () => {
   return (
     <div className="cartModal">
       <div className="cartNav">
-        <span>Cart[{cartCount}]</span>
+        <span>Cart[]</span>
         <span>Close</span>
       </div>
       <div className="cartMain">
