@@ -7,6 +7,8 @@
   .menuTapContainer {
     @include flex(flex-start, flex-start, column);
     flex: 1;
+    position: sticky;
+    top: 1.1rem;
     margin: 1rem 0 0 0;
     font-size: 2.7rem;
     font-weight: 500;
