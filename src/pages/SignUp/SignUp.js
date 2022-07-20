@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import './SignUp.scss';
 import { useNavigate } from 'react-router-dom';
+import './SignUp.scss';
 
 const SignUp = () => {
   const navigate = useNavigate();
@@ -22,6 +22,10 @@ const SignUp = () => {
     });
   };
 
+  const testPhoneNumber = /^\d+$/;
+  const testId = /^[a-z0-9]{4,16}$/;
+  const testPassword = /[/?.,;:|*~`!^-_[\]+<>@#$%&='")(}{]/gi;
+
   const handleChangeCheckstate = e => {
     //console.log(e.currentTarget.checked);true false
     if (e.currentTarget.checked) {
@@ -29,6 +33,7 @@ const SignUp = () => {
         ...state,
         [e.target.name]: e.currentTarget.checked,
       });
+      console.log(!testPassword.test(state.passwordValue));
     } else {
       setState({
         ...state,
@@ -38,9 +43,9 @@ const SignUp = () => {
   };
 
   const goToMain = () => {
-    if (state.idValue.length < 4 || state.idValue.length > 16) {
+    if (state.idValue.length === 0 || !testId.test(state.idValue)) {
       return alert('아이디 항목은 필수 입력값입니다.');
-    } else if (state.passwordValue.length === 0) {
+    } else if (!testPassword.test(state.passwordValue)) {
       return alert('패스워드 항목은 필수 입력값입니다.');
     } else if (
       state.passwordValue.length < 8 ||
@@ -53,20 +58,23 @@ const SignUp = () => {
       return alert('패스워드가 다릅니다.');
     } else if (state.name.length === 0) {
       return alert('이름 항목은 필수 입력값입니다.');
-    } else if (state.phoneNumber.length === 0) {
+    } else if (
+      state.phoneNumber.length === 0 ||
+      !testPhoneNumber.test(state.phoneNumber)
+    ) {
       return alert('휴대전화 항목은 필수 입력값입니다.');
     } else if (state.email.indexOf('@') === -1) {
       return alert('이메일 항목은 필수 입력값입니다.');
     } else if (state.checkAll !== true) {
       return alert('체크 항목은 필수 입력값입니다.');
     }
-    fetch('http://10.58.3.134:8000/users/signup', {
+    fetch('http://10.58.6.169:8000/user/signup', {
       method: 'POST',
       body: JSON.stringify({
         user_name: state.idValue,
         password: state.passwordValue,
         name: state.name,
-        mobile_number: state.phoneNumber,
+        phone_number: state.phoneNumber,
         email: state.email,
       }),
     })
@@ -77,13 +85,13 @@ const SignUp = () => {
           //console.log('결과: ', result));
         }
       });
-    //navigate('/');
+    navigate('/');
   };
   return (
     <div className="signUPageWrapper">
       <div className="signUPBox">
         <p className="signUpItem">아이디*</p>
-        <p>아이디는 영문소문자 또는 숫자 4~16자로 입력해주세요.</p>
+        <p>아이디는 영문소문자와 숫자를 이용하여 4~16자로 입력해주세요.</p>
         <input
           className="signUpItem"
           name="idValue"
@@ -93,7 +101,7 @@ const SignUp = () => {
         <p className="signUpItem">비밀번호*</p>
         <p>
           -대소문자/숫자/특수문자중3가지 이상 조합,8자~16자-입력 가능 특수문자
-          ~`!@#$%^()_-={}[];:,.?/-공백 불가능
+          ~`!@#$%^()/-공백 불가능
         </p>
         <input
           className="signUpItem"
