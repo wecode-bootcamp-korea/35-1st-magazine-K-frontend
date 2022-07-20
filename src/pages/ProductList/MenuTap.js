@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const MenuTap = ({ menu, setPage }) => {
   const [, setSearchParams] = useSearchParams();
