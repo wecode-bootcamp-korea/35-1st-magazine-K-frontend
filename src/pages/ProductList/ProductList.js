@@ -24,7 +24,7 @@ const ProductList = () => {
     return parseInt(pg) === pageNum ? pg : parseInt(pg) + 1;
   };
   useEffect(() => {
-    setSearchParams({ cate_no: 43, pg: 1 });
+    setSearchParams({ cate_no: 44, pg: 1 });
   }, [setSearchParams]);
 
   useEffect(() => {
