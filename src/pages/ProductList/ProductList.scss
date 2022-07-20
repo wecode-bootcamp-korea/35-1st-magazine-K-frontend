@@ -94,6 +94,13 @@
         height: 0.5rem;
       }
 
+      .pageLink {
+        margin: 0 1rem;
+
+        &:hover {
+          cursor: pointer;
+        }
+      }
       .pageLinkNext {
         margin: 0 1rem;
         width: 0.5rem;

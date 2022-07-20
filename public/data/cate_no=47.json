@@ -14,5 +14,14 @@
     "price": 18,
     "main_img_url_1": "/images/product2-1.jpg",
     "main_img_url_2": "/images/product2-2.jpg"
+  },
+  {
+    "title": "MAISON KITSUNE",
+    "issue_number": 69,
+    "main_category_name": "MAGAZINE K",
+    "price": 15,
+    "no": 1,
+    "main_img_url_1": "/images/product7-1.jpg",
+    "main_img_url_2": "/images/product7-2.jpg"
   }
 ]
