@@ -28,22 +28,21 @@ const ProductList = () => {
   }, [setSearchParams]);
 
   useEffect(() => {
-    fetch(`/data/cate_no=${parseInt(cate_no)}.json`)
+    fetch(`/data/cate_no=${parseInt(cate_no)}&pg=${pg}.json`)
       .then(res => res.json())
       .then(res => setProdList(res));
-  }, [cate_no]);
+  }, [cate_no, pg]);
 
   useEffect(() => {
     fetch(`/data/menuTapList.json`)
       .then(res => res.json())
       .then(res => setMenuTapList(res));
   }, []);
-
   return (
     <div className="productListPage">
       <div className="menuTapContainer">
         {menuTapList.map(menu => (
-          <MenuTap key={menu.cate_no} menu={menu} />
+          <MenuTap key={menu.cate_no} menu={menu} setPage={setPage} />
         ))}
       </div>
       <div className="prodlistContainer">
