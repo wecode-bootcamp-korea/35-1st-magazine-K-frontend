@@ -4,13 +4,13 @@ import './Detail.scss';
 
 const Detail = ({ prdDetailData }) => {
   const {
-    date,
+    published_date,
     description,
-    detail_img_url,
+    product_image_url,
     isbn,
     issue_number,
     language,
-    main_category_name,
+    category,
     pages,
     price,
     size,
@@ -38,7 +38,7 @@ const Detail = ({ prdDetailData }) => {
     { id: 1, title: 'LANGUAGE', value: language },
     { id: 2, title: 'SIZE', value: size },
     { id: 3, title: 'PAGES', value: pages },
-    { id: 4, title: 'DATE', value: date },
+    { id: 4, title: 'DATE', value: published_date },
     { id: 5, title: 'ISBN', value: isbn },
   ];
 
@@ -47,7 +47,7 @@ const Detail = ({ prdDetailData }) => {
       <div className="prdDetailContainer">
         <div className="prdDetailLeft">
           <div className="prdCategoryBox">
-            <span className="prdCategory">{main_category_name}</span>
+            <span className="prdCategory">{category}</span>
             <span className="prdNumber">ISSUE NO.{issue_number}</span>
           </div>
           <div className="prdTitle">{title}</div>
@@ -77,7 +77,7 @@ const Detail = ({ prdDetailData }) => {
         </div>
       </div>
       <div className="prdImg">
-        <img src={detail_img_url} alt="ARC" />
+        <img src={product_image_url} alt="ARC" />
       </div>
     </div>
   );
