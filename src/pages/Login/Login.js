@@ -6,39 +6,52 @@ import './Login.scss';
 const Login = () => {
   const navigate = useNavigate();
 
-  const [value, setValue] = useState({
+  const [inputValue, setInputValue] = useState({
     idValue: '',
     passwordValue: '',
   });
 
-  const handleChangestate = e => {
-    setValue({
-      ...value,
-      [e.target.name]: e.target.value,
+  const handleChageInputValue = e => {
+    const { name, value } = e.target;
+
+    setInputValue({
+      ...inputValue,
+      [name]: value,
     });
   };
 
-  const goToMain = () => {
-    if (value.idValue.length === 0) {
-      return alert('아이디 항목은 필수 입력값입니다.');
-    } else if (value.passwordValue.length === 0) {
-      return alert('패스워드 항목은 필수 입력값입니다.');
+  const testValue = () => {
+    if (inputValue.idValue.length === 0) {
+      alert('아이디 항목은 필수 입력값입니다.');
+      return false;
+    } else if (inputValue.passwordValue.length === 0) {
+      alert('패스워드 항목은 필수 입력값입니다.');
+      return false;
     }
-    fetch('http://10.58.6.169:8000/user/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        user_name: value.idValue,
-        password: value.passwordValue,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.ACCESS_TOKEN) {
-          localStorage.setItem('login-token', result.ACCESS_TOKEN);
-          //console.log('결과: ', result));
-        }
-      });
-    navigate('/');
+    return true;
+  };
+
+  const goToMain = () => {
+    if (testValue()) {
+      fetch('http://10.58.6.169:8000/user/login', {
+        method: 'POST',
+        body: JSON.stringify({
+          user_name: inputValue.idValue,
+          password: inputValue.passwordValue,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.ACCESS_TOKEN) {
+            localStorage.setItem('login-token', result.ACCESS_TOKEN);
+            navigate('/');
+          } else {
+            alert('등록되지않은 회원입니다.');
+          }
+        });
+    } else {
+      return null;
+    }
   };
 
   return (
@@ -46,32 +59,36 @@ const Login = () => {
       <div className="loginBox">
         <div>
           <input
+            className="idInput"
             name="idValue"
             placeholder="아이디"
-            value={value.idValue}
-            onChange={handleChangestate}
+            value={inputValue.idValue}
+            onChange={handleChageInputValue}
           />
           {/* 아이디는 영문소문자 와 숫자 4~16자로 입력 */}
         </div>
         <div>
           <input
+            className="passwordInput"
             name="passwordValue"
             type="password"
             placeholder="패스워드"
-            value={value.passwordValue}
-            onChange={handleChangestate}
+            value={inputValue.passwordValue}
+            onChange={handleChageInputValue}
           />
           {/* 대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자 입력가능특수문자 ~`!@#$%^()_-={}[]|;:<>,.?/ */}
         </div>
         <div>
-          <button onClick={goToMain}>로그인</button>
+          <button className="loginButton" onClick={goToMain}>
+            로그인
+          </button>
         </div>
         <div>
           <button>주문조회</button>
-          <button>아이디찾기</button>
-          <button>비밀번호찾기</button>
+          <button className="borderLeftLine">아이디찾기</button>
+          <button className="borderLeftLine">비밀번호찾기</button>
           <Link to="/SignUp">
-            <button>회원가입</button>
+            <button className="borderLeftLine">회원가입</button>
           </Link>
           {/* <Link to="/main-hyeonmin">Westagram</Link> */}
         </div>

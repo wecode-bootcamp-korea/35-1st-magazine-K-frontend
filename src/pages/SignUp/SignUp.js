@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { signUpInputData } from './signUpInputData';
 import './SignUp.scss';
 
-const SignUp = () => {
+const SignUp = ({ props }) => {
   const navigate = useNavigate();
-
-  const [state, setState] = useState({
+  const [inputValue, setInputValue] = useState({
     idValue: '',
     passwordValue: '',
     rePasswordValue: '',
@@ -15,11 +15,20 @@ const SignUp = () => {
     checkAll: '',
   });
 
+  // const [warningText, setWarningText] = useState('idWarningMessageAtive');
+
   const handleChangestate = e => {
-    setState({
-      ...state,
-      [e.target.name]: e.target.value,
+    const { name, value } = e.target;
+
+    setInputValue({
+      ...inputValue,
+      [name]: value,
     });
+    // if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
+    //   setWarningText('idWarningMessageNoneAtive');
+    // } else {
+    //   setWarningText('idWarningMessageAtive');
+    // }
   };
 
   const testPhoneNumber = /^\d+$/;
@@ -27,120 +36,123 @@ const SignUp = () => {
   const testPassword = /[/?.,;:|*~`!^-_[\]+<>@#$%&='")(}{]/gi;
 
   const handleChangeCheckstate = e => {
+    const { name } = e.target;
+    const { checked } = e.currentTarget;
+
     //console.log(e.currentTarget.checked);true false
-    if (e.currentTarget.checked) {
-      setState({
-        ...state,
-        [e.target.name]: e.currentTarget.checked,
+    if (checked) {
+      setInputValue({
+        ...inputValue,
+        [name]: checked,
       });
-      console.log(!testPassword.test(state.passwordValue));
     } else {
-      setState({
-        ...state,
-        [e.target.name]: e.currentTarget.checked,
+      setInputValue({
+        ...inputValue,
+        [name]: checked,
       });
     }
+  };
+  //console.log(inputValue.passwordValue);
+
+  const testValue = () => {
+    if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
+      alert('아이디 항목은 필수 입력값입니다.');
+      return false;
+    } else if (!testPassword.test(inputValue.passwordValue)) {
+      alert('패스워드 항목은 필수 입력값입니다.');
+      return false;
+    } else if (
+      inputValue.passwordValue.length < 8 ||
+      inputValue.passwordValue.length > 16
+    ) {
+      alert(
+        '대소문자/숫자/특수문자중3가지 이상 조합,8자~16자 필수 공백 불가능'
+      );
+      return false;
+    } else if (
+      inputValue.rePasswordValue.length !== inputValue.passwordValue.length
+    ) {
+      alert('패스워드가 다릅니다.');
+      return false;
+    } else if (inputValue.name.length === 0) {
+      alert('이름 항목은 필수 입력값입니다.');
+      return false;
+    } else if (
+      inputValue.phoneNumber.length === 0 ||
+      !testPhoneNumber.test(inputValue.phoneNumber)
+    ) {
+      alert('휴대전화 항목은 필수 입력값입니다.');
+      return false;
+    } else if (inputValue.email.indexOf('@') === -1) {
+      alert('이메일 항목은 필수 입력값입니다.');
+      return false;
+    } else if (inputValue.checkAll !== true) {
+      alert('체크 항목은 필수 입력값입니다.');
+      return false;
+    }
+    return true;
   };
 
   const goToMain = () => {
-    if (state.idValue.length === 0 || !testId.test(state.idValue)) {
-      return alert('아이디 항목은 필수 입력값입니다.');
-    } else if (!testPassword.test(state.passwordValue)) {
-      return alert('패스워드 항목은 필수 입력값입니다.');
-    } else if (
-      state.passwordValue.length < 8 ||
-      state.passwordValue.length > 16
-    ) {
-      return alert(
-        '대소문자/숫자/특수문자중3가지 이상 조합,8자~16자 필수 공백 불가능'
-      );
-    } else if (state.rePasswordValue.length !== state.passwordValue.length) {
-      return alert('패스워드가 다릅니다.');
-    } else if (state.name.length === 0) {
-      return alert('이름 항목은 필수 입력값입니다.');
-    } else if (
-      state.phoneNumber.length === 0 ||
-      !testPhoneNumber.test(state.phoneNumber)
-    ) {
-      return alert('휴대전화 항목은 필수 입력값입니다.');
-    } else if (state.email.indexOf('@') === -1) {
-      return alert('이메일 항목은 필수 입력값입니다.');
-    } else if (state.checkAll !== true) {
-      return alert('체크 항목은 필수 입력값입니다.');
+    if (testValue()) {
+      fetch('http://10.58.6.169:8000/user/signup', {
+        method: 'POST',
+        body: JSON.stringify({
+          user_name: inputValue.idValue,
+          password: inputValue.passwordValue,
+          name: inputValue.name,
+          phone_number: inputValue.phoneNumber,
+          email: inputValue.email,
+        }),
+      })
+        .then(response => response.json())
+        .then(result => {
+          if (result.ACCESS_TOKEN) {
+            localStorage.setItem('login-token', result.ACCESS_TOKEN);
+            alert('회원가입성공');
+            navigate('/Login');
+          }
+        });
+    } else {
+      return null;
     }
-    fetch('http://10.58.6.169:8000/user/signup', {
-      method: 'POST',
-      body: JSON.stringify({
-        user_name: state.idValue,
-        password: state.passwordValue,
-        name: state.name,
-        phone_number: state.phoneNumber,
-        email: state.email,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.ACCESS_TOKEN) {
-          localStorage.setItem('login-token', result.ACCESS_TOKEN);
-          //console.log('결과: ', result));
-        }
-      });
-    navigate('/');
+    //navigate('/Login');
   };
+
+  // console.log(inputValue.idValue);
+  // const inputKey = [
+  //   {
+  //     className: 'signUpItem',
+  //     name: 'idValue',
+  //     value: inputValue.idValue,
+  //     onchange: handleChangestate,
+  //   },
+  // ];
+  //console.log(signUpInputData);
   return (
     <div className="signUPageWrapper">
       <div className="signUPBox">
-        <p className="signUpItem">아이디*</p>
-        <p>아이디는 영문소문자와 숫자를 이용하여 4~16자로 입력해주세요.</p>
-        <input
-          className="signUpItem"
-          name="idValue"
-          value={state.idValue}
-          onChange={handleChangestate}
-        />
-        <p className="signUpItem">비밀번호*</p>
-        <p>
-          -대소문자/숫자/특수문자중3가지 이상 조합,8자~16자-입력 가능 특수문자
-          ~`!@#$%^()/-공백 불가능
-        </p>
-        <input
-          className="signUpItem"
-          name="passwordValue"
-          type="password"
-          value={state.passwordValue}
-          onChange={handleChangestate}
-        />
-        <p className="signUpItem">비밀번호 확인*</p>
-        <input
-          className="signUpItem"
-          name="rePasswordValue"
-          type="password"
-          value={state.rePasswordValue}
-          onChange={handleChangestate}
-        />
-        <p className="signUpItem">이름*</p>
-        <input
-          className="signUpItem"
-          name="name"
-          value={state.name}
-          onChange={handleChangestate}
-        />
-        <p className="signUpItem">휴대전화</p>
-        <input
-          type="tel"
-          className="signUpItem"
-          name="phoneNumber"
-          value={state.phoneNumber}
-          onChange={handleChangestate}
-        />
-        <p className="signUpItem">이메일*</p>
-        <input
-          type="email"
-          className="signUpItem"
-          name="email"
-          value={state.email}
-          onChange={handleChangestate}
-        />
+        {signUpInputData.map(props => (
+          <div key={props.id}>
+            <p className="signUpItem">
+              {props.text}
+              <span
+                className={
+                  inputValue.idValue.length > 0
+                    ? props.noneWarningClassName
+                    : props.warningClassName
+                }
+              >
+                {props.warningMessage}
+              </span>
+            </p>
+            <input
+              className="signUpItem"
+              name={props.name}
+              onChange={handleChangestate}
+            />
+          </div>
+        ))}
         <p className="serviceAgree">서비스 이용 동의</p>
         <div className="inputWrapper agreeAll">
           <label>
@@ -159,3 +171,8 @@ const SignUp = () => {
 };
 
 export default SignUp;
+// if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
+//   setWarningText('idWarningMessageNoneAtive');
+// } else {
+//   setWarningText('idWarningMessageAtive');
+// }
