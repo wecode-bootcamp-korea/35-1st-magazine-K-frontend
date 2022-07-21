@@ -23,6 +23,7 @@ const Cart = () => {
         {/* <div className="empty">
             <p>장바구니가 비어 있습니다.</p>
           </div> */}
+
         {/* 여기 map 돌리면 됨 */}
         {cartData.map(cartData => {
           return (
@@ -34,17 +35,22 @@ const Cart = () => {
           );
         })}
       </div>
-      <a className="cartFooter">
+      <div className="cartFooter">
         <span>
           ₩{orderQuantity === 0 ? 15 : 15 * orderQuantity},000 VIEW ALL
         </span>
-      </a>
+      </div>
     </div>
   );
 };
 function SelectedPrd({ cartData }) {
+  const { cart_img_url, id, price, title } = cartData;
+
   const [orderQuantity, setOrderQuantity] = useState(0);
+
   const [cartModal, setCartModal] = useState(true);
+
+  const priceThousand = price.toString().slice(0, 2);
 
   function minusOrderQuantity() {
     if (orderQuantity < 2) {
@@ -53,24 +59,27 @@ function SelectedPrd({ cartData }) {
       setOrderQuantity(orderQuantity - 1);
     }
   }
+
   function plusOrderQuantity() {
     setOrderQuantity(orderQuantity + 1);
   }
+
   function deleteProduct() {
     alert('선택하신 상품을 삭제하시겠습니까?');
     setCartModal(false);
   }
+
   return (
     <div
-      key={cartData.id}
+      key={id}
       className="selected"
       style={cartModal ? { display: 'flex' } : { display: 'none' }}
     >
       <div className="productInfo">
-        <img src={cartData.cart_img_url} alt="selected_tiny" />
+        <img src={cart_img_url} alt="selected_tiny" />
         <div className="description">
-          <div>{cartData.title}</div>
-          <div>₩{cartData.price},000</div>
+          <div>{title}</div>
+          <div>₩{priceThousand},000</div>
           <div className="count">
             <img
               onClick={minusOrderQuantity}
