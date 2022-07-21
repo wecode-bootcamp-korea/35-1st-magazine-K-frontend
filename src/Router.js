@@ -22,7 +22,10 @@ const Router = () => {
         <Route path="/" element={<Main />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/ProductDetail" element={<ProductDetail />} />
+        <Route
+          path="/ProductDetail/:issue_number"
+          element={<ProductDetail />}
+        />
         <Route path="/ProductList" element={<ProductList />} />
         <Route path="/Cart" element={<Cart />} />
       </Routes>
@@ -32,3 +35,7 @@ const Router = () => {
 };
 
 export default Router;
+
+{
+  /* <Route path="/Products/:id" element={<ProductDetail />} /> */
+}
