@@ -10,7 +10,7 @@ const Product = ({ prod }) => {
     issue_number,
     price,
   } = prod;
-  // const priceThousand = price.toString().slice(0, 2);
+  const priceThousand = price.toString().slice(0, 2);
 
   return (
     <div className="product">
@@ -27,7 +27,7 @@ const Product = ({ prod }) => {
           <span className="prodInfo">{title}</span>
           <span className="prodInfo">ISSUE NO.{issue_number}</span>
           <span className="prodInfo">{main_category}</span>
-          <span className="prodInfo">{`₩${price},000`}</span>
+          <span className="prodInfo">{`₩${priceThousand},000`}</span>
         </div>
         <div className="addToCart">ADD TO CART</div>
       </div>

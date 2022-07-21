@@ -13,7 +13,7 @@
 .pageLinkContainer {
   @include flex(center, center, null);
   margin: 4rem 0;
-
+  width: 100%;
   .pageLinkPrev {
     @include pageButtonSetting;
     @include hover;

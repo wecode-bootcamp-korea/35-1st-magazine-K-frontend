@@ -85,23 +85,23 @@ export default ProductList;
 
 const MENU_LIST = [
   {
-    cate_no: 44,
+    cate_no: 1,
     cate_name: 'Magazine K',
   },
   {
-    cate_no: 1,
+    cate_no: 2,
     cate_name: 'Fashion',
   },
   {
-    cate_no: 2,
+    cate_no: 3,
     cate_name: 'Beauty',
   },
   {
-    cate_no: 3,
+    cate_no: 4,
     cate_name: 'Design Lifestyle',
   },
   {
-    cate_no: 4,
+    cate_no: 5,
     cate_name: 'Food',
   },
 ];
