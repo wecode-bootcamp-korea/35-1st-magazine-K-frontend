@@ -1,6 +1,5 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
 import './Nav.scss';
 
 const LoginTap = ({ token, movePage }) => {
@@ -18,7 +17,6 @@ const LoginTap = ({ token, movePage }) => {
 
 const Nav = () => {
   const navigate = useNavigate();
-  const [isLogin] = useState(false);
   let token = localStorage.getItem('token');
   const movePage = targetPg => {
     navigate(`${targetPg}`);
