@@ -1,6 +1,5 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
-import ProductDetail from '../ProductDetail';
 import './Detail.scss';
 
 const Detail = ({ prdDetailData }) => {

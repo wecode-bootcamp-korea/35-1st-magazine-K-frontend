@@ -35,7 +35,3 @@ const Router = () => {
 };
 
 export default Router;
-
-{
-  /* <Route path="/Products/:id" element={<ProductDetail />} /> */
-}
