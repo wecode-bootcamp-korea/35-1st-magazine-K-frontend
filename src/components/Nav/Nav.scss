@@ -1,41 +1,39 @@
 @import '../../styles/variable.scss';
-@mixin hover {
+@mixin hoverWithMargin($margin) {
+  margin: $margin;
   &:hover {
     cursor: pointer;
   }
 }
 
 .nav {
-  @include flex(space-between, center, null);
+  @include flex(space-between, center, '');
   height: 50px;
   font-size: 1.25rem;
   font-weight: 500;
 
   .firstMenuContainer {
-    @include flex(center, center, null);
+    @include flex(center, center, '');
     flex: 0.3;
 
     .magazinIcon {
       width: 19px;
-      height: 22px;
-      margin: 0 20px;
-      @include hover;
+      height: 22p x;
+      @include hoverWithMargin(0 20px);
     }
 
     .magazineMenu {
-      margin: 0 20px;
-      @include hover;
+      @include hoverWithMargin(0 20px);
     }
   }
 
   .secondMenuContainer {
-    @include flex(center, center, null);
+    @include flex(center, center, '');
     flex: 0.3;
     margin-right: 50px;
 
-    .Menu {
-      margin: 0 10px;
-      @include hover;
+    .menus {
+      @include hoverWithMargin(0 20px);
     }
   }
 }
