@@ -12,6 +12,7 @@ import SignUp from './pages/SignUp/SignUp';
 import ProductList from './pages/ProductList/ProductList';
 
 import Cart from './pages/Cart/Cart';
+import Pay from './pages/Pay/Pay';
 
 // import 한 컴포넌트에 대한 경로를 각각 설정해줍니다.
 const Router = () => {
@@ -25,6 +26,7 @@ const Router = () => {
         <Route path="/ProductDetail" element={<ProductDetail />} />
         <Route path="/ProductList" element={<ProductList />} />
         <Route path="/Cart" element={<Cart />} />
+        <Route path="/Pay" element={<Pay />} />
       </Routes>
       <Footer />
     </BrowserRouter>
