@@ -3,13 +3,14 @@ import './Product.scss';
 
 const Product = ({ prod }) => {
   const {
-    main_category_name,
+    main_category,
     main_img_url_1,
     main_img_url_2,
     title,
     issue_number,
     price,
   } = prod;
+  // const priceThousand = price.toString().slice(0, 2);
 
   return (
     <div className="product">
@@ -25,8 +26,8 @@ const Product = ({ prod }) => {
         <div className="prodInfoWrapper">
           <span className="prodInfo">{title}</span>
           <span className="prodInfo">ISSUE NO.{issue_number}</span>
-          <span className="prodInfo">{main_category_name}</span>
-          <span className="prodInfo">{price},000</span>
+          <span className="prodInfo">{main_category}</span>
+          <span className="prodInfo">{`₩${price},000`}</span>
         </div>
         <div className="addToCart">ADD TO CART</div>
       </div>

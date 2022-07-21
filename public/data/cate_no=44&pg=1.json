@@ -3,7 +3,7 @@
     "title": "LEMAIRE",
     "issue_number": 90,
     "main_category_name": "MAGAZINE K",
-    "price": 18,
+    "price": 18000,
     "no": 1,
     "main_img_url_1": "/images/product1-1.jpg",
     "main_img_url_2": "/images/product1-2.jpg"
@@ -12,7 +12,7 @@
     "title": "A.P.C",
     "issue_number": 78,
     "main_category_name": "MAGAZINE K",
-    "price": 18,
+    "price": 18000,
     "no": 1,
     "main_img_url_1": "/images/product2-1.jpg",
     "main_img_url_2": "/images/product2-2.jpg"
@@ -21,7 +21,7 @@
     "title": "LE LABO",
     "issue_number": 65,
     "main_category_name": "MAGAZINE K",
-    "price": 15,
+    "price": 15000,
     "no": 2,
     "main_img_url_1": "/images/product3-1.jpg",
     "main_img_url_2": "/images/product3-2.jpg"
@@ -30,7 +30,7 @@
     "title": "L'OCCITANE",
     "issue_number": 45,
     "main_category_name": "MAGAZINE K",
-    "price": 13,
+    "price": 13000,
     "no": 2,
     "main_img_url_1": "/images/product4-1.jpg",
     "main_img_url_2": "/images/product4-2.jpg"
@@ -39,7 +39,7 @@
     "title": "IKEA",
     "issue_number": 63,
     "main_category_name": "MAGAZINE K",
-    "price": 16,
+    "price": 16000,
     "no": 3,
     "main_img_url_1": "/images/product5-1.jpg",
     "main_img_url_2": "/images/product5-2.jpg"
@@ -48,7 +48,7 @@
     "title": "WEWORK",
     "issue_number": 52,
     "main_category_name": "MAGAZINE K",
-    "price": 13,
+    "price": 13000,
     "no": 3,
     "main_img_url_1": "/images/product6-1.jpg",
     "main_img_url_2": "/images/product6-2.jpg"
@@ -57,7 +57,7 @@
     "title": "MAISON KITSUNE",
     "issue_number": 69,
     "main_category_name": "MAGAZINE K",
-    "price": 15,
+    "price": 15000,
     "no": 1,
     "main_img_url_1": "/images/product7-1.jpg",
     "main_img_url_2": "/images/product7-2.jpg"
@@ -66,7 +66,7 @@
     "title": "JOSEPH JOSEPH",
     "issue_number": 15,
     "main_category_name": "MAGAZINE K",
-    "price": 13,
+    "price": 13000,
     "no": 2,
     "main_img_url_1": "/images/product8-1.jpg",
     "main_img_url_2": "/images/product8-2.jpg"
@@ -75,7 +75,7 @@
     "title": "DIPTYQUE",
     "issue_number": 31,
     "main_category_name": "MAGAZINE K",
-    "price": 13,
+    "price": 13000,
     "no": 2,
     "main_img_url_1": "/images/product9-1.jpg",
     "main_img_url_2": "/images/product9-2.jpg"
