@@ -1,7 +1,8 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod }) => {
+const Product = ({ prod, cate_no }) => {
   const {
     main_category,
     main_img_url_1,
@@ -10,16 +11,30 @@ const Product = ({ prod }) => {
     issue_number,
     price,
   } = prod;
+  const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
+  const moveDetailPage = () => {
+    navigate(`/ProductDetail?issue_number=${issue_number}&cate_no=${cate_no}`);
+  };
 
   return (
     <div className="product">
       <div className="prodImgContainer">
         <div className="prodImgWrapper">
-          <img className="prodImage" src={main_img_url_1} alt="prod1-1" />
+          <img
+            className="prodImage"
+            src={main_img_url_1}
+            alt="prod1-1"
+            onClick={moveDetailPage}
+          />
         </div>
         <div className="prodImgWrapper">
-          <img className="prodImage" src={main_img_url_2} alt="product1-2" />
+          <img
+            className="prodImage"
+            src={main_img_url_2}
+            alt="product1-2"
+            onClick={moveDetailPage}
+          />
         </div>
       </div>
       <div className="prodInfoContainer">

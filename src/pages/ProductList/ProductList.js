@@ -65,7 +65,7 @@ const ProductList = () => {
       <div className="prodlistContainer">
         {/* {prodList.slice(offset, limit * page).map(prod => ( */}
         {prodList.map(prod => (
-          <Product key={Math.random()} prod={prod} />
+          <Product key={Math.random()} prod={prod} cate_no={cate_no} />
         ))}
         <PageList
           page={page}
