@@ -4,6 +4,11 @@ import './Cart.scss';
 const Cart = () => {
   const [orderQuantity, setOrderQuantity] = useState(0);
   const [cartData, setCartData] = useState([]);
+  const [cartModal, setCartModal] = useState(true);
+
+  const closeCart = () => {
+    setCartModal(false);
+  };
 
   useEffect(() => {
     fetch('data/cartData.json')
@@ -14,7 +19,11 @@ const Cart = () => {
   }, []);
 
   return (
-    <div className="cartModal">
+    <div
+      className="cartModal"
+      style={cartModal ? { visibility: 'visible' } : { visibility: 'hidden' }}
+      onClick={closeCart}
+    >
       <div className="cartNav">
         <span>Cart[{orderQuantity}]</span>
         <span>Close</span>
@@ -26,13 +35,7 @@ const Cart = () => {
 
         {/* 여기 map 돌리면 됨 */}
         {cartData.map(cartData => {
-          return (
-            <SelectedPrd
-              key={cartData.id}
-              setOrderQuantity={setOrderQuantity}
-              cartData={cartData}
-            />
-          );
+          return <SelectedPrd key={cartData.id} cartData={cartData} />;
         })}
       </div>
       <div className="cartFooter">
@@ -48,7 +51,7 @@ function SelectedPrd({ cartData }) {
 
   const [orderQuantity, setOrderQuantity] = useState(0);
 
-  const [cartModal, setCartModal] = useState(true);
+  const [selected, setSelected] = useState(true);
 
   const priceThousand = price.toString().slice(0, 2);
 
@@ -66,14 +69,14 @@ function SelectedPrd({ cartData }) {
 
   function deleteProduct() {
     alert('선택하신 상품을 삭제하시겠습니까?');
-    setCartModal(false);
+    setSelected(false);
   }
 
   return (
     <div
       key={id}
       className="selected"
-      style={cartModal ? { display: 'flex' } : { display: 'none' }}
+      style={selected ? { display: 'flex' } : { display: 'none' }}
     >
       <div className="productInfo">
         <img src={cart_img_url} alt="selected_tiny" />
