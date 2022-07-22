@@ -20,7 +20,11 @@ const Pay = () => {
                 RAMYUN
               </label>
               <p>$15000</p>
-              <input className="SelectQuantity" />
+              <div className="SelectQuantityBox">
+                <input className="SelectQuantity" value="1" />
+                <button className="SelectQuantityPlus">+</button>
+                <button className="SelectQuantityMinus">-</button>
+              </div>
             </div>
             <div>
               <img

@@ -28,9 +28,34 @@
             margin: 10px 0px 25px 10px;
           }
 
-          .SelectQuantity {
-            width: 60px;
-            margin-left: 10px;
+          .SelectQuantityBox {
+            position: relative;
+
+            .SelectQuantity {
+              width: 60px;
+              margin-left: 10px;
+              text-align: center;
+            }
+
+            .SelectQuantityPlus {
+              position: absolute;
+              right: 15px;
+              width: 15px;
+              top: -3px;
+              background: none;
+              border: none;
+              font-size: 25px;
+            }
+
+            .SelectQuantityMinus {
+              position: absolute;
+              left: 10px;
+              width: 15px;
+              top: -8px;
+              background: none;
+              border: none;
+              font-size: 30px;
+            }
           }
         }
 
