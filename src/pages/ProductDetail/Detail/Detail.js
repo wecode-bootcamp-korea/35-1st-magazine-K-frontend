@@ -26,12 +26,12 @@ const Detail = ({ prdDetailData }) => {
       setOrderQuantity(1);
       alert('최소 주문수량은 1개 입니다.');
     } else {
-      setOrderQuantity(orderQuantity - 1);
+      setOrderQuantity(orderQuantity => orderQuantity - 1);
     }
   }
 
   function plusOrderQuantity() {
-    setOrderQuantity(orderQuantity + 1);
+    setOrderQuantity(orderQuantity => orderQuantity + 1);
   }
 
   const PRD_META_INFO = [
@@ -58,11 +58,11 @@ const Detail = ({ prdDetailData }) => {
             <span onClick={plusOrderQuantity}>+</span>
           </div>
           <div className="prdMetaInfo">
-            {PRD_META_INFO.map(ele => {
+            {PRD_META_INFO.map(({ id, title, value }) => {
               return (
-                <span key={ele.id}>
-                  <span>{ele.title}</span>
-                  <span>{ele.value}</span>
+                <span key={id}>
+                  <span>{title}</span>
+                  <span>{value}</span>
                 </span>
               );
             })}
