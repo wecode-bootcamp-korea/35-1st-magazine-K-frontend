@@ -14,7 +14,7 @@ const Product = ({ prod, cate_no }) => {
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
   const moveDetailPage = () => {
-    navigate(`/ProductDetail?issue_number=${issue_number}&cate_no=${cate_no}`);
+    navigate(`/ProductDetail?issue=${issue_number}&category=${cate_no}`);
   };
 
   return (
