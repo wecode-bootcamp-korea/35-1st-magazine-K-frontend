@@ -15,8 +15,6 @@ const SignUp = ({ inputData }) => {
     checkAll: '',
   });
 
-  // const [warningText, setWarningText] = useState('idWarningMessageAtive');
-
   const handleChangestate = e => {
     const { name, value } = e.target;
 
@@ -24,11 +22,6 @@ const SignUp = ({ inputData }) => {
       ...inputValue,
       [name]: value,
     });
-    // if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
-    //   setWarningText('idWarningMessageNoneAtive');
-    // } else {
-    //   setWarningText('idWarningMessageAtive');
-    // }
   };
 
   const testPhoneNumber = /^\d+$/;
@@ -39,7 +32,6 @@ const SignUp = ({ inputData }) => {
     const { name } = e.target;
     const { checked } = e.currentTarget;
 
-    //console.log(e.currentTarget.checked);true false
     if (checked) {
       setInputValue({
         ...inputValue,
@@ -52,7 +44,6 @@ const SignUp = ({ inputData }) => {
       });
     }
   };
-  //console.log(inputValue.passwordValue);
 
   const testValue = () => {
     if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
@@ -116,50 +107,29 @@ const SignUp = ({ inputData }) => {
     } else {
       return null;
     }
-    //navigate('/Login');
   };
 
-  // console.log(inputValue.idValue);
-  // const inputKey = [
-  //   {
-  //     className: 'signUpItem',
-  //     name: 'idValue',
-  //     value: inputValue.idValue,
-  //     onchange: handleChangestate,
-  //   },
-  // ];
-  //console.log(signUpInputData);
   return (
     <div className="signUPageWrapper">
       <div className="signUPBox">
         {signUpInputData.map(inputData => {
-          console.log(inputData);
+          //console.log(inputData);
           return (
             <div key={inputData.id}>
               <p className="signUpItem">
                 {inputData.text}
-                {inputData.name === 'idValue' && (
-                  <span
-                    className={
-                      inputValue.idValue.length === 0
-                        ? inputData.noneWarningClassName
-                        : inputData.warningClassName
-                    }
-                  >
-                    {inputData.warningMessage}
-                  </span>
-                )}
-                {inputData.name === 'passwordValue' && (
-                  <span
-                    className={
-                      inputValue.passwordValue.length === 0
-                        ? inputData.noneWarningClassName
-                        : inputData.warningClassName
-                    }
-                  >
-                    {inputData.warningMessage}
-                  </span>
-                )}
+                <span
+                  className={
+                    (inputValue.idValue.length === 0 &&
+                      inputData.name === 'idValue') ||
+                    (inputValue.passwordValue.length === 0 &&
+                      inputData.name === 'passwordValue')
+                      ? inputData.warningClassName
+                      : inputData.noneWarningClassName
+                  }
+                >
+                  {inputData.warningMessage}
+                </span>
               </p>
               <input
                 className="signUpItem"
@@ -187,8 +157,3 @@ const SignUp = ({ inputData }) => {
 };
 
 export default SignUp;
-// if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
-//   setWarningText('idWarningMessageNoneAtive');
-// } else {
-//   setWarningText('idWarningMessageAtive');
-// }
