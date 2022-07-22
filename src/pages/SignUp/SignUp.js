@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signUpInputData } from './signUpInputData';
 import './SignUp.scss';
 
-const SignUp = ({ props }) => {
+const SignUp = ({ inputData }) => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     idValue: '',
@@ -132,27 +132,43 @@ const SignUp = ({ props }) => {
   return (
     <div className="signUPageWrapper">
       <div className="signUPBox">
-        {signUpInputData.map(props => (
-          <div key={props.id}>
-            <p className="signUpItem">
-              {props.text}
-              <span
-                className={
-                  inputValue.idValue.length > 0
-                    ? props.noneWarningClassName
-                    : props.warningClassName
-                }
-              >
-                {props.warningMessage}
-              </span>
-            </p>
-            <input
-              className="signUpItem"
-              name={props.name}
-              onChange={handleChangestate}
-            />
-          </div>
-        ))}
+        {signUpInputData.map(inputData => {
+          console.log(inputData);
+          return (
+            <div key={inputData.id}>
+              <p className="signUpItem">
+                {inputData.text}
+                {inputData.name === 'idValue' && (
+                  <span
+                    className={
+                      inputValue.idValue.length === 0
+                        ? inputData.noneWarningClassName
+                        : inputData.warningClassName
+                    }
+                  >
+                    {inputData.warningMessage}
+                  </span>
+                )}
+                {inputData.name === 'passwordValue' && (
+                  <span
+                    className={
+                      inputValue.passwordValue.length === 0
+                        ? inputData.noneWarningClassName
+                        : inputData.warningClassName
+                    }
+                  >
+                    {inputData.warningMessage}
+                  </span>
+                )}
+              </p>
+              <input
+                className="signUpItem"
+                name={inputData.name}
+                onChange={handleChangestate}
+              />
+            </div>
+          );
+        })}
         <p className="serviceAgree">서비스 이용 동의</p>
         <div className="inputWrapper agreeAll">
           <label>
