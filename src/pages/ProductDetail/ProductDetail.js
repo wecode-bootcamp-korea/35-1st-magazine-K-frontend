@@ -5,7 +5,7 @@ import Detail from './Detail/Detail';
 
 const ProductDetail = () => {
   const [prdDetailData, setPrdDetailData] = useState([]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const cate_no = searchParams.get('cate_no');
   const issue_number = searchParams.get('issue_number');
 
@@ -19,13 +19,7 @@ const ProductDetail = () => {
       .then(data => {
         setPrdDetailData(data.result);
       });
-  }, []);
-
-  // useEffect(() => {
-  //   // console.log(prdDetailData);
-  //   setSearchParams({ issue_number: prdDetailData[0].issue_number });
-  // });
-
+  }, [cate_no, issue_number]);
   return prdDetailData.map(prdDetailData => {
     return (
       <Detail key={prdDetailData.issue_number} prdDetailData={prdDetailData} />
