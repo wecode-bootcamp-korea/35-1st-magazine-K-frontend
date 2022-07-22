@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod, cate_no }) => {
+const Product = ({ prod, category }) => {
   const {
     main_category,
     main_img_url_1,
@@ -14,7 +14,7 @@ const Product = ({ prod, cate_no }) => {
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
   const moveDetailPage = () => {
-    navigate(`/ProductDetail?issue=${issue_number}&category=${cate_no}`);
+    navigate(`/ProductDetail?issue=${issue_number}&category=${category}`);
   };
 
   return (

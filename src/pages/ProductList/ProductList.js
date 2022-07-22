@@ -13,67 +13,92 @@ const ProductList = () => {
   const [prodList, setProdList] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
+  const [limit, setLimit] = useState(10);
+  const [sort, setSort] = useState(0);
 
-  const cate_no = searchParams.get('cate_no');
-  const pg = searchParams.get('pg');
-  const limit = 5;
-  // const offset = page * limit;
+  const category = searchParams.get('category');
   const pageNum = Math.ceil(total / limit);
+  let offset = (page - 1) * limit;
 
-  const pgPrev = parseInt(pg) - 1 ? parseInt(pg) - 1 : 1;
-  const pgNext = parseInt(pg) === pageNum ? pg : parseInt(pg) + 1;
-  const movePage = (cate_no, pg) => {
-    setPage(() => pg);
-    navigate(`?cate_no=${cate_no}&pg=${pg}`);
+  const pgPrev = parseInt(page) - 1 ? parseInt(page) - 1 : 1;
+  const pgNext = parseInt(page) === pageNum ? page : parseInt(page) + 1;
+  const movePage = (category, page) => {
+    setPage(() => page);
+    offset = (page - 1) * limit;
+    navigate(`?category=${category}`);
   };
 
   useEffect(() => {
-    setSearchParams({ cate_no: 1, pg: 1 });
-  }, [setSearchParams]);
+    setSearchParams({ category: 1 });
+  }, []);
 
   useEffect(() => {
-    // data/cate_no=${parseInt(cate_no)}&pg=${pg}.json
+    // data/cate_no=${parseInt(cate_no)}&page=${page}.json
     fetch(
-      `http://10.58.4.28:8000/products/main?category=${parseInt(
-        cate_no
-      )}&page=${parseInt(pg)}`
+      // `http://10.58.4.28:8000/products/list?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
       .then(res => {
-        const prodNum = res.result.length - 1;
-        const dataList = res.result.slice(0, prodNum);
-        const total = res.result[prodNum].category_total;
-
-        setTotal(total);
-        setProdList(dataList);
+        // const prodNum = res.result.length - 1;
+        // const dataList = res.result.slice(0, prodNum);
+        // const total = res.result[prodNum].category_total;
+        // setTotal(total);
+        // setProdList(dataList);
+        setProdList(res);
+        setTotal(36);
       });
-  }, [cate_no, pg]);
-
-  // useEffect(() => {
-  //   fetch(`/data/menuTapList.json`)
-  //     .then(res => res.json())
-  //     .then(res => setMenuTapList(res));
-  // }, []);
+  }, [offset, limit, sort]);
 
   return (
     <div className="productListPage">
       <div className="menuTapContainer">
         {MENU_LIST.map(menu => (
-          <MenuTap key={menu.cate_no} menu={menu} movePage={movePage} />
+          <MenuTap key={menu.category} menu={menu} movePage={movePage} />
         ))}
+        <div className="prodNumPerPage">
+          <span className="totalNum">TOTAL {total}</span>
+          <div className="numPerPageWrapper">
+            <span className="numPerPageText">NUMBER PER PAGE</span>
+            <select
+              className="numPerPage"
+              onChange={e => {
+                setLimit(e.target.value);
+              }}
+              defaultValue="10"
+            >
+              <option>5</option>
+              <option>10</option>
+              <option>20</option>
+            </select>
+          </div>
+          <div className="sortWrapper">
+            <select
+              className="sort"
+              onChange={e => {
+                setSort(e.target.value);
+              }}
+            >
+              <option>SORT BY</option>
+              <option value="0">최신순</option>
+              <option value="1">오래된 순</option>
+              <option value="2">높은가격 순</option>
+              <option value="3">낮은가격 순</option>
+            </select>
+          </div>
+        </div>
       </div>
       <div className="prodlistContainer">
-        {/* {prodList.slice(offset, limit * page).map(prod => ( */}
-        {prodList.map(prod => (
-          <Product key={Math.random()} prod={prod} cate_no={cate_no} />
+        {prodList.slice(offset, limit * page).map(prod => (
+          // {prodList.map(prod => (
+          <Product key={Math.random()} prod={prod} category={category} />
         ))}
         <PageList
-          page={page}
           total={total}
           movePage={movePage}
           pgNext={pgNext}
           pgPrev={pgPrev}
-          cate_no={cate_no}
+          category={category}
           limit={limit}
         />
       </div>
@@ -85,23 +110,23 @@ export default ProductList;
 
 const MENU_LIST = [
   {
-    cate_no: 1,
+    category: 1,
     cate_name: 'Magazine K',
   },
   {
-    cate_no: 2,
+    category: 2,
     cate_name: 'Fashion',
   },
   {
-    cate_no: 3,
+    category: 3,
     cate_name: 'Beauty',
   },
   {
-    cate_no: 4,
+    category: 4,
     cate_name: 'Design Lifestyle',
   },
   {
-    cate_no: 5,
+    category: 5,
     cate_name: 'Food',
   },
 ];

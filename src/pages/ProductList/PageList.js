@@ -1,7 +1,7 @@
 import React from 'react';
 import './PageList.scss';
 
-const PageList = ({ total, limit, movePage, pgNext, pgPrev, cate_no }) => {
+const PageList = ({ total, limit, movePage, pgNext, pgPrev, category }) => {
   const pageNum = Math.ceil(total / limit);
 
   return (
@@ -12,7 +12,7 @@ const PageList = ({ total, limit, movePage, pgNext, pgPrev, cate_no }) => {
           src="/images/prev.png"
           alt="prev"
           onClick={() => {
-            movePage(cate_no, pgPrev);
+            movePage(category, pgPrev);
           }}
         />
       </li>
@@ -24,7 +24,7 @@ const PageList = ({ total, limit, movePage, pgNext, pgPrev, cate_no }) => {
               key={idx}
               className="pageLink"
               onClick={() => {
-                movePage(cate_no, idx + 1);
+                movePage(category, idx + 1);
               }}
             >
               {idx + 1}
@@ -37,7 +37,7 @@ const PageList = ({ total, limit, movePage, pgNext, pgPrev, cate_no }) => {
           src="/images/next.png"
           alt="next"
           onClick={() => {
-            movePage(cate_no, pgNext);
+            movePage(category, pgNext);
           }}
         />
       </li>

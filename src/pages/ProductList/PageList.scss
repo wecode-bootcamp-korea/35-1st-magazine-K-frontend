@@ -23,6 +23,7 @@
     margin: 0 1rem;
     @include hover;
   }
+
   .pageLinkNext {
     @include pageButtonSetting;
     @include hover;
