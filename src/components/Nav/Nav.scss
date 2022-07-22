@@ -7,33 +7,54 @@
 }
 
 .nav {
-  @include flex(space-between, center, '');
-  height: 50px;
-  font-size: 1.25rem;
-  font-weight: 500;
+  .navigationContainer {
+    @include flex(space-between, center, '');
+    height: 50px;
+    font-size: 1.25rem;
+    font-weight: 500;
 
-  .firstMenuContainer {
-    @include flex(center, center, '');
-    flex: 0.3;
+    .firstMenuContainer {
+      @include flex(center, center, '');
+      flex: 0.3;
 
-    .magazinIcon {
-      width: 19px;
-      height: 22p x;
-      @include hoverWithMargin(0 20px);
+      .magazinIcon {
+        width: 19px;
+        height: 22p x;
+        @include hoverWithMargin(0 20px);
+      }
+
+      .magazineMenu {
+        @include hoverWithMargin(0 20px);
+      }
     }
 
-    .magazineMenu {
-      @include hoverWithMargin(0 20px);
+    .secondMenuContainer {
+      @include flex(center, center, '');
+      flex: 0.3;
+      margin-right: 50px;
+
+      .menus {
+        @include hoverWithMargin(0 10px);
+      }
     }
   }
 
-  .secondMenuContainer {
-    @include flex(center, center, '');
-    flex: 0.3;
-    margin-right: 50px;
+  .searchModalContainer {
+    @include flex(center, flex-start, '');
+    margin: 4rem;
 
-    .menus {
-      @include hoverWithMargin(0 20px);
+    .searchBar {
+      width: 100%;
+      border: none;
+      font-size: 7rem;
+
+      &::placeholder {
+        color: #f2f2f2;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 }
