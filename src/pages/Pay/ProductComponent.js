@@ -1,6 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-function ProductComponent({ ProductData }) {
+const ProductComponent = ({
+  ProductData,
+  onDelete,
+  checkedItemHandler,
+  isAllChecked,
+}) => {
   // console.log(ProductData);
   const [count, setCount] = useState(Number(ProductData.quantity));
 
@@ -9,14 +14,32 @@ function ProductComponent({ ProductData }) {
   };
 
   const onDecrease = () => {
-    setCount(count - 1);
+    if (count !== 1) {
+      setCount(count - 1);
+    }
   };
 
+  const [bChecked, setChecked] = useState(false);
+
+  const checkHandler = ({ target }) => {
+    setChecked(!bChecked);
+    checkedItemHandler(ProductData.id, target.checked);
+  };
+
+  const allCheckHandler = () => setChecked(isAllChecked);
+
+  useEffect(() => allCheckHandler(), [isAllChecked]);
+
   return (
-    <div className="downChoiceBoxController" key={ProductData.id}>
+    <div className="downChoiceBoxController">
       <div className="itemInformation">
         <label>
-          <input type="checkbox" name="checkAll" />
+          <input
+            type="checkbox"
+            name="checkAll"
+            checked={bChecked}
+            onChange={e => checkHandler(e)}
+          />
           {ProductData.name}
         </label>
         <p>{ProductData.price}</p>
@@ -37,11 +60,26 @@ function ProductComponent({ ProductData }) {
         </div>
       </div>
       <div className="SelectQuantityImgBox">
-        <img src={ProductData.src} className="orderItem" />
-        <button className="SelectQuantityClearButton">+</button>
+        <img src={ProductData.src} className="orderItem" alt="Product" />
+        <button
+          className="SelectQuantityClearButton"
+          onClick={() => {
+            if (
+              window.confirm(
+                `${ProductData.id}번째 선택하신 상품을 삭제하시겠습니까?`
+              )
+            ) {
+              onDelete(ProductData.id);
+            }
+          }}
+        >
+          +
+        </button>
       </div>
     </div>
   );
-}
+};
+
+ProductComponent.defaltProps = { ProductData: [] };
 
 export default ProductComponent;
