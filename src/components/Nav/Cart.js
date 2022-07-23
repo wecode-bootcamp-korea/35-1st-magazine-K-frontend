@@ -11,6 +11,8 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   function minusOrderQuantity() {
     if (orderQuantity < 2) {
       setOrderQuantity(1);
+    } else if (orderQuantity < cartData.length + 1) {
+      setOrderQuantity(cartData.length);
     } else {
       setOrderQuantity(orderQuantity => orderQuantity - 1);
     }
@@ -35,13 +37,21 @@ const Cart = ({ toggleCart, isClickedCart }) => {
       .then(res => res.json())
       .then(data => {
         setCartData(() => data);
-        setOrderQuantity(data.length);
+        let sum = 0;
+        data.forEach(product => {
+          sum = sum + product.order;
+        });
+        setOrderQuantity(sum);
       });
   }, []);
 
   useEffect(() => {
     setPrice(Array(cartData.length).fill());
-    setOrderQuantity(cartData.length);
+    let sum = 0;
+    cartData.forEach(product => {
+      sum = sum + product.order;
+    });
+    setOrderQuantity(sum);
   }, [cartData]);
 
   // console.log(cartData && cartData[0]?.price);
@@ -53,7 +63,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
       sum = el + sum;
     });
     setTotalPrice(sum);
-  });
+  }, [cartData, orderQuantity, price]);
 
   return (
     <div className={['cartModal', isClickedCart && 'cartModalOn'].join(' ')}>

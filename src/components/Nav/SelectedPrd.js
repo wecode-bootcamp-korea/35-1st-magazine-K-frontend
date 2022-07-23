@@ -12,6 +12,10 @@ const SelectedPrd = ({
 }) => {
   const [orderQuantity, setOrderQuantity] = useState(1);
 
+  useEffect(() => {
+    setOrderQuantity(cartData.order);
+  }, []);
+
   const plus = () => {
     setOrderQuantity(prev => prev + 1);
     plusOrderQuantity();
@@ -22,8 +26,8 @@ const SelectedPrd = ({
       setOrderQuantity(1);
     } else {
       setOrderQuantity(prev => prev - 1);
+      minusOrderQuantity();
     }
-    minusOrderQuantity();
   };
 
   price[idx] = cartData.price.toString().slice(0, 2) * orderQuantity;
