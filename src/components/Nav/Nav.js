@@ -1,17 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
+import Cart from './Cart';
 import './Nav.scss';
 
 const Nav = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem('token');
-  const movePage = targetPg => {
-    navigate(targetPg);
-  };
-  const [isClicked, setIsClicked] = useState(false);
+  const [isClickedSearch, setIsClickedSearch] = useState(false);
+  const [isClickedCart, setIsClickedCart] = useState(false);
+
   const toggleSearch = () => {
-    isClicked ? setIsClicked(false) : setIsClicked(true);
+    isClickedSearch ? setIsClickedSearch(false) : setIsClickedSearch(true);
+  };
+  const toggleCart = () => {
+    isClickedCart ? setIsClickedCart(false) : setIsClickedCart(true);
   };
 
   return (
@@ -21,7 +24,7 @@ const Nav = () => {
           <img
             className="magazinIcon"
             onClick={() => {
-              movePage('/');
+              navigate('/');
             }}
             src="/images/k.png"
             alt="kIcon"
@@ -29,7 +32,7 @@ const Nav = () => {
           <div
             className="magazineMenu"
             onClick={() => {
-              movePage('/');
+              navigate('/ProductList');
             }}
           >
             Magazine
@@ -42,24 +45,27 @@ const Nav = () => {
           <div
             className="menus"
             onClick={() => {
-              token ? movePage('/MyPage') : movePage('/Login');
+              token ? navigate('/MyPage') : navigate('/Login');
             }}
           >
             {token ? 'My Page' : 'Login'}
           </div>{' '}
-          <div className="menus">Cart[0]</div>
+          <div className="menus" onClick={toggleCart}>
+            Cart
+          </div>
         </div>
       </nav>
-      <form className="searchModalContainer" onsubmit={() => {}}>
-        {isClicked && (
+      {isClickedSearch && (
+        <form className="searchModalContainer" onSubmit={() => {}}>
           <input
             className="searchBar"
             type="text"
             placeholder="Search Brand, City, Food..."
             autoFocus
           />
-        )}
-      </form>
+        </form>
+      )}
+      <Cart toggleCart={toggleCart} isClickedCart={isClickedCart} />
     </div>
   );
 };

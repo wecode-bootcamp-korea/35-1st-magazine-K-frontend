@@ -7,19 +7,23 @@
 }
 
 .nav {
+  position: fixed;
+  width: 100%;
+
   .navigationContainer {
-    @include flex(space-between, center, '');
-    height: 50px;
+    @include flex(space-between, center);
     font-size: 1.25rem;
     font-weight: 500;
+    padding: 1.25rem 0;
+    height: 4rem;
 
     .firstMenuContainer {
-      @include flex(center, center, '');
-      flex: 0.3;
+      @include flex(center, center);
+      flex: 0.2;
 
       .magazinIcon {
         width: 19px;
-        height: 22p x;
+        height: 22px;
         @include hoverWithMargin(0 20px);
       }
 
@@ -29,8 +33,8 @@
     }
 
     .secondMenuContainer {
-      @include flex(center, center, '');
-      flex: 0.3;
+      @include flex(center, center);
+      flex: 0.2;
       margin-right: 50px;
 
       .menus {
@@ -38,9 +42,8 @@
       }
     }
   }
-
   .searchModalContainer {
-    @include flex(center, flex-start, '');
+    @include flex(center, flex-start);
     margin: 4rem;
 
     .searchBar {
