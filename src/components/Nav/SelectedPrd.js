@@ -59,7 +59,7 @@ const SelectedPrd = ({
         </div>
         <p
           onClick={() => {
-            deleteProduct(cartData.id);
+            deleteProduct(cartData.id, orderQuantity);
           }}
           className="delete"
         >

@@ -22,11 +22,14 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     setOrderQuantity(orderQuantity => orderQuantity + 1);
   }
 
-  const deleteProduct = idx => {
+  const deleteProduct = (id, order) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
       setCartData(
         cartData.filter(prod => {
-          return prod.id !== idx;
+          if (prod.id === id) {
+            setOrderQuantity(orderQuantity - order);
+          }
+          return prod.id !== id;
         })
       );
     }
@@ -47,13 +50,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
 
   useEffect(() => {
     setPrice(Array(cartData.length).fill());
-    let sum = 0;
-    cartData.forEach(product => {
-      sum = sum + product.order;
-    });
-    setOrderQuantity(sum);
   }, [cartData]);
-
   // console.log(cartData && cartData[0]?.price);
   // console.log(cartData && cartData[0]?.price.toString().slice(0, 2));
 
