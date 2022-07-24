@@ -1,20 +1,8 @@
 import React, { useEffect } from 'react';
 import { useState } from 'react';
 
-const SelectedPrd = ({
-  cartData,
-  minusOrderQuantity,
-  plusOrderQuantity,
-  price,
-  setPrice,
-  idx,
-  deleteProduct,
-}) => {
+const SelectedPrd = ({ cartData, minusOrderQuantity, plusOrderQuantity }) => {
   const [orderQuantity, setOrderQuantity] = useState(1);
-
-  useEffect(() => {
-    setOrderQuantity(cartData.order);
-  }, []);
 
   const plus = () => {
     setOrderQuantity(prev => prev + 1);
@@ -30,19 +18,27 @@ const SelectedPrd = ({
     }
   };
 
-  price[idx] = cartData.price.toString().slice(0, 2) * orderQuantity;
+  const [selected, setSelected] = useState(true);
 
-  useEffect(() => {
-    setPrice(() => price);
-  }, [[price[idx]]]);
+  const priceThousand = cartData.price.toString().slice(0, 2);
+  // console.log(priceThousand);
+
+  function deleteProduct() {
+    alert('선택하신 상품을 삭제하시겠습니까?');
+    setSelected(false);
+  }
 
   return (
-    <div key={cartData.id} className="selected">
+    <div
+      key={cartData.id}
+      className="selected"
+      style={selected ? { display: 'flex' } : { display: 'none' }}
+    >
       <div className="productInfo">
         <img src={cartData.cart_img_url} alt="selected_tiny" />
         <div className="description">
           <div>{cartData.title}</div>
-          <div>₩{price[idx]},000</div>
+          <div>₩{priceThousand},000</div>
           <div className="count">
             <img
               onClick={minus}
@@ -57,12 +53,7 @@ const SelectedPrd = ({
             />
           </div>
         </div>
-        <p
-          onClick={() => {
-            deleteProduct(cartData.id, orderQuantity);
-          }}
-          className="delete"
-        >
+        <p onClick={deleteProduct} className="delete">
           ×
         </p>
       </div>
