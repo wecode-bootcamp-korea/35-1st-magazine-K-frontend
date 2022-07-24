@@ -33,8 +33,8 @@ const SelectedPrd = ({
   price[idx] = cartData.price.toString().slice(0, 2) * orderQuantity;
 
   useEffect(() => {
-    setPrice(() => price);
-  }, [[price[idx]]]);
+    setPrice(price);
+  }, [price[idx]]);
 
   return (
     <div key={cartData.id} className="selected">

@@ -59,8 +59,9 @@ const Nav = () => {
         <form
           className="searchModalContainer"
           onSubmit={e => {
-            fetch(`keyword=${e.target.keyword.value}`);
-            navigate(`/Search?${e.target.keyword.value}`);
+            const keyword = e.target.keyword.value;
+            fetch(`keyword=${keyword}`);
+            navigate(`/Search?${keyword}`);
           }}
         >
           <input

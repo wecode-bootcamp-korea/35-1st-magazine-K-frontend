@@ -39,7 +39,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     fetch('data/cartData.json')
       .then(res => res.json())
       .then(data => {
-        setCartData(() => data);
+        setCartData(data);
         let sum = 0;
         data.forEach(product => {
           sum = sum + product.order;

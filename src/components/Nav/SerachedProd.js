@@ -15,7 +15,9 @@ const SearchedProd = ({ prod }) => {
         <div className="prodInfo">{prod.title}</div>
         <div className="prodInfo">{`ISSUE NO.${prod.issue_number}`}</div>
         <div className="prodInfo">{prod.main_category}</div>
-        <div className="prodInfo">{`₩${prod.toString().slice(0, 2)},000`}</div>
+        <div className="prodInfo">{`₩${prod.price
+          .toString()
+          .slice(0, 2)},000`}</div>
       </div>
     </div>
   );
