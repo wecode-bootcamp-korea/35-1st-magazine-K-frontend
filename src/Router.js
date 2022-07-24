@@ -5,7 +5,7 @@ import Footer from './components/Footer/Footer';
 
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Main from './pages/Main/Main';
-
+import Search from './components/Nav/Search';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 
@@ -20,6 +20,7 @@ const Router = () => {
       <Nav />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/Search" element={<Search />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/ProductDetail" element={<ProductDetail />} />

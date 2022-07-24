@@ -1,4 +1,4 @@
-@import '../../styles/variable.scss';
+@import '../../styles/variables.scss';
 @mixin hoverWithMargin($margin) {
   margin: $margin;
   &:hover {
@@ -8,6 +8,7 @@
 
 .nav {
   position: fixed;
+  top: 0;
   width: 100%;
 
   .navigationContainer {

@@ -56,10 +56,17 @@ const Nav = () => {
         </div>
       </nav>
       {isClickedSearch && (
-        <form className="searchModalContainer" onSubmit={() => {}}>
+        <form
+          className="searchModalContainer"
+          onSubmit={e => {
+            fetch(`keyword=${e.target.keyword.value}`);
+            navigate(`/Search?${e.target.keyword.value}`);
+          }}
+        >
           <input
             className="searchBar"
             type="text"
+            name="keyword"
             placeholder="Search Brand, City, Food..."
             autoFocus
           />
