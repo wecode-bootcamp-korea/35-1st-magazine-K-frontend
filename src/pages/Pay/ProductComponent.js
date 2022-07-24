@@ -29,7 +29,7 @@ const ProductComponent = ({
   const allCheckHandler = () => setChecked(isAllChecked);
 
   useEffect(() => allCheckHandler(), [isAllChecked]);
-
+  //console.log(bChecked);
   return (
     <div className="downChoiceBoxController">
       <div className="itemInformation">
