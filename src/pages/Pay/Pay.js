@@ -29,7 +29,7 @@ const Pay = () => {
     if (isChecked) {
       checkedItems.add(id);
       setCheckedItems(checkedItems);
-      console.log(id);
+      console.log(checkedItems);
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
@@ -44,10 +44,8 @@ const Pay = () => {
       setIsAllChecked(!isAllChecked);
       setCheckedItems(new Set(productDataList.map(({ id }) => id)));
       setIsAllChecked(true);
-      console.log(isChecked);
     } else {
       setIsAllChecked(!isAllChecked);
-      console.log('길현민');
       checkedItems.clear();
       setCheckedItems(checkedItems);
       setIsAllChecked(false);
@@ -61,6 +59,8 @@ const Pay = () => {
           <ProductEditor
             allCheckedHandler={allCheckedHandler}
             isAllChecked={isAllChecked}
+            onDelete={onDelete}
+            checkedItems={checkedItems}
           />
           {productDataList.map(ProductData => {
             return (
