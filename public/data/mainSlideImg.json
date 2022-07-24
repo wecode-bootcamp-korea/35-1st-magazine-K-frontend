@@ -1,10 +1,29 @@
-{
+[
+  {
+  "id" : 1,
   "img" : "/images/main/mainSlide1.jpg",
   "main_category_name" : "MAGAZINE B",
   "issue_number" : 90,
   "title" : "LEMAIRE",
   "p1" : "1991년 프랑스 파리에서 크리스토프 르메르가 설립한 르메르는",
   "p2" : "일상복이야말로 옷에 내재된 가능성을 유연하게 표현하는 형식임을 보여줍니다."
-  
-
+},
+{
+  "id" : 2,
+  "img" : "/images/main/mainSlide2.jpg",
+  "main_category_name" : "MAGAZINE B",
+  "issue_number" : 44,
+  "title" : "IKEA",
+  "p1" : "1943년 스웨덴 남부 크로노베리주의 작은 마을 엘름훌트에서 우편 주문 판매 회사로 시작한 이케아는",
+  "p2" : "전 세계 49개국에 진출하며 독보적인 위상을 자랑하는 글로벌 홈퍼니싱 브랜드로 성장했습니다."
+},
+{
+  "id" : 3,
+  "img" : "/images/main/mainSlide3.jpg",
+  "main_category_name" : "MAGAZINE B",
+  "issue_number" : 22,
+  "title" : "LUSH",
+  "p1" : "1994년 영국에서 탄생한 핸드메이드 코스메틱 브랜드 러쉬는",
+  "p2" : "과일과 식물 등 신선한 자연 성분을 원료로 사용하며,"
 }
+]

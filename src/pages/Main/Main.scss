@@ -7,22 +7,13 @@
       height: 980px;
     }
 
-    .numLeft {
-      opacity: 0;
-      width: 50%;
-      height: 100%;
+    .numLeft,.numRight {
       position: absolute;
-      font-size: 3rem;
       left: 0;
-    }
-    
-    .numRight {
-      opacity: 0;
       width: 50%;
       height: 100%;
-      position: absolute;
       font-size: 3rem;
-      right: 0;
+      opacity: 0;
     }
 
     .num {
@@ -48,35 +39,32 @@
     .slideInfo {
       position: absolute;
       top: 50%;
-      padding-left: 5rem;
-      // padding-right: 5rem;
-      color: #fff;
       width: 835px;
       height: 100px;
-        span:nth-child(1) {
-          font-size: 1rem;
-          padding-right: 1.25rem;
+      padding-left: 5rem;
+      color: #fff;
 
-        }
-        span:nth-child(2) {
-          font-size: 1rem;
+        .title,.issueNum {
           padding-right: 1.25rem;
-
+          font-size: 1rem;
         }
+
         div {
+          margin-bottom: 0.625rem;
           font-size: 4rem;
           line-height: 6rem;
-          margin-bottom: 0.625rem;
         }
+
         p {
+          margin-bottom: 2.5rem;
           line-height: 1.55rem;
           word-break: keep-all;
-          margin-bottom: 2.5rem;
         }
+
         a {
-          color: #fff;
           border-bottom:1px solid #fff ;
           opacity: 0.6;
+          color: #fff;
         }
 
       

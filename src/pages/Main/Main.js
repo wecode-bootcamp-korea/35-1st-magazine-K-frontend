@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-/* eslint-disable jsx-a11y/alt-text */
 import React, { useState, useEffect } from 'react';
 import './Main.scss';
 
@@ -11,34 +9,34 @@ function Main() {
       setSlide(slide + 1);
     }, 3000);
 
+    if (slide > 3) {
+      setSlide(1);
+    }
+
     return () => {
       clearInterval(interval);
     };
   }, [slide]);
 
-  if (slide > 3) {
-    setSlide(1);
-  }
-
-  function prevSlide() {
-    setSlide(slide - 1);
-  }
-
-  const nextSlide = () => {
-    setSlide(slide + 1);
+  const prevSlide = () => {
+    setSlide(slide => slide - 1);
   };
 
-  const firstSlide = slide === 1;
-  const lastSlide = slide === 3;
+  const nextSlide = () => {
+    setSlide(slide => slide + 1);
+  };
+
+  const isFirstSlide = slide === 1;
+  const isLastSlide = slide === 3;
 
   return (
     <div className="slideContainer">
       <div className="slideImg">
         <img src={`/images/main/mainSlide${slide}.jpg`} alt="mainSlide1" />
-        <button onClick={prevSlide} className="numLeft" disabled={firstSlide}>
+        <button onClick={prevSlide} className="numLeft" disabled={isFirstSlide}>
           prev
         </button>
-        <button onClick={nextSlide} className="numRight" disabled={lastSlide}>
+        <button onClick={nextSlide} className="numRight" disabled={isLastSlide}>
           next
         </button>
         <div className="num">
@@ -46,8 +44,8 @@ function Main() {
           <h1 className="nextNum">3</h1>
         </div>
         <div className="slideInfo">
-          <span>MAGAZINE B</span>
-          <span>ISSUE NO.90</span>
+          <span class="title">MAGAZINE B</span>
+          <span class="issueNum">ISSUE NO.90</span>
           <div>LEMAIRE</div>
           <p>
             1991년 프랑스 파리에서 크리스토프 르메르가 설립한 르메르는
