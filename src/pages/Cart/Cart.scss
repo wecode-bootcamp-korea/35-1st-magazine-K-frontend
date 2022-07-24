@@ -17,10 +17,8 @@
     font-size: 1.25rem;
     font-weight: 500;
   }
-
   .cartMain {
     color: #fff;
-
     .empty {
       padding-top: 8.125rem;
       font-size: 1rem;
@@ -73,11 +71,9 @@
           right: -90px;
           
         }
-
       }
     }
   }
-
   .cartFooter {
     position: fixed;
     bottom: 0;
@@ -88,8 +84,6 @@
     font-size: 1.3rem;
     color: #fff;
     font-weight: 600;
+    background-color: #000;
   }
-
-
-
 }

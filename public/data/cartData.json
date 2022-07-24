@@ -3,24 +3,28 @@
     "id" : 1,
     "cart_img_url" : "https://images.unsplash.com/photo-1598745845211-7d7a22d8cc25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "title" : "PATAGONIA",
-    "price" : 16000
+    "price" : 16000,
+    "order" : 3
   },
   {
     "id" : 2,
     "cart_img_url" : "https://images.unsplash.com/photo-1598745845211-7d7a22d8cc25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "title" : "LUSH",
-    "price" : 13000
+    "price" : 13000,
+    "order" : 2
   },
   {
     "id" : 3,
     "cart_img_url" : "https://images.unsplash.com/photo-1598745845211-7d7a22d8cc25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "title" : "TOOLS",
-    "price" : 15000
+    "price" : 15000,
+    "order" : 4
   },
   {
     "id" : 4,
     "cart_img_url" : "https://images.unsplash.com/photo-1598745845211-7d7a22d8cc25?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
     "title" : "LEMAIRE",
-    "price" : 18000
+    "price" : 18000,
+    "order" : 1
   }
 ]
