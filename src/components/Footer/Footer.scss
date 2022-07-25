@@ -1,0 +1,49 @@
+.footerContainer {
+  padding-right: 5rem;
+  padding-left: 5rem;
+
+  .footerMain {
+    display: flex;
+    .footerLogo{
+      padding-right: 20rem;
+      font-size: 200px;
+      font-weight: bolder;
+    }
+    .footerMenu{
+      display: flex;
+      .naviList{
+        width: 20rem;
+
+        .naviTitle{
+          text-transform: uppercase;
+          margin-bottom: 0.25rem;
+          color: #c8c8c8;
+          font-size: 1rem;
+        }
+
+        .naviItem{
+          line-height: 1.3;
+          font-size: 1.75rem;
+          font-weight: 500;
+        }
+      }
+    }
+
+  }
+
+  .footerSubInfo {
+    display: flex;
+    padding-top: 6.25rem;
+    padding-bottom: 3.125rem;
+    color: #c8c8c8;
+    .company {
+      margin-right: 2.5rem;
+    }
+
+    li{
+      margin-right: 1.7rem;
+      
+    }
+
+  }
+}
