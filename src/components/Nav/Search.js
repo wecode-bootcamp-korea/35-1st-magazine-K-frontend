@@ -32,6 +32,7 @@ const Search = () => {
       <form
         className="searchContainer"
         onSubmit={e => {
+          e.preventDefault();
           const keyword = e.target.keyword.value;
           fetch(`keyword=${keyword}`);
           navigate(`/Search?${keyword}`);

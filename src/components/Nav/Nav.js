@@ -59,9 +59,11 @@ const Nav = () => {
         <form
           className="searchModalContainer"
           onSubmit={e => {
-            const keyword = e.target.keyword.value;
-            fetch(`keyword=${keyword}`);
-            navigate(`/Search?${keyword}`);
+            e.preventDefault();
+            const searchValue = e.target.keyword.value;
+            fetch(`keyword=${searchValue}`);
+            //실패시 네비게이트 안되도록 수정
+            navigate(`/Search?${searchValue}`);
           }}
         >
           <input
