@@ -21,10 +21,6 @@ const SelectedPrd = ({
     plusOrderQuantity();
   };
 
-  useEffect(() => {
-    console.log(orderQuantity);
-  }, [orderQuantity]);
-
   const minus = e => {
     if (orderQuantity < 2) {
       setOrderQuantity(1);
