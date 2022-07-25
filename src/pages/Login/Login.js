@@ -83,7 +83,7 @@ const Login = () => {
             로그인
           </button>
         </div>
-        <div>
+        <div className="linkButton">
           <button>주문조회</button>
           <button className="borderLeftLine">아이디찾기</button>
           <button className="borderLeftLine">비밀번호찾기</button>

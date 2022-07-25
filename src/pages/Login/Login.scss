@@ -31,12 +31,18 @@
       border-radius: 7px;
       cursor: pointer;
     }
-    .borderLeftLine {
-      margin-top: 40px;
-      margin-left: 10px;
-      padding-left: 10px;
-      margin-right: 8px;
-      border-left: 1px solid rgb(194, 194, 194);
+    .linkButton {
+      button {
+        color: rgb(184, 184, 184);
+        font-weight: bold;
+      }
+
+      .borderLeftLine {
+        margin-top: 40px;
+        margin-left: 12px;
+        padding-left: 12px;
+        border-left: 1px solid rgb(232, 232, 232);
+      }
     }
   }
 }
