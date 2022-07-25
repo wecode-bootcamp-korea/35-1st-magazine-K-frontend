@@ -1,0 +1,67 @@
+.reviewContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .reviewTitle {
+    width: 900px;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    text-align: center;
+
+    .review {
+      padding-bottom: 2rem ;
+      font-size: 1.3rem;
+    }
+
+  }
+
+  .reviewForm {
+    text-align: center;
+    width: 900px;
+
+    #reviewTextarea {
+      border: 1px solid #BFBFBF;
+      
+      width: 900px;
+      height: 150px;
+      padding: 1rem;
+    }
+
+    #reviewTextarea::placeholder {
+      color: #BFBFBF;
+
+    }
+
+    .click {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 0.35rem;
+      padding-bottom: 1.5rem;
+
+      .selectBox {
+        padding-right: 0.1rem;
+        .reviewSelect{
+          border: 1px solid black;
+          padding-left: 0.5rem;
+          width: 260px;
+          height: 35px;
+        }
+      }
+      
+      .reviewSubmit{
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+        font-size: 0.75rem;
+        width: 260px;
+        height: 35px;
+      }
+
+    }
+    
+
+
+  }
+}
