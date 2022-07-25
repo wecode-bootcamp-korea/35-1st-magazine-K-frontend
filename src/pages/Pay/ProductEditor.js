@@ -1,4 +1,5 @@
 import React from 'react';
+import './ProductEditor.scss';
 
 const ProductEditor = ({
   allCheckedHandler,
@@ -21,11 +22,11 @@ const ProductEditor = ({
         className="checkDelete"
         onClick={() => {
           if (window.confirm(`선택하신 상품을 삭제하시겠습니까?`)) {
-            console.log(`checkedItems:${checkedItems}`);
+            // console.log(checkedItems);
             checkedItems.forEach(value => {
+              // console.log(value);
               checkedItems.delete(value);
               onDelete(value);
-              console.log(`value:${value}`);
             });
           }
         }}

@@ -1,0 +1,86 @@
+@import '../../styles/variable.scss';
+.downChoiceBoxController {
+  width: 60vh;
+  @include flex(space-between, center, row);
+  padding: 20px 0px 20px 0px;
+  border-bottom: 1px solid rgb(226, 226, 226);
+  padding-left: 10px;
+
+  .itemInformation {
+    @include flex(none, none, column);
+
+    label {
+      font-weight: bolder;
+      cursor: pointer;
+
+      input {
+        margin-right: 12px;
+      }
+    }
+
+    p {
+      margin: 10px 0px 25px 25px;
+    }
+
+    .SelectQuantityBox {
+      position: relative;
+      margin-left: 15px;
+
+      .SelectQuantity {
+        width: 70px;
+        height: 25px;
+        margin-left: 10px;
+        text-align: center;
+        border-radius: 0px;
+        border: 1px solid black;
+      }
+
+      .SelectQuantityPlus {
+        position: absolute;
+        right: 2px;
+        width: 15px;
+        top: -1px;
+        background: none;
+        border: none;
+        font-size: 25px;
+        cursor: pointer;
+      }
+
+      .SelectQuantityMinus {
+        position: absolute;
+        left: 15px;
+        width: 15px;
+        top: -7px;
+        background: none;
+        border: none;
+        font-size: 30px;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .SelectQuantityImgBox {
+    margin-right: 30px;
+    position: relative;
+
+    .orderItem {
+      width: 80px;
+      height: 120px;
+    }
+
+    .SelectQuantityClearButton {
+      position: absolute;
+      background: none;
+      border: none;
+      font-size: 30px;
+      top: -13px;
+      right: -20px;
+      cursor: pointer;
+      font-weight: 100;
+
+      img {
+        width: 10px;
+      }
+    }
+  }
+}

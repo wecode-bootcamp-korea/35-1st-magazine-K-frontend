@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './ProductComponent.scss';
 
 const ProductComponent = ({
   ProductData,
@@ -78,7 +79,7 @@ const ProductComponent = ({
             }
           }}
         >
-          +
+          <img src="/images/Close.png" alt="close" className="closeButton" />
         </button>
       </div>
     </div>

@@ -19,8 +19,11 @@ const Pay = () => {
 
   const onDelete = targetId => {
     //console.log(`${targetId}가 삭제되었습니다.`);
+
+    // [1,3,4]
     const newProductList = productDataList.filter(it => it.id !== targetId);
-    setProductDataList(newProductList);
+    setProductDataList(newProductList); // []
+    console.log(productDataList);
   };
 
   const [checkedItems, setCheckedItems] = useState(new Set());
