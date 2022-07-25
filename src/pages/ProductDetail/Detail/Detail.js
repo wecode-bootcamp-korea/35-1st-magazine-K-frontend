@@ -18,8 +18,6 @@ const Detail = ({ prdDetailData }) => {
     product_id,
   } = prdDetailData;
 
-  console.log(prdDetailData);
-
   const priceThousand = price.toString().slice(0, 2);
 
   const [orderQuantity, setOrderQuantity] = useState(1);

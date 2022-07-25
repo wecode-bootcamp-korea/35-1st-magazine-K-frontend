@@ -19,7 +19,6 @@ const ProductDetail = () => {
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
-        console.log(data.RESULTS);
       });
   }, []);
   // console.log(prdDetailData);
