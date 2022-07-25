@@ -36,7 +36,7 @@ const Login = () => {
       fetch('http://10.58.6.169:8000/user/login', {
         method: 'POST',
         body: JSON.stringify({
-          user_name: inputValue.idValue,
+          username: inputValue.idValue,
           password: inputValue.passwordValue,
         }),
       })
