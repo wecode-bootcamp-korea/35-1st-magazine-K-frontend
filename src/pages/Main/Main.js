@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import './Main.scss';
 import MainSlide from './MainSlide';
+import MainSectionMenu from './MainSectionMenu';
 
 function Main() {
   const [slide, setSlide] = useState(1);
@@ -44,24 +45,27 @@ function Main() {
   const isLastSlide = slide === 3;
 
   return (
-    <div className="slideContainer">
-      <div className="slideImg">
-        <img src={`/images/main/mainSlide${slide}.jpg`} alt="mainSlide1" />
-        {mainSlideData.map(mainSlideData => {
-          return (
-            <MainSlide
-              key={mainSlideData.id}
-              mainSlideData={mainSlideData}
-              prevSlide={prevSlide}
-              nextSlide={nextSlide}
-              isFirstSlide={isFirstSlide}
-              isLastSlide={isLastSlide}
-              slide={slide}
-            />
-          );
-        })}
+    <>
+      <div className="slideContainer">
+        <div className="slideImg">
+          <img src={`/images/main/mainSlide${slide}.jpg`} alt="mainSlide1" />
+          {mainSlideData.map(mainSlideData => {
+            return (
+              <MainSlide
+                key={mainSlideData.id}
+                mainSlideData={mainSlideData}
+                prevSlide={prevSlide}
+                nextSlide={nextSlide}
+                isFirstSlide={isFirstSlide}
+                isLastSlide={isLastSlide}
+                slide={slide}
+              />
+            );
+          })}
+        </div>
       </div>
-    </div>
+      <MainSectionMenu />
+    </>
   );
 }
 export default Main;
