@@ -18,6 +18,21 @@ const Product = ({ prod, category }) => {
     navigate(`/ProductDetail?issue=${issue_number}&category=${category}`);
   };
 
+  const addToCart = () => {
+    fetch('http://10.58.4.28:8000/orders/cart', {
+      method: 'POST',
+      headers: {
+        AUTHORIZATION:
+          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
+      },
+      body: JSON.stringify({
+        product: product_id,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => console.log(res));
+  };
+
   return (
     <div className="product">
       <div className="prodImgContainer">
@@ -48,18 +63,7 @@ const Product = ({ prod, category }) => {
         <div
           className="addToCart"
           onClick={() => {
-            fetch('http://10.58.4.28:8000/orders/cart', {
-              method: 'POST',
-              headers: {
-                AUTHORIZATION:
-                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
-              },
-              body: JSON.stringify({
-                product: product_id,
-              }),
-            })
-              .then(res => res.json())
-              .then(res => console.log(res));
+            addToCart();
           }}
         >
           ADD TO CART
