@@ -10,6 +10,7 @@ const Product = ({ prod, category }) => {
     title,
     issue_number,
     price,
+    product_id,
   } = prod;
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
@@ -44,7 +45,25 @@ const Product = ({ prod, category }) => {
           <span className="prodInfo">{main_category}</span>
           <span className="prodInfo">{`₩${priceThousand},000`}</span>
         </div>
-        <div className="addToCart">ADD TO CART</div>
+        <div
+          className="addToCart"
+          onClick={() => {
+            fetch('http://10.58.4.28:8000/orders/cart', {
+              method: 'POST',
+              headers: {
+                AUTHORIZATION:
+                  'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
+              },
+              body: JSON.stringify({
+                product: product_id,
+              }),
+            })
+              .then(res => res.json())
+              .then(res => console.log(res));
+          }}
+        >
+          ADD TO CART
+        </div>
       </div>
     </div>
   );

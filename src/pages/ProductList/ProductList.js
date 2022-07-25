@@ -35,7 +35,7 @@ const ProductList = () => {
   useEffect(() => {
     // data/cate_no=${parseInt(cate_no)}&page=${page}.json
     fetch(
-      `http://10.58.4.28:8000/products/list?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `http://10.58.4.28:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
       // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
@@ -45,6 +45,7 @@ const ProductList = () => {
         const total = res.result[prodNum].category_total;
         setTotal(total);
         setProdList(dataList);
+
         // setProdList(res);
         // setTotal(36);
       });
