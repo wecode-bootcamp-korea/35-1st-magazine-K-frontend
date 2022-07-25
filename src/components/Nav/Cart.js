@@ -7,6 +7,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   const [orderQuantity, setOrderQuantity] = useState(0);
   const [price, setPrice] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
+  const [isEmpty, setIsEmpty] = useState(true);
 
   function minusOrderQuantity() {
     if (orderQuantity < 2) {
@@ -16,10 +17,13 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     } else {
       setOrderQuantity(orderQuantity => orderQuantity - 1);
     }
+    console.log(orderQuantity - 1);
+    fetch('');
   }
 
   function plusOrderQuantity() {
     setOrderQuantity(orderQuantity => orderQuantity + 1);
+    console.log(orderQuantity + 1);
   }
 
   const deleteProduct = (id, order) => {
@@ -50,6 +54,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
 
   useEffect(() => {
     setPrice(Array(cartData.length).fill());
+    setIsEmpty(cartData.length === 0 ? true : false);
   }, [cartData]);
   // console.log(cartData && cartData[0]?.price);
   // console.log(cartData && cartData[0]?.price.toString().slice(0, 2));
@@ -69,10 +74,11 @@ const Cart = ({ toggleCart, isClickedCart }) => {
         <span onClick={toggleCart}>Close</span>
       </div>
       <div className="cartMain">
-        {/* <div className="empty">
+        {isEmpty && (
+          <div className="empty">
             <p>장바구니가 비어 있습니다.</p>
-          </div> */}
-
+          </div>
+        )}
         {cartData.map((cartData, idx) => {
           return (
             <SelectedPrd

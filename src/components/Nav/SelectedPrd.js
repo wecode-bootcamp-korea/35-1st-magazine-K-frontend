@@ -34,7 +34,7 @@ const SelectedPrd = ({
 
   useEffect(() => {
     setPrice(price);
-  }, [price[idx]]);
+  }, []);
 
   return (
     <div key={cartData.id} className="selected">
