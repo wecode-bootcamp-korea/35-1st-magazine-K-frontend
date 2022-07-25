@@ -17,7 +17,6 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     } else {
       setOrderQuantity(orderQuantity => orderQuantity - 1);
     }
-    fetch('');
   }
 
   function plusOrderQuantity() {
