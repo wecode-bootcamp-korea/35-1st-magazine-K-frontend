@@ -15,7 +15,10 @@ const Detail = ({ prdDetailData }) => {
     price,
     size,
     title,
+    product_id,
   } = prdDetailData;
+
+  console.log(prdDetailData);
 
   const priceThousand = price.toString().slice(0, 2);
 
@@ -69,7 +72,24 @@ const Detail = ({ prdDetailData }) => {
           </div>
         </div>
         <div className="prdDetailRight">
-          <button>₩{priceThousand * orderQuantity},000 ADD TO CART</button>
+          <button
+            onClick={() => {
+              fetch('http://10.58.4.28:8000/orders/cart', {
+                method: 'POST',
+                headers: {
+                  AUTHORIZATION:
+                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
+                },
+                body: JSON.stringify({
+                  product: product_id,
+                }),
+              })
+                .then(res => res.json())
+                .then(data => console.log(data));
+            }}
+          >
+            ₩{priceThousand * orderQuantity},000 ADD TO CART
+          </button>
           <div className="prdDescription">
             <p>DESCRIPTION</p>
             <p>{description}</p>

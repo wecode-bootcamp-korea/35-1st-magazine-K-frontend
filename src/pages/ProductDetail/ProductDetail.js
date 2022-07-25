@@ -15,11 +15,11 @@ const ProductDetail = () => {
   // console.log(product_id);
 
   useEffect(() => {
-    fetch(`http://10.58.0.77:8000/products/1/${product_id}`)
+    fetch(`http://10.58.1.115:8000/products/${product_id}`)
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
-        // console.log(data.RESULTS);
+        console.log(data.RESULTS);
       });
   }, []);
   // console.log(prdDetailData);
