@@ -1,5 +1,6 @@
 import React from 'react';
 import './Review.scss';
+import Comment from './Commnet';
 
 function Review() {
   const changeReview = () => {
@@ -33,7 +34,12 @@ function Review() {
           <input className="reviewSubmit" type="submit" value="리뷰등록" />
         </div>
       </form>
-      <hr />
+      <div className="reviewHr">
+        <hr />
+      </div>
+      <div className="commentBox">
+        <Comment />
+      </div>
     </div>
   );
 }
