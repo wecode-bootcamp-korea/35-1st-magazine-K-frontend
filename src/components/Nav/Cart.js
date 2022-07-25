@@ -17,13 +17,11 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     } else {
       setOrderQuantity(orderQuantity => orderQuantity - 1);
     }
-    console.log(orderQuantity - 1);
     fetch('');
   }
 
   function plusOrderQuantity() {
     setOrderQuantity(orderQuantity => orderQuantity + 1);
-    console.log(orderQuantity + 1);
   }
 
   const deleteProduct = (id, order) => {

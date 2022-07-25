@@ -6,7 +6,7 @@ import './Search.scss';
 
 const Search = () => {
   const [searchedProdList, setSearchedProdList] = useState([]);
-  const [searchParams, setsearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const [isfilled, setIsfilled] = useState(true);
   const navigate = useNavigate();
   const searchValue = searchParams.get('keyword');
@@ -18,8 +18,14 @@ const Search = () => {
   }, []);
 
   useEffect(() => {
-    setIsfilled(searchValue ? true : false);
-  }, [searchValue]);
+    if (!searchValue) {
+      setIsfilled(searchValue ? true : false);
+    } else if (searchedProdList.length === 0) {
+      setIsfilled(false);
+    } else {
+      setIsfilled(true);
+    }
+  }, [searchValue, searchedProdList.length]);
 
   return (
     <div className="search">
