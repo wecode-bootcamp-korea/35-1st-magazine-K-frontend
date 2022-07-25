@@ -3,7 +3,10 @@ const CashComponent = () => {
     <div className="payBox">
       <div className="totalProductAmount">
         <p>총 상품금액</p>
-        <p>$60,000</p>
+        <p>
+          <span>₩</span>
+          60,000
+        </p>
       </div>
       <div className="deliveryFree">
         <p>배송비</p>
@@ -11,7 +14,10 @@ const CashComponent = () => {
       </div>
       <div className="TotalPay">
         <p>총결제금액</p>
-        <p>$60000</p>
+        <p>
+          <span>₩</span>
+          60000
+        </p>
       </div>
       <div className="Paybutton">
         <button className="orderButton">선택상품주문</button>

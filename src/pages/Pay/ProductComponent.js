@@ -5,6 +5,7 @@ const ProductComponent = ({
   onDelete,
   checkedItemHandler,
   isAllChecked,
+  checkedItems,
 }) => {
   // console.log(ProductData);
   const [count, setCount] = useState(Number(ProductData.quantity));
@@ -42,7 +43,10 @@ const ProductComponent = ({
           />
           {ProductData.name}
         </label>
-        <p>{ProductData.price}</p>
+        <p>
+          <span>₩</span>
+          {ProductData.price}
+        </p>
         <div className="SelectQuantityBox">
           <input
             className="SelectQuantity"
@@ -69,6 +73,7 @@ const ProductComponent = ({
                 `${ProductData.id}번째 선택하신 상품을 삭제하시겠습니까?`
               )
             ) {
+              checkedItems.delete(ProductData.id);
               onDelete(ProductData.id);
             }
           }}

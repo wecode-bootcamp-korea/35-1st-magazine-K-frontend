@@ -70,6 +70,7 @@ const Pay = () => {
                 onDelete={onDelete}
                 checkedItemHandler={checkedItemHandler}
                 isAllChecked={isAllChecked}
+                checkedItems={checkedItems}
               />
             );
           })}
