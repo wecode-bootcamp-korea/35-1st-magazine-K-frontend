@@ -2,6 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import Cart from './Cart';
+import PopularSearch from './PopularSearch';
 import './Nav.scss';
 
 const Nav = () => {
@@ -56,24 +57,35 @@ const Nav = () => {
         </div>
       </nav>
       {isClickedSearch && (
-        <form
-          className="searchModalContainer"
-          onSubmit={e => {
-            e.preventDefault();
-            const searchValue = e.target.keyword.value;
-            fetch(`keyword=${searchValue}`);
-            //실패시 네비게이트 안되도록 수정
-            navigate(`/Search?${searchValue}`);
-          }}
-        >
-          <input
-            className="searchBar"
-            type="text"
-            name="keyword"
-            placeholder="Search Brand, City, Food..."
-            autoFocus
-          />
-        </form>
+        <>
+          <form
+            className="searchModalContainer"
+            onSubmit={e => {
+              const searchValue = e.target.keyword.value;
+              // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+              //   .then(res => res.json())
+              //   .then(res => {
+              //     if (res.message === 'SUCCESS') {
+              navigate(`/Search?keyword=${searchValue}`);
+              //   }
+              // });
+            }}
+          >
+            <input
+              className="searchBar"
+              type="text"
+              name="keyword"
+              placeholder="Search Brand, City, Food..."
+              autoFocus
+            />
+          </form>
+          <div className="recentSearchesContainer">
+            <div className="title">인기 검색어</div>
+            {POPULAR_SEARCHES.map(search => {
+              return <PopularSearch key={search.id} search={search} />;
+            })}
+          </div>
+        </>
       )}
       <Cart toggleCart={toggleCart} isClickedCart={isClickedCart} />
     </div>
@@ -81,3 +93,26 @@ const Nav = () => {
 };
 
 export default Nav;
+
+const POPULAR_SEARCHES = [
+  {
+    id: 0,
+    title: 'LEMAIRE',
+  },
+  {
+    id: 1,
+    title: 'BLUE BOTTLE COFFEE',
+  },
+  {
+    id: 2,
+    title: 'MUJI',
+  },
+  {
+    id: 3,
+    title: 'ASTIER DE VILLATTE',
+  },
+  {
+    id: 4,
+    title: `PATAGONIA`,
+  },
+];

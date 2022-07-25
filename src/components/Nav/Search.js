@@ -32,10 +32,14 @@ const Search = () => {
       <form
         className="searchContainer"
         onSubmit={e => {
-          e.preventDefault();
-          const keyword = e.target.keyword.value;
-          fetch(`keyword=${keyword}`);
-          navigate(`/Search?${keyword}`);
+          const searchValue = e.target.keyword.value;
+          // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+          //   .then(res => res.json())
+          //   .then(res => {
+          //     if (res.message === 'SUCCESS') {
+          navigate(`/Search?keyword=${searchValue}`);
+          //   }
+          // });
         }}
       >
         <input
