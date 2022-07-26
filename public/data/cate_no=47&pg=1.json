@@ -1,0 +1,27 @@
+[
+  {
+    "title": "LEMAIRE",
+    "issue_number": 90,
+    "main_category_name": "MAGAZINE K",
+    "price": 18000,
+    "main_img_url_1": "/images/product1-1.jpg",
+    "main_img_url_2": "/images/product1-2.jpg"
+  },
+  {
+    "title": "A.P.C",
+    "issue_number": 78,
+    "main_category_name": "MAGAZINE K",
+    "price": 18000,
+    "main_img_url_1": "/images/product2-1.jpg",
+    "main_img_url_2": "/images/product2-2.jpg"
+  },
+  {
+    "title": "MAISON KITSUNE",
+    "issue_number": 69,
+    "main_category_name": "MAGAZINE K",
+    "price": 15000,
+    "no": 1,
+    "main_img_url_1": "/images/product7-1.jpg",
+    "main_img_url_2": "/images/product7-2.jpg"
+  }
+]

@@ -1,4 +1,4 @@
-@import '../../styles/variable.scss';
+@import '../../styles/variables.scss';
 @mixin hoverWithMargin($margin) {
   margin: $margin;
   &:hover {
