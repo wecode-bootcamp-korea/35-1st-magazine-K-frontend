@@ -22,8 +22,9 @@ const ProductDetail = () => {
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
-        // setReviewData(data.RESULTS.reviews);
         console.log(data.RESULTS);
+        // setReviewData(data.RESULTS.reviews);
+        // console.log(data.RESULTS);
       });
   }, []);
 

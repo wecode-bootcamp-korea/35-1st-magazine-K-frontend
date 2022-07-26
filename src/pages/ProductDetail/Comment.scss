@@ -9,9 +9,11 @@
     
     .userInfo {
       // background-color: aquamarine;
+      padding-left: 0.5rem;
       
       .star{
         // background-color: blue;
+        color: black;
         font-size: 1.8rem;
         padding-top: 0.8rem;
         padding-bottom: 0.8rem;     
@@ -20,7 +22,7 @@
       .comment {
         // background-color: blue;
         color: #6e6c6c;
-        font-size: 1.6rem;
+        font-size: 1.5rem;
       }   
 
       .userId {

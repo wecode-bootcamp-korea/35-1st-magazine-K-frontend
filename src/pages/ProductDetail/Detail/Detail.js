@@ -72,7 +72,7 @@ const Detail = ({ prdDetailData }) => {
         <div className="prdDetailRight">
           <button
             onClick={() => {
-              fetch('http://10.58.4.28:8000/orders/cart', {
+              fetch(`http://10.58.4.28:8000/orders/cart/${orderQuantity}`, {
                 method: 'POST',
                 headers: {
                   AUTHORIZATION:
