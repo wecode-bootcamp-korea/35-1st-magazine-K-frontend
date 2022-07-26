@@ -9,7 +9,6 @@ import './ProductList.scss';
 const ProductList = () => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
-  // const [menuTapList, setMenuTapList] = useState([]);
   const [prodList, setProdList] = useState([]);
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
@@ -33,7 +32,6 @@ const ProductList = () => {
   }, []);
 
   useEffect(() => {
-    // data/cate_no=${parseInt(cate_no)}&page=${page}.json
     fetch(
       `http://10.58.4.28:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
       // `/data/cate_no=44&pg=1.json`
