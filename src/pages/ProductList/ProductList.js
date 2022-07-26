@@ -14,6 +14,7 @@ const ProductList = () => {
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(10);
   const [sort, setSort] = useState(0);
+  const [isClickedList, setIsClickedList] = useState([]);
 
   const category = searchParams.get('category');
   const pageNum = Math.ceil(total / limit);
@@ -49,11 +50,21 @@ const ProductList = () => {
       });
   }, [category, offset, limit, sort]);
 
+  useEffect(() => {
+    setIsClickedList(Array(MENU_LIST.length).fill(true));
+  }, []);
+
   return (
     <div className="productListPage">
       <div className="menuTapContainer">
-        {MENU_LIST.map(menu => (
-          <MenuTap key={menu.category} menu={menu} movePage={movePage} />
+        {MENU_LIST.map((menu, idx) => (
+          <MenuTap
+            key={menu.category}
+            menu={menu}
+            movePage={movePage}
+            isClickedList={isClickedList}
+            idx={idx}
+          />
         ))}
         <div className="prodNumPerPage">
           <span className="totalNum">TOTAL {total}</span>

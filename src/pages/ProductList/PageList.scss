@@ -11,7 +11,7 @@
 }
 
 .pageLinkContainer {
-  @include flex(center, center, null);
+  @include flex(center, center);
   margin: 4rem 0;
   width: 100%;
   .pageLinkPrev {

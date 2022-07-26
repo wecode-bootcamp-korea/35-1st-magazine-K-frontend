@@ -17,7 +17,8 @@ const Search = () => {
   };
 
   useEffect(() => {
-    fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+    // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+    fetch('/data/SearchProd.json')
       .then(res => res.json())
       .then(res => setSearchedProdList(res));
   }, []);

@@ -5,7 +5,8 @@
     "title": "PATAGONIA",
     "main_category": "Magazine K",
     "issue_number": 1,
-    "price": 16000
+    "price": 16000,
+    "product_id": 34
   },
   {
     "id": 1,
@@ -13,7 +14,8 @@
     "title": "LUSH",
     "main_category": "Magazine K",
     "issue_number": 2,
-    "price": 13000
+    "price": 13000,
+    "product_id": 76
   },
   {
     "id": 2,
@@ -21,7 +23,8 @@
     "title": "TOOLS",
     "main_category": "Magazine K",
     "issue_number": 3,
-    "price": 15000
+    "price": 15000,
+    "product_id": 11
   },
   {
     "id": 3,
@@ -29,6 +32,7 @@
     "title": "LEMAIRE",
     "main_category": "Magazine K",
     "issue_number": 4,
-    "price": 18000
+    "price": 18000,
+    "product_id": 63
   }
 ]

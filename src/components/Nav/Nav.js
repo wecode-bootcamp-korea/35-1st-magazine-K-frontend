@@ -31,6 +31,7 @@ const Nav = () => {
             className="magazinIcon"
             onClick={() => {
               navigate('/');
+              window.location.reload();
             }}
             src="/images/k.png"
             alt="kIcon"
@@ -39,6 +40,7 @@ const Nav = () => {
             className="magazineMenu"
             onClick={() => {
               navigate('/ProductList');
+              window.location.reload();
             }}
           >
             Magazine
@@ -52,6 +54,7 @@ const Nav = () => {
             className="menus"
             onClick={() => {
               token ? navigate('/MyPage') : navigate('/Login');
+              window.location.reload();
             }}
           >
             {token ? 'My Page' : 'Login'}
