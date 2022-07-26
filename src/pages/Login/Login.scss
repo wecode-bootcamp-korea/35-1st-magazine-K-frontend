@@ -1,0 +1,48 @@
+@import '../../styles/variable.scss';
+.loginPageWrapper {
+  @include flex(center, center, column);
+  min-height: 100vh;
+  .loginBox {
+    @include flex(center, center, column);
+    .idInput {
+      border: 1px solid rgb(233, 233, 233);
+      width: 364px;
+      height: 42px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+    }
+    .passwordInput {
+      border: 1px solid rgb(233, 233, 233);
+      width: 364px;
+      height: 42px;
+      margin-bottom: 15px;
+      padding-left: 15px;
+    }
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+    }
+    .loginButton {
+      background-color: black;
+      color: white;
+      width: 364px;
+      height: 42px;
+      border-radius: 7px;
+      cursor: pointer;
+    }
+    .linkButton {
+      button {
+        color: rgb(184, 184, 184);
+        font-weight: bold;
+      }
+
+      .borderLeftLine {
+        margin-top: 40px;
+        margin-left: 12px;
+        padding-left: 12px;
+        border-left: 1px solid rgb(232, 232, 232);
+      }
+    }
+  }
+}
