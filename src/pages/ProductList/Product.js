@@ -19,7 +19,7 @@ const Product = ({ prod, category }) => {
   };
 
   const addToCart = () => {
-    let token = localStorage.getItem('login-token') || '';
+    const token = localStorage.getItem('login-token') || '';
 
     if (token) {
       fetch('http://10.58.4.28:8000/orders/cart', {
