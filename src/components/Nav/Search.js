@@ -2,6 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import SearchedProd from './SearchedProd';
+import SearchPageList from './SearchPageList';
 import './Search.scss';
 
 const Search = () => {
@@ -10,17 +11,40 @@ const Search = () => {
   const [isfilled, setIsfilled] = useState(true);
   const navigate = useNavigate();
   const searchValue = searchParams.get('keyword');
+  const [total, setTotal] = useState(0);
+  const [page, setPage] = useState(1);
+  const limit = 12;
+  const pageNum = Math.ceil(total / limit);
+  let offset = (page - 1) * limit;
 
   const moveToSearch = e => {
     const searchValue = e.target.keyword.value;
     navigate(`/Search?keyword=${searchValue}`);
   };
 
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const movePage = page => {
+    setPage(() => page);
+    offset = (page - 1) * limit;
+  };
+
+  const pgPrev = parseInt(page) - 1 ? parseInt(page) - 1 : 1;
+  const pgNext = parseInt(page) === pageNum ? page : parseInt(page) + 1;
+
   useEffect(() => {
     // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
     fetch('/data/SearchProd.json')
       .then(res => res.json())
-      .then(res => setSearchedProdList(res));
+      .then(res => {
+        setSearchedProdList(res);
+        setTotal(res.length);
+      });
   }, []);
 
   useEffect(() => {
@@ -52,9 +76,17 @@ const Search = () => {
       </form>
       {isfilled && (
         <div className="searchedProdsContainer">
-          {searchedProdList.map(prod => {
+          {searchedProdList.slice(offset, limit * page).map(prod => {
             return <SearchedProd key={prod.id} prod={prod} />;
           })}
+          <SearchPageList
+            total={total}
+            pgNext={pgNext}
+            pgPrev={pgPrev}
+            limit={limit}
+            scrollUp={scrollUp}
+            movePage={movePage}
+          />
         </div>
       )}
       {!isfilled && <div className="noResult">검색 결과가 없습니다.</div>}
