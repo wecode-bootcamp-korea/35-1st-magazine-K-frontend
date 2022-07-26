@@ -14,20 +14,15 @@ function Main() {
         const sameNumData = data.filter(data => {
           return data.id === slide;
         });
-
-        setMainSlideData(sameNumData);
+        setMainSlideData(() => sameNumData);
       });
-  }, [slide]);
 
-  useEffect(() => {
     const interval = setInterval(() => {
-      setSlide(slide + 1);
+      setSlide(slide => slide + 1);
     }, 3000);
-
     if (slide > 3) {
       setSlide(1);
     }
-
     return () => {
       clearInterval(interval);
     };

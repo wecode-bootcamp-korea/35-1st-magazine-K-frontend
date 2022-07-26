@@ -1,12 +1,7 @@
 import React from 'react';
 import './MainSectionMenu.scss';
-
 function MainSectionMenu() {
-  return (
-    <div className="mainSectionMenu">
-      <p className="sectionTitle" />
-    </div>
-  );
+  return;
 }
 
 export default MainSectionMenu;
