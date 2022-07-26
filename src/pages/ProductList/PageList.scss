@@ -1,0 +1,31 @@
+@import '../../styles/variables.scss';
+@mixin pageButtonSetting {
+  margin: 0 1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+}
+@mixin hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.pageLinkContainer {
+  @include flex(center, center, null);
+  margin: 4rem 0;
+  width: 100%;
+  .pageLinkPrev {
+    @include pageButtonSetting;
+    @include hover;
+  }
+
+  .pageLink {
+    margin: 0 1rem;
+    @include hover;
+  }
+
+  .pageLinkNext {
+    @include pageButtonSetting;
+    @include hover;
+  }
+}
