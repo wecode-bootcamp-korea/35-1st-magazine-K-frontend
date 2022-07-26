@@ -15,20 +15,25 @@ const Product = ({ prod, category }) => {
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
   const moveDetailPage = () => {
-    navigate(`/ProductDetail?issue=${issue_number}&category=${category}`);
+    navigate(`/Products/${product_id}`);
   };
 
   const addToCart = () => {
-    fetch('http://10.58.4.28:8000/orders/cart', {
-      method: 'POST',
-      headers: {
-        AUTHORIZATION:
-          'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
-      },
-      body: JSON.stringify({
-        product: product_id,
-      }),
-    });
+    let token = localStorage.getItem('login-token') || '';
+
+    if (token) {
+      fetch('http://10.58.4.28:8000/orders/cart', {
+        method: 'POST',
+        headers: {
+          AUTHORIZATION: token,
+        },
+        body: JSON.stringify({
+          product: product_id,
+        }),
+      });
+    } else {
+      navigate('/Login');
+    }
   };
 
   return (
