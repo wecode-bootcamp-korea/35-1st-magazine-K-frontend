@@ -23,9 +23,9 @@ function Comment({ data: { content, username, rating } }) {
     <>
       <div className="commentBox">
         <div className="commentItem">
-          <div className="comment">{content}</div>
           <div className="userInfo">
             <div className="star">{STAR[changeNum - 1]}</div>
+            <div className="comment">{content}</div>
             <p className="userId">{username}</p>
           </div>
         </div>

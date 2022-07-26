@@ -30,7 +30,6 @@ function Review({ reviewData }) {
         content: commentText,
         rating: rating,
       };
-
       const copyComment = [...comment, textareaObj];
       setComment(copyComment);
       setCommentText('');
@@ -44,7 +43,7 @@ function Review({ reviewData }) {
           Authorization:
             'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6Mn0.o_wFDI-SqSVi5OEw7Bzjv7cKOJHc85ErxtbMyNz1S1c',
         },
-        //서버에 보낼 데이터 (별점)
+        //서버에 보낼 데이터 (별점, 리뷰)
         body: JSON.stringify({
           rating: rating,
           content: commentText,
