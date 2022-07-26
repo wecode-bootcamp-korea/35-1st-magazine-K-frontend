@@ -1,34 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import SelectedPrd from './SelectedPrd';
+import ProdInCart from './ProdInCart';
 import './Cart.scss';
 
 const Cart = ({ toggleCart, isClickedCart }) => {
   const [cartData, setCartData] = useState([]);
-  const [orderQuantity, setOrderQuantity] = useState(0);
-  const [price, setPrice] = useState([]);
+  const [totalOrderNum, setTotalOrderNum] = useState(0);
+  const [priceList, setPriceList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
 
-  function minusOrderQuantity() {
-    if (orderQuantity < 2) {
-      setOrderQuantity(1);
-    } else if (orderQuantity < cartData.length + 1) {
-      setOrderQuantity(cartData.length);
+  function decreaseTotalOrderNum() {
+    if (totalOrderNum < 2) {
+      setTotalOrderNum(1);
+    } else if (totalOrderNum < cartData.length + 1) {
+      setTotalOrderNum(cartData.length);
     } else {
-      setOrderQuantity(orderQuantity => orderQuantity - 1);
+      setTotalOrderNum(totalOrderNum => totalOrderNum - 1);
     }
   }
 
-  function plusOrderQuantity() {
-    setOrderQuantity(orderQuantity => orderQuantity + 1);
+  function increaseTotalOrderNum() {
+    setTotalOrderNum(totalOrderNum => totalOrderNum + 1);
   }
 
-  const deleteProduct = (id, order) => {
+  const deleteProduct = (id, orderNum) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
       setCartData(
         cartData.filter(prod => {
           if (prod.id === id) {
-            setOrderQuantity(orderQuantity - order);
+            setTotalOrderNum(totalOrderNum - orderNum);
           }
           return prod.id !== id;
         })
@@ -45,29 +45,29 @@ const Cart = ({ toggleCart, isClickedCart }) => {
         data.forEach(product => {
           sum = sum + product.order;
         });
-        setOrderQuantity(sum);
+        setTotalOrderNum(sum);
       });
   }, []);
 
   useEffect(() => {
-    setPrice(Array(cartData.length).fill());
+    setPriceList(Array(cartData.length).fill());
     setIsEmpty(cartData.length === 0 ? true : false);
   }, [cartData]);
-  // console.log(cartData && cartData[0]?.price);
-  // console.log(cartData && cartData[0]?.price.toString().slice(0, 2));
+  // console.log(cartData && cartData[0]?.priceList);
+  // console.log(cartData && cartData[0]?.priceList.toString().slice(0, 2));
 
   useEffect(() => {
     let sum = 0;
-    price.forEach(el => {
+    priceList.forEach(el => {
       sum = el + sum;
     });
     setTotalPrice(sum);
-  }, [cartData, orderQuantity, price]);
+  }, [cartData, totalOrderNum, priceList]);
 
   return (
     <div className={['cartModal', isClickedCart && 'cartModalOn'].join(' ')}>
       <div className="cartNav">
-        <span>Cart[{orderQuantity}]</span>
+        <span>Cart[{totalOrderNum}]</span>
         <span onClick={toggleCart}>Close</span>
       </div>
       <div className="cartMain">
@@ -78,14 +78,14 @@ const Cart = ({ toggleCart, isClickedCart }) => {
         )}
         {cartData.map((cartData, idx) => {
           return (
-            <SelectedPrd
+            <ProdInCart
               key={cartData.id}
               cartData={cartData}
-              minusOrderQuantity={minusOrderQuantity}
-              plusOrderQuantity={plusOrderQuantity}
-              price={price}
+              decreaseTotalOrderNum={decreaseTotalOrderNum}
+              increaseTotalOrderNum={increaseTotalOrderNum}
+              priceList={priceList}
               idx={idx}
-              setPrice={setPrice}
+              setPriceList={setPriceList}
               deleteProduct={deleteProduct}
             />
           );

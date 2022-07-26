@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import SearchedProd from './SerachedProd';
+import SearchedProd from './SearchedProd';
 import './Search.scss';
 
 const Search = () => {
@@ -11,8 +11,13 @@ const Search = () => {
   const navigate = useNavigate();
   const searchValue = searchParams.get('keyword');
 
+  const moveToSearch = e => {
+    const searchValue = e.target.keyword.value;
+    navigate(`/Search?keyword=${searchValue}`);
+  };
+
   useEffect(() => {
-    fetch('/data/SearchProd.json')
+    fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
       .then(res => res.json())
       .then(res => setSearchedProdList(res));
   }, []);
@@ -32,14 +37,7 @@ const Search = () => {
       <form
         className="searchContainer"
         onSubmit={e => {
-          const searchValue = e.target.keyword.value;
-          // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
-          //   .then(res => res.json())
-          //   .then(res => {
-          //     if (res.message === 'SUCCESS') {
-          navigate(`/Search?keyword=${searchValue}`);
-          //   }
-          // });
+          moveToSearch(e);
         }}
       >
         <input

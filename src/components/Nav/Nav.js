@@ -7,7 +7,7 @@ import './Nav.scss';
 
 const Nav = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('login-token');
   const [isClickedSearch, setIsClickedSearch] = useState(false);
   const [isClickedCart, setIsClickedCart] = useState(false);
 
@@ -16,6 +16,11 @@ const Nav = () => {
   };
   const toggleCart = () => {
     isClickedCart ? setIsClickedCart(false) : setIsClickedCart(true);
+  };
+
+  const moveToSearch = e => {
+    const searchValue = e.target.keyword.value;
+    navigate(`/Search?keyword=${searchValue}`);
   };
 
   return (
@@ -50,7 +55,7 @@ const Nav = () => {
             }}
           >
             {token ? 'My Page' : 'Login'}
-          </div>{' '}
+          </div>
           <div className="menus" onClick={toggleCart}>
             Cart
           </div>
@@ -61,14 +66,7 @@ const Nav = () => {
           <form
             className="searchModalContainer"
             onSubmit={e => {
-              const searchValue = e.target.keyword.value;
-              // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
-              //   .then(res => res.json())
-              //   .then(res => {
-              //     if (res.message === 'SUCCESS') {
-              navigate(`/Search?keyword=${searchValue}`);
-              //   }
-              // });
+              moveToSearch(e);
             }}
           >
             <input

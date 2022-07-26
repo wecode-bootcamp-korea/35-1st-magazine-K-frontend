@@ -26,52 +26,6 @@
       font-size: 1rem;
       text-align: center;
     }
-    .selected {
-      .productInfo {
-        display: flex;
-        padding: 1rem 1.5rem;
-        img {
-          width: 80px;
-          height: 112px;
-        }
-        .description {
-          padding-left: 1rem;
-          color: #fff;
-          font-weight: 600;
-          line-height: 1.4;
-
-          div:nth-child(2) {
-            padding-bottom: 1rem;
-          }
-          .count {
-            font-size: 1.25rem;
-            border: 1px solid #fff;
-            display: flex;
-            justify-content: space-around;
-            line-height: 1.5;
-            width: 94px;
-            height: 32px;
-            img {
-              width: 20px;
-              height: 20px;
-              margin-top: 4px;
-              margin-bottom: 4px;
-            }
-
-            span {
-              margin-top: 1px;
-            }
-          }
-        }
-        p {
-          width: 24px;
-          font-size: 1.5rem;
-          line-height: 1;
-          position: relative;
-          right: -90px;
-        }
-      }
-    }
   }
 
   .cartFooter {
