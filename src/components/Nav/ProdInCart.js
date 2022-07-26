@@ -11,6 +11,7 @@ const ProdInCart = ({
   idx,
   deleteProduct,
 }) => {
+  const { product_id } = cartData;
   const [orderNum, setOrderNum] = useState(1);
 
   useEffect(() => {
@@ -20,13 +21,16 @@ const ProdInCart = ({
   const sendToApiOrderInfo = () => {
     fetch('3209403298470:8000/cart', {
       method: 'POST',
-      body: JSON.stringify({}),
+      body: JSON.stringify({
+        product: product_id,
+      }),
     });
   };
 
   const increaseOrderNum = () => {
     setOrderNum(prev => prev + 1);
     increaseTotalOrderNum();
+    sendToApiOrderInfo();
   };
 
   const decreasseOrderNum = e => {
@@ -35,6 +39,7 @@ const ProdInCart = ({
     } else {
       setOrderNum(prev => prev - 1);
       decreaseTotalOrderNum();
+      sendToApiOrderInfo();
     }
   };
 
