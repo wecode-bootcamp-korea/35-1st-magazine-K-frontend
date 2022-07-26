@@ -1,7 +1,15 @@
 import React from 'react';
 import './PageList.scss';
 
-const PageList = ({ total, limit, movePage, pgNext, pgPrev, category }) => {
+const PageList = ({
+  total,
+  limit,
+  movePage,
+  pgNext,
+  pgPrev,
+  category,
+  scrollUp,
+}) => {
   const pageNum = Math.ceil(total / limit);
 
   return (
@@ -25,6 +33,7 @@ const PageList = ({ total, limit, movePage, pgNext, pgPrev, category }) => {
               className="pageLink"
               onClick={() => {
                 movePage(category, idx + 1);
+                scrollUp();
               }}
             >
               {idx + 1}

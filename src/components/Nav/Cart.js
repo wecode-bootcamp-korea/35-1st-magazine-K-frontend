@@ -8,6 +8,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   const [priceList, setPriceList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
+  const token = localStorage.getItem('login-token') || '';
 
   function decreaseTotalOrderNum() {
     if (totalOrderNum < 2) {
@@ -37,16 +38,27 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   };
 
   useEffect(() => {
-    fetch('data/cartData.json')
-      .then(res => res.json())
-      .then(data => {
-        setCartData(data);
-        let sum = 0;
-        data.forEach(product => {
-          sum = sum + product.order;
+    if (token) {
+      fetch('http://10.58.4.155:8000/orders/cart', {
+        method: 'GET',
+        headers: {
+          AUTHORIZATION: token,
+        },
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.message === 'EMPTY_CART') {
+            return;
+          } else {
+            setCartData(data.result);
+            let sum = 0;
+            data.result.forEach(product => {
+              sum = sum + product.quantity;
+            });
+            setTotalOrderNum(sum);
+          }
         });
-        setTotalOrderNum(sum);
-      });
+    }
   }, []);
 
   useEffect(() => {
@@ -87,6 +99,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
               idx={idx}
               setPriceList={setPriceList}
               deleteProduct={deleteProduct}
+              token={token}
             />
           );
         })}

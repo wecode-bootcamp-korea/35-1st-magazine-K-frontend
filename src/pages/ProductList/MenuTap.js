@@ -1,6 +1,6 @@
 import './MenuTap.scss';
 
-const MenuTap = ({ menu, movePage, isClickedList, idx }) => {
+const MenuTap = ({ menu, movePage, isClickedList, idx, scrollUp }) => {
   const focusOnMenuTap = target => {
     isClickedList.forEach((menu, i) => {
       if (i !== target) {
@@ -17,6 +17,7 @@ const MenuTap = ({ menu, movePage, isClickedList, idx }) => {
       onClick={() => {
         movePage(menu.category, 1);
         focusOnMenuTap(idx);
+        scrollUp();
       }}
     >
       {menu.cate_name}

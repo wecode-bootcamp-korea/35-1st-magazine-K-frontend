@@ -10,19 +10,24 @@ const ProdInCart = ({
   setPriceList,
   idx,
   deleteProduct,
+  token,
 }) => {
   const { product_id } = cartData;
   const [orderNum, setOrderNum] = useState(1);
 
   useEffect(() => {
-    setOrderNum(cartData.order);
+    setOrderNum(cartData.quantity);
   }, []);
 
-  const sendToApiOrderInfo = () => {
-    fetch('3209403298470:8000/cart', {
+  const sendToApi = () => {
+    fetch('http://10.58.4.155:8000/orders/cart', {
       method: 'POST',
+      headers: {
+        AUTHORIZATION: token,
+      },
       body: JSON.stringify({
         product: product_id,
+        calculation: 'addition',
       }),
     });
   };
@@ -30,7 +35,7 @@ const ProdInCart = ({
   const increaseOrderNum = () => {
     setOrderNum(prev => prev + 1);
     increaseTotalOrderNum();
-    sendToApiOrderInfo();
+    sendToApi();
   };
 
   const decreasseOrderNum = e => {
@@ -39,10 +44,9 @@ const ProdInCart = ({
     } else {
       setOrderNum(prev => prev - 1);
       decreaseTotalOrderNum();
-      sendToApiOrderInfo();
+      sendToApi();
     }
   };
-
   priceList[idx] = cartData.price.toString().slice(0, 2) * orderNum;
 
   useEffect(() => {
@@ -52,7 +56,7 @@ const ProdInCart = ({
   return (
     <div key={cartData.id} className="prodInCart">
       <div className="productInfo">
-        <img src={cartData.cart_img_url} alt="selected_tiny" />
+        <img src={cartData.picture} alt="selected_tiny" />
         <div className="description">
           <div>{cartData.title}</div>
           <div>₩{priceList[idx]},000</div>

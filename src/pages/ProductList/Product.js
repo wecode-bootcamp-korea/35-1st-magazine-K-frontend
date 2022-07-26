@@ -22,13 +22,14 @@ const Product = ({ prod, category }) => {
     const token = localStorage.getItem('login-token') || '';
 
     if (token) {
-      fetch('http://10.58.4.28:8000/orders/cart', {
+      fetch('http://10.58.4.155:8000/orders/cart', {
         method: 'POST',
         headers: {
           AUTHORIZATION: token,
         },
         body: JSON.stringify({
           product: product_id,
+          count: 1,
         }),
       });
     } else {

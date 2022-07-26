@@ -27,6 +27,12 @@ const ProductList = () => {
     offset = (page - 1) * limit;
     navigate(`?category=${category}`);
   };
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   useEffect(() => {
     setSearchParams({ category: 1 });
@@ -34,7 +40,7 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.4.28:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `http://10.58.4.155:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
       // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
@@ -64,6 +70,7 @@ const ProductList = () => {
             movePage={movePage}
             isClickedList={isClickedList}
             idx={idx}
+            scrollUp={scrollUp}
           />
         ))}
         <div className="prodNumPerPage">
@@ -74,6 +81,7 @@ const ProductList = () => {
               className="numPerPage"
               onChange={e => {
                 setLimit(e.target.value);
+                scrollUp();
               }}
               defaultValue="10"
             >
@@ -87,6 +95,7 @@ const ProductList = () => {
               className="sort"
               onChange={e => {
                 setSort(e.target.value);
+                scrollUp();
               }}
             >
               <option>SORT BY</option>
@@ -110,6 +119,7 @@ const ProductList = () => {
           pgPrev={pgPrev}
           category={category}
           limit={limit}
+          scrollUp={scrollUp}
         />
       </div>
     </div>
