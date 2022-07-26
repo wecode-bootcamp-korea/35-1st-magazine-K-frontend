@@ -1,3 +1,5 @@
+
+
 .reviewContainer {
   width: 100%;
   display: flex;
@@ -11,8 +13,39 @@
     text-align: center;
 
     .review {
-      padding-bottom: 2rem ;
-      font-size: 1.3rem;
+      padding-bottom: 1.5rem ;
+      font-size: 2rem;
+    }
+
+    .reviewH1 {
+      padding-bottom: 1rem ;
+      font-size: 1.4rem;
+    }
+
+    .starRating {
+      padding-top: 0.8rem;
+      padding-bottom: 2.1rem;
+      
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+        .on {
+          color: #000;
+        }
+        .off {
+          color: #ccc;
+        }
+
+      .star {
+        font-size: 4rem;
+      }
+      
+
+
+
     }
 
   }
@@ -39,18 +72,6 @@
       justify-content: flex-end;
       padding-top: 0.35rem;
       padding-bottom: 1.5rem;
-
-      .selectBox {
-        padding-right: 0.1rem;
-        .reviewSelect{
-          border: 1px solid black;
-          width: 260px;
-          height: 35px;
-          option {
-            background-color: aqua;
-          }
-        }
-      }
       
       .reviewSubmit{
         padding-right: 0.5rem;

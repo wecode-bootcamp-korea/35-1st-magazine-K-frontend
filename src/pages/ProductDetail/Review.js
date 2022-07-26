@@ -1,78 +1,108 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './Review.scss';
+import { useParams } from 'react-router-dom';
 import Comment from './Commnet';
 
-function Review() {
-  const [selected, setSelected] = useState('');
-  const [selectedIndex, setSelectedIndex] = useState();
-  const [value, setValue] = useState('');
-  const [comments, setComments] = useState([]);
+function Review({ reviewData }) {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [commentText, setCommentText] = useState('');
+  const [comment, setComment] = useState([]);
+  let { product_id } = useParams();
 
-  const getTextareaValue = e => {
-    setValue(e.target.value);
+  useEffect(() => {
+    setComment(reviewData);
+  }, [reviewData]);
+
+  const getCommentText = e => {
+    setCommentText(e.target.value);
   };
 
-  const addComment = e => {
-    e.preventDefault();
-    const copyComments = [...comments];
-    if (value.length < 6) {
-      alert('리뷰를 5글자 이상 입력해주세요.');
+  const addReview = e => {
+    if (commentText.length < 6) {
+      alert('5글자 이상을 입력해주세요');
+      setCommentText('');
+    } else if (rating === 0) {
+      alert('별점을 선택해주세요.');
+    } else {
+      const textareaObj = {
+        username: 'aa11',
+        content: commentText,
+        rating: rating,
+      };
+
+      const copyComment = [...comment, textareaObj];
+      setComment(copyComment);
+      setCommentText('');
+      // window.location.reload();
+
+      fetch(`http://10.58.4.155:8000/products/${product_id}/reviews`, {
+        //사용할 http 메소드
+        method: 'POST',
+        //토큰
+        headers: {
+          Authorization:
+            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6Mn0.o_wFDI-SqSVi5OEw7Bzjv7cKOJHc85ErxtbMyNz1S1c',
+        },
+        //서버에 보낼 데이터 (별점)
+        body: JSON.stringify({
+          rating: rating,
+          content: commentText,
+        }),
+      })
+        .then(res => res.json())
+        .then(data => console.log(data));
     }
-    copyComments.push(value);
-    setComments(copyComments);
-    setValue('');
-  };
-
-  const changeSelect = e => {
-    setSelectedIndex(e.target.value);
-    setSelected(e.target.options[e.target.selectedIndex].text);
   };
 
   return (
     <div className="reviewContainer">
       <div className="reviewTitle">
         <div className="review">REVIEW</div>
+        <div className="reviewH1">이 Megazine에 대해 리뷰해주세요!</div>
+        <div className="starRating">
+          {[...Array(5)].map((star, index) => {
+            index += 1;
+            return (
+              <button
+                type="button"
+                id={index}
+                key={index}
+                className={index <= (hover || rating) ? 'on' : 'off'}
+                onClick={() => setRating(index)}
+                onMouseEnter={() => setHover(index)}
+                onMouseLeave={() => setHover(rating)}
+              >
+                <span className="star">&#9733;</span>
+              </button>
+            );
+          })}
+        </div>
         <hr />
       </div>
-      <form className="reviewForm" onSubmit={addComment}>
+      <div className="reviewForm">
         <div className="textarea">
           <textarea
             id="reviewTextarea"
             name="reviewTextarea"
+            onChange={getCommentText}
+            value={commentText}
             rows="5"
             placeholder="리뷰를 작성해주세요."
-            onChange={getTextareaValue}
           />
         </div>
         <div className="click">
-          <span className="selectBox">
-            <select
-              onChange={changeSelect}
-              className="reviewSelect"
-              value={selectedIndex}
-            >
-              <option value="1">⭑</option>
-              <option value="2">⭑⭑</option>
-              <option value="3">⭑⭑⭑</option>
-              <option value="4">⭑⭑⭑⭑</option>
-              <option value="5">⭑⭑⭑⭑⭑</option>
-            </select>
-          </span>
-          <input className="reviewSubmit" type="submit" value="리뷰등록" />
+          <button className="reviewSubmit" onClick={addReview}>
+            리뷰등록
+          </button>
         </div>
-      </form>
+      </div>
       <div className="reviewHr">
         <hr />
       </div>
       <div className="commentBox">
-        {comments.map((comment, i) => {
-          return (
-            <Comment
-              key={comment + i + 1}
-              comment={comment}
-              selected={selected}
-            />
-          );
+        {comment.map((data, i) => {
+          return <Comment key={i} data={data} />;
         })}
       </div>
     </div>
