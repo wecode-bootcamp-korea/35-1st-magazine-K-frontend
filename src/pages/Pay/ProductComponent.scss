@@ -24,7 +24,12 @@
 
     .SelectQuantityBox {
       position: relative;
-      margin-left: 15px;
+      margin-left: 20px;
+      padding-left: 27px;
+      padding-top: 3px;
+      border: 1px solid black;
+      height: 25px;
+      width: 70px;
 
       .SelectQuantity {
         width: 70px;
@@ -39,7 +44,7 @@
         position: absolute;
         right: 2px;
         width: 15px;
-        top: -1px;
+        top: -2px;
         background: none;
         border: none;
         font-size: 25px;
@@ -48,7 +53,7 @@
 
       .SelectQuantityMinus {
         position: absolute;
-        left: 15px;
+        left: 2px;
         width: 15px;
         top: -7px;
         background: none;

@@ -3,23 +3,26 @@ import './ProductComponent.scss';
 
 const ProductComponent = ({
   ProductData,
+  id,
   onDelete,
   checkedItemHandler,
   isAllChecked,
   checkedItems,
+  onIncrease,
+  onDecrease,
 }) => {
   // console.log(ProductData);
-  const [count, setCount] = useState(Number(ProductData.quantity));
+  // const [count, setCount] = useState(Number(ProductData.quantity));
 
-  const onIncrease = () => {
-    setCount(count + 1);
-  };
+  // const onIncrease = () => {
+  //   setCount(count + 1);
+  // };
 
-  const onDecrease = () => {
-    if (count !== 1) {
-      setCount(count - 1);
-    }
-  };
+  // const onDecrease = () => {
+  //   if (count !== 1) {
+  //     setCount(count - 1);
+  //   }
+  // };
 
   const [bChecked, setChecked] = useState(false);
 
@@ -46,20 +49,18 @@ const ProductComponent = ({
         </label>
         <p>
           <span>₩</span>
-          {ProductData.price * count}
+          {/* {ProductData.price * count} */}
+          {ProductData.price * ProductData.quantity}
         </p>
         <div className="SelectQuantityBox">
-          <input
-            className="SelectQuantity"
-            value={count}
-            onChange={e => {
-              setCount(e.target.value);
-            }}
-          />
-          <button className="SelectQuantityPlus" onClick={onIncrease}>
+          {ProductData.quantity}
+          <button className="SelectQuantityPlus" onClick={() => onIncrease(id)}>
             +
           </button>
-          <button className="SelectQuantityMinus" onClick={onDecrease}>
+          <button
+            className="SelectQuantityMinus"
+            onClick={() => onDecrease(id)}
+          >
             -
           </button>
         </div>

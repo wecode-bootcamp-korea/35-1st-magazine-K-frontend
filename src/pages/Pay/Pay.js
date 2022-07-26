@@ -56,6 +56,28 @@ const Pay = () => {
     }
   };
 
+  const onIncrease = id => {
+    const prevData = [...productDataList];
+    const changeIndex = prevData.findIndex(el => el.id === id);
+    prevData[changeIndex].quantity += 1;
+    setProductDataList(prevData);
+  };
+
+  const onDecrease = id => {
+    const prevData = [...productDataList];
+    const changeIndex = prevData.findIndex(el => el.id === id);
+    if (prevData[changeIndex].quantity !== 1) {
+      prevData[changeIndex].quantity -= 1;
+      setProductDataList(prevData);
+    }
+  };
+
+  // const onDecrease = () => {
+  //   if (count !== 1) {
+  //     setCount(count - 1);
+  //   }
+  // };
+
   return (
     <div className="payPageWrapper">
       <div className="payPageBox">
@@ -66,18 +88,22 @@ const Pay = () => {
             onDelete={onDelete}
             checkedItems={checkedItems}
           />
-          {productDataList.map(ProductData => {
-            return (
-              <ProductComponent
-                ProductData={ProductData}
-                key={ProductData.id}
-                onDelete={onDelete}
-                checkedItemHandler={checkedItemHandler}
-                isAllChecked={isAllChecked}
-                checkedItems={checkedItems}
-              />
-            );
-          })}
+          {productDataList.length > 0 &&
+            productDataList.map(ProductData => {
+              return (
+                <ProductComponent
+                  ProductData={ProductData}
+                  key={ProductData.id}
+                  id={ProductData.id}
+                  onDelete={onDelete}
+                  checkedItemHandler={checkedItemHandler}
+                  isAllChecked={isAllChecked}
+                  checkedItems={checkedItems}
+                  onIncrease={onIncrease}
+                  onDecrease={onDecrease}
+                />
+              );
+            })}
         </div>
         <CashComponent />
       </div>
