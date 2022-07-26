@@ -1,23 +1,23 @@
 @import '../../styles/variable.scss';
 .payBox {
   @include flex(none, none, column);
-  margin-left: 10vh;
+  margin-left: 20vh;
+  width: 60vh;
 
   .totalProductAmount {
-    width: 40vh;
     @include flex(space-between, center, row);
     padding: 20px 0px 10px 0px;
     border-top: 1px solid rgb(226, 226, 226);
-    font-size: 13px;
-    color: rgb(192, 192, 192);
+    font-size: 15px;
+    color: #999;
     font-weight: bolder;
   }
 
   .deliveryFree {
     @include flex(space-between, center, row);
     padding: 10px 0px 10px 0px;
-    font-size: 13px;
-    color: rgb(192, 192, 192);
+    font-size: 15px;
+    color: #999;
     font-weight: bolder;
   }
 
@@ -26,6 +26,7 @@
     padding: 10px 0px 20px 0px;
     font-weight: bolder;
     color: rgb(82, 82, 82);
+    font-size: 17px;
   }
 
   .Paybutton {
@@ -35,19 +36,27 @@
     .orderButton {
       background-color: white;
       color: black;
-      width: 19.6vh;
-      height: 3.9vh;
+      width: 29.5vh;
+      height: 6vh;
       border-radius: 5px;
       border: 0.5px solid black;
       cursor: pointer;
+      font-size: 16px;
     }
     .AllorderButton {
-      background-color: black;
+      background-color: #222;
       color: white;
-      width: 19.6vh;
-      height: 3.9vh;
+      width: 29.5vh;
+      height: 6vh;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
+      border: none;
     }
+  }
+}
+@media (max-width: 1180px) {
+  .payBox {
+    margin-left: 0;
   }
 }

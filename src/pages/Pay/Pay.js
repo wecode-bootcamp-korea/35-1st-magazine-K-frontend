@@ -72,11 +72,15 @@ const Pay = () => {
     }
   };
 
-  // const onDecrease = () => {
-  //   if (count !== 1) {
-  //     setCount(count - 1);
-  //   }
-  // };
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  useEffect(() => {
+    let sum = 0;
+    productDataList.map(ProductData => {
+      sum += ProductData.quantity * ProductData.price;
+    });
+    setTotalPrice(sum);
+  }, [productDataList]);
 
   return (
     <div className="payPageWrapper">
@@ -105,7 +109,7 @@ const Pay = () => {
               );
             })}
         </div>
-        <CashComponent />
+        <CashComponent totalPrice={totalPrice} />
       </div>
     </div>
   );

@@ -1,6 +1,6 @@
 @import '../../styles/variable.scss';
 .downChoiceBoxController {
-  width: 60vh;
+  width: 100vh;
   @include flex(space-between, center, row);
   padding: 20px 0px 20px 0px;
   border-bottom: 1px solid rgb(226, 226, 226);
@@ -8,6 +8,7 @@
 
   .itemInformation {
     @include flex(none, none, column);
+    padding-bottom: 10vh;
 
     label {
       font-weight: bolder;
@@ -19,12 +20,13 @@
     }
 
     p {
+      font-size: 14px;
       margin: 10px 0px 25px 25px;
     }
 
     .SelectQuantityBox {
       position: relative;
-      margin-left: 20px;
+      margin-left: 23px;
       padding-left: 27px;
       padding-top: 3px;
       border: 1px solid black;
@@ -69,8 +71,8 @@
     position: relative;
 
     .orderItem {
-      width: 80px;
-      height: 120px;
+      width: 130px;
+      height: 180px;
     }
 
     .SelectQuantityClearButton {

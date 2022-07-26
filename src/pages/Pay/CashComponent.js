@@ -1,13 +1,13 @@
 import './CashComponent.scss';
 
-const CashComponent = () => {
+const CashComponent = ({ totalPrice }) => {
   return (
     <div className="payBox">
       <div className="totalProductAmount">
         <p>총 상품금액</p>
         <p>
           <span>₩</span>
-          60,000
+          {totalPrice}
         </p>
       </div>
       <div className="deliveryFree">
@@ -17,10 +17,10 @@ const CashComponent = () => {
         </p>
       </div>
       <div className="TotalPay">
-        <p>총결제금액</p>
+        <p>총 결제금액</p>
         <p>
           <span>₩</span>
-          60000
+          {totalPrice}
         </p>
       </div>
       <div className="Paybutton">

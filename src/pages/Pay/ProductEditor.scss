@@ -1,14 +1,16 @@
 @import '../../styles/variable.scss';
 .upChoiceBoxController {
-  width: 60vh;
+  width: 100vh;
   @include flex(space-between, center, row);
-  padding: 20px 0px 20px 0px;
+  padding: 18px 0px 18px 0px;
   border-top: 1px solid rgb(226, 226, 226);
   border-bottom: 1px solid rgb(226, 226, 226);
   padding-left: 10px;
 
   .checkAll {
     cursor: pointer;
+    font-size: 14px;
+    color: rgb(31, 31, 31);
 
     input {
       margin-right: 13px;
@@ -20,5 +22,6 @@
     border: none;
     margin-right: 20px;
     cursor: pointer;
+    font-size: 14px;
   }
 }
