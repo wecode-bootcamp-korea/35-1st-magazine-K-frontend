@@ -28,9 +28,7 @@ const Product = ({ prod, category }) => {
       body: JSON.stringify({
         product: product_id,
       }),
-    })
-      .then(res => res.json())
-      .then(res => console.log(res));
+    });
   };
 
   return (
