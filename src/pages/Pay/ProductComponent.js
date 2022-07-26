@@ -46,7 +46,7 @@ const ProductComponent = ({
         </label>
         <p>
           <span>₩</span>
-          {ProductData.price}
+          {ProductData.price * count}
         </p>
         <div className="SelectQuantityBox">
           <input

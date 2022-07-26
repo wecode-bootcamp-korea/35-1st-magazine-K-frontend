@@ -11,4 +11,9 @@
       @include flex(none, none, column);
     }
   }
+  @media (max-width: 800px) {
+    .payPageBox {
+      @include flex(none, none, column);
+    }
+  }
 }

@@ -18,12 +18,12 @@ const Pay = () => {
   }, []);
 
   const onDelete = targetId => {
-    //console.log(`${targetId}가 삭제되었습니다.`);
-
     // [1,3,4]
-    const newProductList = productDataList.filter(it => it.id !== targetId);
-    setProductDataList(newProductList); // []
-    console.log(productDataList);
+    //const newProductList = productDataList.filter(it => it.id !== targetId);
+    setProductDataList(productDataList =>
+      productDataList.filter(it => it.id !== targetId)
+    ); // []
+    //console.log(productDataList);
   };
 
   const [checkedItems, setCheckedItems] = useState(new Set());
@@ -33,6 +33,7 @@ const Pay = () => {
       checkedItems.add(id);
       setCheckedItems(checkedItems);
       console.log(checkedItems);
+      //console.log(productDataList);
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
