@@ -6,7 +6,6 @@ import Review from './Review';
 
 const ProductDetail = () => {
   const [prdDetailData, setPrdDetailData] = useState([]);
-  const [reviewData, setReviewData] = useState([]);
 
   let { product_id } = useParams();
 
@@ -23,7 +22,8 @@ const ProductDetail = () => {
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
-        setReviewData(data.RESULTS.reviews);
+        // setReviewData(data.RESULTS.reviews);
+        console.log(data.RESULTS);
       });
   }, []);
 
@@ -37,7 +37,8 @@ const ProductDetail = () => {
           />
         );
       })}
-      <Review reviewData={reviewData} />
+      <Review />
+      {/* reviewData={reviewData} */}
     </>
   );
 };

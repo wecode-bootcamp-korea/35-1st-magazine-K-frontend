@@ -3,16 +3,27 @@ import './Review.scss';
 import { useParams } from 'react-router-dom';
 import Comment from './Commnet';
 
-function Review({ reviewData }) {
+function Review() {
   const [rating, setRating] = useState(0);
   const [hover, setHover] = useState(0);
   const [commentText, setCommentText] = useState('');
   const [comment, setComment] = useState([]);
+  const [reviewData, setReviewData] = useState([]);
   let { product_id } = useParams();
-
   useEffect(() => {
     setComment(reviewData);
   }, [reviewData]);
+  // console.log(reviewData);
+
+  useEffect(() => {
+    fetch(`http://10.58.4.155:8000/products/${product_id}/reviews`)
+      .then(res => res.json())
+      .then(data => {
+        setReviewData(data.RESULTS);
+        // setReviewData(data.RESULTS.reviews);
+        // console.log(data.RESULTS);
+      });
+  }, []);
 
   const getCommentText = e => {
     setCommentText(e.target.value);
