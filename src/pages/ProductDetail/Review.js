@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './Review.scss';
 import { useParams } from 'react-router-dom';
-import Comment from './Commnet';
+import Comment from './Comment';
 
 function Review() {
   const [rating, setRating] = useState(0);
@@ -10,6 +10,7 @@ function Review() {
   const [comment, setComment] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   let { product_id } = useParams();
+
   useEffect(() => {
     setComment(reviewData);
   }, [reviewData]);
@@ -59,9 +60,9 @@ function Review() {
           rating: rating,
           content: commentText,
         }),
-      })
-        .then(res => res.json())
-        .then(data => console.log(data));
+      });
+      // .then(res => res.json())
+      // .then(data => console.log(data));
     }
   };
 
