@@ -1,26 +1,26 @@
 [
   {
   "id" : 1,
-  "img" : "https://images.unsplash.com/photo-1657299143363-621ba0a1e6ac?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxlZGl0b3JpYWwtZmVlZHwxfHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=800&q=60",
+  "img" : "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVnb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   "main_category_name" : "MAGAZINE K",
-  "issue_number" : 82,
-  "title" : "BALI",
-  "desc" : "인도네시아의 화산섬 발리는 세계 최대 무슬림 인구가 사는 본토와 달리 주민 대부분이 힌두교를 신봉하는 독특한 지역 문화를 형성한 곳입니다. 발리인에게 힌두교는 신앙이자 춤과 회화, 건축은 물론 문화의 전반적 영역에 걸쳐 가장 큰 영향을 미친 사회·정신생활의 핵심입니다. 1970년대 응우라라이 국제공항이 개발·확장되면서 발리의 1세대 이방인이라 할 수 있는 호주"
+  "issue_number" : 17,
+  "title" : "LEGO",
+  "desc" : "전 세계인의 장난감 레고는 1932년 덴마크 빌룬 지역의 목공소에서 나무 장난감을 만드는 회사로 시작했습니다. 레고에 숨은 과학적 원리는 사용자들이 더욱 다양한 방식으로 제품을 사용하게 하고, 성별과 연령, 지식의 많고 적음과 관계없이 폭넓은 사랑을 받게 만든 원동력입니다."
 },
 {
   "id" : 2,
-  "img" : "https://images.unsplash.com/photo-1633445382781-b088e47ca4f7?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bHVsdWxlbW9ufGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=800&q=60",
+  "img" : "https://images.unsplash.com/photo-1592842414859-bca1263fabc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNoYW5lbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   "main_category_name" : "MAGAZINE K",
-  "issue_number" : 56,
-  "title" : "LULULEMON",
-  "desc" : "1998년 캐나다 밴쿠버에서 창립한 룰루레몬은 요가 활동에 최적화한 팬츠를 개발하며 각광받기 시작한 운동복 브랜드입니다. 기능성과 촉감이 탁월한 셔츠와 팬츠, 아우터, 일상복, 스포츠용품 등은 신체 활동에 따른 움직임을 면밀히 연구한 결과물로 이를 ‘감각의 과학’이라 일컫기도 합니다. 더불어 운동할 때뿐 아니라 회사나 일상에서도 부담 없이 입을 수 있는 패션을 제시하며"
+  "issue_number" : 5,
+  "title" : "CHANEL",
+  "desc" : "샤넬은 가브리엘 샤넬이 20세기 초 프랑스에 세운 세계적 럭셔리 기업으로, 파리 깡봉가 31번지라는 상징적 장소를 포함해 전 세계 190여 개에 달하는 패션 부티크를 두고 레디투웨어와 핸드백, 액세서리, 아이웨어부터 향수와 코스메틱, 화인 주얼리, 워치까지 다양한 범주의 제품을 선보입니다."
 },
 {
   "id" : 3,
-  "img" : "https://images.unsplash.com/photo-1542272606-fe889704e0f6?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bWFpc29uJTIwa2l0c3VuZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=800&q=60",
+  "img" : "https://images.unsplash.com/photo-1530115443702-c801f3e9937d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBhdGFnb25pYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
   "main_category_name" : "MAGAZINE K",
-  "issue_number" : 23,
-  "title" : "LUMAISON KITSUNESH",
-  "desc" : "2002년 프랑스 파리에서 시작한 메종 키츠네는 날 선 취향으로 새로운 뮤지션을 발굴해온 음악 레이블에서 프레피 룩의 감성을 절묘하게 이식한 패션 하우스, 브랜드의 바이브를 담은 카페로 차근차근 브랜드의 레퍼토리를 넓혀왔습니다. 글로벌 팬덤을 거느린 브랜드로 성장한 이후에도 '여우'라는 뜻의 브랜드 이름처럼 자유로운 변신을 거듭하며, 패션과 라이프스타일 영역을 섭"
+  "issue_number" : 2,
+  "title" : "PATAGONIA",
+  "desc" : "이본 쉬나드는 1964년 암벽등반 시 암벽을 해치지 않는 금속 못(피톤)을 제작하다, 1973년 친환경 아웃도어 의류 브랜드 파타고니아를 설립하게 됩니다."
 }
 ]
