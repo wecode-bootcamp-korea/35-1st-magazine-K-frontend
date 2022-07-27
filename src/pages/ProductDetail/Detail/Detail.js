@@ -81,9 +81,7 @@ const Detail = ({ prdDetailData }) => {
                 body: JSON.stringify({
                   product: product_id,
                 }),
-              })
-                .then(res => res.json())
-                .then(data => console.log(data));
+              });
             }}
           >
             ₩{priceThousand * orderQuantity},000 ADD TO CART
