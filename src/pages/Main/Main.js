@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './Main.scss';
 import MainSlide from './MainSlide';
 import MainSectionMenu from './MainSectionMenu';
+import MainSectionVideo from './MainSectionVideo';
 
 function Main() {
   const [slide, setSlide] = useState(1);
@@ -60,6 +61,7 @@ function Main() {
         </div>
       </div>
       <MainSectionMenu />
+      <MainSectionVideo />
     </>
   );
 }
