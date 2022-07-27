@@ -1,6 +1,6 @@
 @import '../../styles/variable.scss';
 .downChoiceBoxController {
-  width: 100vh;
+  flex-grow: 1;
   @include flex(space-between, center, row);
   padding: 20px 0px 20px 0px;
   border-bottom: 1px solid rgb(226, 226, 226);
@@ -16,6 +16,12 @@
 
       input {
         margin-right: 12px;
+      }
+    }
+
+    @media (max-width: 860px) {
+      label {
+        margin-top: 40px;
       }
     }
 
@@ -75,6 +81,13 @@
       height: 180px;
     }
 
+    @media (max-width: 860px) {
+      .orderItem {
+        width: 100px;
+        height: 150px;
+      }
+    }
+
     .SelectQuantityClearButton {
       position: absolute;
       background: none;
@@ -89,5 +102,10 @@
         width: 10px;
       }
     }
+  }
+}
+@media (max-width: 860px) {
+  .downChoiceBoxController {
+    height: 180px;
   }
 }

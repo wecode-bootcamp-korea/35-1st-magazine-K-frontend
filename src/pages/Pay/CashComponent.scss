@@ -1,8 +1,8 @@
 @import '../../styles/variable.scss';
 .payBox {
   @include flex(none, none, column);
-  margin-left: 20vh;
   width: 60vh;
+  margin: 0 auto 0 auto;
 
   .totalProductAmount {
     @include flex(space-between, center, row);
@@ -53,10 +53,5 @@
       font-size: 16px;
       border: none;
     }
-  }
-}
-@media (max-width: 1760px) {
-  .payBox {
-    margin: auto;
   }
 }
