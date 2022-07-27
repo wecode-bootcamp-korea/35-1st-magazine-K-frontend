@@ -8,20 +8,53 @@
   }
 
   .sectionMenu {
+    display: flex;
+    flex-direction: column;
+    font-weight: bold;
     padding-bottom: 4rem;
-    & :hover {
-      transition: all 0.3s ease-in-out;
-      border-bottom: solid 0.35rem #222;
-      }
+    font-size: 4rem;
     
     .mainMenu{
-      font-size: 4rem;
+      padding-bottom: 0.5rem;
+      .mainMenuTitle {
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }
+        &:active {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }  
+      }
+      
     }
     
     .subMenu{
       padding-top: 0.7rem;
-      font-size: 4rem;
+      .subMenu1{
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }
+        &:active {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }  
+      }
+      .subMenu2{
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }
+        &:active {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+          }  
+      }
+
     }
+    
+    
   }
   
   .menuInfo{

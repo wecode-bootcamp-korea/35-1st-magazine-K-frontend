@@ -1,25 +1,43 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './MainSectionMenu.scss';
+
 function MainSectionMenu() {
-  const [mainSectionMenuData, setMainSectionMenu] = useState([]);
+  const [MagaZineK, setMagaZineK] = useState([]);
+  const [Design, setDesign] = useState([]);
 
   useEffect(() => {
-    fetch('/data/mainSectionMenudata.json')
+    fetch('/data/MagazineKData.json')
       .then(res => res.json())
       .then(data => {
-        setMainSectionMenu(() => data);
+        setMagaZineK(() => data);
+      });
+  }, []);
+
+  useEffect(() => {
+    fetch('/data/DeSignData.json')
+      .then(res => res.json())
+      .then(data => {
+        setDesign(() => data);
       });
   }, []);
 
   return (
     <div className="mainSectionMenu">
       <p className="sectionTitle">shop</p>
-      <div className="sectionMenu">
-        <h1 className="mainMenu">Magazine K,</h1>
-        <h2 className="subMenu">Design&Lifestyle, Tech</h2>
-      </div>
+      <span className="sectionMenu">
+        <span className="mainMenu">
+          <span className="mainMenuTitle">Magazine K</span>
+          <span> , </span>
+        </span>
+        <span className="subMenu">
+          <span className="subMenu1">Design&Lifestyle</span>
+          <span> , </span>
+          <span className="subMenu2">Tech</span>
+        </span>
+      </span>
       <div className="menuInfo">
-        {mainSectionMenuData.map(
+        {MagaZineK.map(
           ({ id, img, main_category_name, issue_number, title, desc }, i) => {
             return (
               <div className="info" key={id}>
@@ -37,7 +55,9 @@ function MainSectionMenu() {
         )}
       </div>
       <div className="sectionShopLink">
-        Shop<span className="Arrow">➡️</span>
+        <Link to="/ProductList">
+          Shop<span className="Arrow">➡️</span>
+        </Link>
       </div>
     </div>
   );
