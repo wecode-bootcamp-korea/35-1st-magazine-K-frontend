@@ -1,20 +1,17 @@
-img {
-  width: 300px;
-  height: 400px;
-}
-
 .mainSectionMenu {
   padding: 3.75rem 5rem;
+
   .sectionTitle {
+    margin-bottom: 2.5rem;
     color: #BFBFBF;
     font-size: 1.75rem;
-    margin-bottom: 2.5rem;
   }
+
   .sectionMenu {
     padding-bottom: 4rem;
     & :hover {
-      border-bottom: solid 0.35rem #222;
       transition: all 0.3s ease-in-out;
+      border-bottom: solid 0.35rem #222;
       }
     
     .mainMenu{
@@ -26,53 +23,68 @@ img {
       font-size: 4rem;
     }
   }
+  
   .menuInfo{
     display: flex;
 
     .info {
       display: flex;
-      flex-direction: column;
       width: 21rem;
-      flex: 0 0 auto;
       margin-right: 2.5rem;
-      margin-bottom: 2.5rem
-      
+      margin-bottom: 2.5rem;
+      flex-direction: column;
+      flex: 0 0 auto;
+
       img {
         width: 300px;
         height: 400px;
       }
 
       .halfImg {
-        width: 300px;
         height: 200px;
       }
         
       .category {
-        font-size: 1rem;
         display: flex;
         margin-top: 1.25rem;
+        font-size: 1rem;
 
         .cate {         
           margin-right: 1rem;
         }
-
       }
       
       .title{
+        padding-top: 1rem;
+        line-height: 1.2;
         font-size: 1.75rem;
         font-weight: 500;
-        line-height: 1.2;
-        padding-top: 1rem;
       }
       .desc{
         width: 260px;
-        height: 180px;
+        max-height:180px;
+        margin-top:1px;
         font-size: 1rem;
-        overflow: hidden;
         line-height: 1.6;
+        white-space: normal;
+        display: -webkit-box;
+        -webkit-line-clamp: 5;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
       }
     }
-
   }
-  
+
+  .sectionShopLink {
+    margin-top: 5.65rem;
+    opacity: 0.5;
+    text-align: right;
+    font-size: 6rem;
+
+    .Arrow {
+      position: relative;
+      top: .8rem;
+      padding-left: 1rem;
+    }
+  }
 }
