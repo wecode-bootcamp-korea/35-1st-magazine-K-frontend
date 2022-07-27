@@ -19,6 +19,8 @@
 
     .prodNumPerPage {
       @include flex(space-between, center);
+      position: absolute;
+      bottom: 8rem;
       margin-top: 30rem;
       width: 25rem;
       height: 2rem;
