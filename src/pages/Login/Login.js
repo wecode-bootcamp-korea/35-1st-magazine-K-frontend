@@ -33,7 +33,7 @@ const Login = () => {
 
   const goToMain = () => {
     if (testValue()) {
-      fetch('http://10.58.6.169:8000/user/login', {
+      fetch('http://10.58.4.155:8000/member/login', {
         method: 'POST',
         body: JSON.stringify({
           username: inputValue.idValue,
@@ -42,8 +42,8 @@ const Login = () => {
       })
         .then(response => response.json())
         .then(result => {
-          if (result.ACCESS_TOKEN) {
-            localStorage.setItem('login-token', result.ACCESS_TOKEN);
+          if (result.AUTHORIZATION) {
+            localStorage.setItem('login-token', result.AUTHORIZATION);
             navigate('/');
           } else {
             alert('등록되지않은 회원입니다.');
