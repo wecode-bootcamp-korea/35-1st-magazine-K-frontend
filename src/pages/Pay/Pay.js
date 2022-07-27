@@ -12,18 +12,14 @@ const Pay = () => {
     fetch('/data/PayProductData.json')
       .then(res => res.json())
       .then(result => {
-        // console.log('result :', result);
         setProductDataList(result);
       });
   }, []);
 
   const onDelete = targetId => {
-    // [1,3,4]
-    //const newProductList = productDataList.filter(it => it.id !== targetId);
     setProductDataList(productDataList =>
       productDataList.filter(it => it.id !== targetId)
-    ); // []
-    //console.log(productDataList);
+    );
   };
 
   const [checkedItems, setCheckedItems] = useState(new Set());
@@ -32,12 +28,9 @@ const Pay = () => {
     if (isChecked) {
       checkedItems.add(id);
       setCheckedItems(checkedItems);
-      console.log(checkedItems);
-      //console.log(productDataList);
     } else if (!isChecked && checkedItems.has(id)) {
       checkedItems.delete(id);
       setCheckedItems(checkedItems);
-      console.log(checkedItems);
     }
   };
 
@@ -82,6 +75,12 @@ const Pay = () => {
     setTotalPrice(sum);
   }, [productDataList]);
 
+  // const overLapProps = {
+  //   isAllChecked: { isAllChecked },
+  //   onDelete: { onDelete },
+  //   checkedItems: { checkedItems },
+  // };
+
   return (
     <div className="payPageWrapper">
       <div className="payPageBox">
@@ -91,6 +90,7 @@ const Pay = () => {
             isAllChecked={isAllChecked}
             onDelete={onDelete}
             checkedItems={checkedItems}
+            // {...overLapProps}
           />
           {productDataList.length > 0 &&
             productDataList.map(ProductData => {
@@ -99,12 +99,13 @@ const Pay = () => {
                   ProductData={ProductData}
                   key={ProductData.id}
                   id={ProductData.id}
-                  onDelete={onDelete}
                   checkedItemHandler={checkedItemHandler}
-                  isAllChecked={isAllChecked}
-                  checkedItems={checkedItems}
                   onIncrease={onIncrease}
                   onDecrease={onDecrease}
+                  isAllChecked={isAllChecked}
+                  onDelete={onDelete}
+                  checkedItems={checkedItems}
+                  // {...overLapProps}
                 />
               );
             })}

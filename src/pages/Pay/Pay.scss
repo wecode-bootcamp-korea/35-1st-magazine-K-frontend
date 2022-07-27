@@ -13,7 +13,6 @@
 
     .choiceBox {
       @include flex(none, none, column);
-      margin: auto;
       flex-grow: 1;
       flex-basis: 300px;
     }

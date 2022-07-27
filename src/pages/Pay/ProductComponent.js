@@ -11,19 +11,6 @@ const ProductComponent = ({
   onIncrease,
   onDecrease,
 }) => {
-  // console.log(ProductData);
-  // const [count, setCount] = useState(Number(ProductData.quantity));
-
-  // const onIncrease = () => {
-  //   setCount(count + 1);
-  // };
-
-  // const onDecrease = () => {
-  //   if (count !== 1) {
-  //     setCount(count - 1);
-  //   }
-  // };
-
   const [bChecked, setChecked] = useState(false);
 
   const checkHandler = ({ target }) => {
@@ -35,7 +22,6 @@ const ProductComponent = ({
 
   useEffect(() => allCheckHandler(), [isAllChecked]);
 
-  //console.log(bChecked);
   return (
     <div className="downChoiceBoxController">
       <div className="itemInformation">
@@ -50,7 +36,6 @@ const ProductComponent = ({
         </label>
         <p>
           <span>₩</span>
-          {/* {ProductData.price * count} */}
           {ProductData.price * ProductData.quantity}
         </p>
         <div className="SelectQuantityBox">

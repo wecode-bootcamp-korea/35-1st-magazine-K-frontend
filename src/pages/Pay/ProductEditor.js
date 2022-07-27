@@ -22,9 +22,7 @@ const ProductEditor = ({
         className="checkDelete"
         onClick={() => {
           if (window.confirm(`선택하신 상품을 삭제하시겠습니까?`)) {
-            // console.log(checkedItems);
             checkedItems.forEach(value => {
-              // console.log(value);
               checkedItems.delete(value);
               onDelete(value);
             });
