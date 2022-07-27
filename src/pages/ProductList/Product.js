@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod, category }) => {
+const Product = ({ prod }) => {
   const {
     main_category,
     main_img_url_1,
@@ -29,6 +29,7 @@ const Product = ({ prod, category }) => {
         },
         body: JSON.stringify({
           product: product_id,
+          count: 1,
         }),
       });
     } else {

@@ -14,6 +14,7 @@ const ProductList = () => {
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(10);
   const [sort, setSort] = useState(0);
+  const [isClickedList, setIsClickedList] = useState([]);
 
   const category = searchParams.get('category');
   const pageNum = Math.ceil(total / limit);
@@ -25,6 +26,13 @@ const ProductList = () => {
     setPage(() => page);
     offset = (page - 1) * limit;
     navigate(`?category=${category}`);
+  };
+
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
   };
 
   useEffect(() => {
@@ -49,11 +57,22 @@ const ProductList = () => {
       });
   }, [category, offset, limit, sort]);
 
+  useEffect(() => {
+    setIsClickedList(Array(MENU_LIST.length).fill(true));
+  }, []);
+
   return (
     <div className="productListPage">
       <div className="menuTapContainer">
-        {MENU_LIST.map(menu => (
-          <MenuTap key={menu.category} menu={menu} movePage={movePage} />
+        {MENU_LIST.map((menu, idx) => (
+          <MenuTap
+            key={menu.category}
+            menu={menu}
+            movePage={movePage}
+            isClickedList={isClickedList}
+            idx={idx}
+            scrollUp={scrollUp}
+          />
         ))}
         <div className="prodNumPerPage">
           <span className="totalNum">TOTAL {total}</span>
@@ -63,6 +82,7 @@ const ProductList = () => {
               className="numPerPage"
               onChange={e => {
                 setLimit(e.target.value);
+                scrollUp();
               }}
               defaultValue="10"
             >
@@ -76,6 +96,7 @@ const ProductList = () => {
               className="sort"
               onChange={e => {
                 setSort(e.target.value);
+                scrollUp();
               }}
             >
               <option>SORT BY</option>
@@ -99,6 +120,7 @@ const ProductList = () => {
           pgPrev={pgPrev}
           category={category}
           limit={limit}
+          scrollUp={scrollUp}
         />
       </div>
     </div>

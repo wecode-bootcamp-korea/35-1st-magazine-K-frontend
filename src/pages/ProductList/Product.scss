@@ -19,7 +19,7 @@
   }
 
   .prodInfoContainer {
-    @include flex(space-between, '', null);
+    @include flex(space-between);
     padding: 0.7rem 0.5rem 0.7rem 0.5rem;
     font-size: 1rem;
     font-weight: 500;
