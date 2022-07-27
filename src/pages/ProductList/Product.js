@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod }) => {
+const Product = ({ prod, modalState, setModalState }) => {
   const {
     main_category,
     main_img_url_1,
@@ -22,20 +22,19 @@ const Product = ({ prod }) => {
     const token = localStorage.getItem('login-token') || '';
 
     if (token) {
-      fetch('http://10.58.4.155:8000/orders/cart', {
+      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
         method: 'POST',
         headers: {
           AUTHORIZATION: token,
         },
         body: JSON.stringify({
-          product: product_id,
-          count: 1,
+          quantity: 1,
         }),
       })
         .then(res => res.json())
         .then(res => {
-          if (res.message === 'SUCCESS') {
-            alert('상품이 장바구니에 담겼습니다.');
+          if (res.result === 'SUCCESS') {
+            setModalState(true);
           }
         });
     } else {

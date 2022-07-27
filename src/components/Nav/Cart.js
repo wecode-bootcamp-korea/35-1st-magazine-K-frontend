@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ProdInCart from './ProdInCart';
 import './Cart.scss';
 
-const Cart = ({ toggleCart, isClickedCart }) => {
+const Cart = ({ toggleCart, modalState }) => {
   const [cartData, setCartData] = useState([]);
   const [totalOrderNum, setTotalOrderNum] = useState(0);
   const [priceList, setPriceList] = useState([]);
@@ -37,14 +37,11 @@ const Cart = ({ toggleCart, isClickedCart }) => {
 
   const sendToApiDelete = (product_id, prodIndex, orderNum) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
-      fetch('http://10.58.4.155:8000/orders/cart', {
+      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
         method: 'DELETE',
         headers: {
           AUTHORIZATION: token,
         },
-        body: JSON.stringify({
-          product: product_id,
-        }),
       })
         .then(res => res.json())
         .then(res => {
@@ -57,7 +54,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
 
   useEffect(() => {
     if (token) {
-      fetch('http://10.58.4.155:8000/orders/cart', {
+      fetch('http://10.58.4.114:8000/orders/cart', {
         method: 'GET',
         headers: {
           AUTHORIZATION: token,
@@ -65,7 +62,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
       })
         .then(res => res.json())
         .then(res => {
-          if (res.message === 'EMPTY_CART') {
+          if (res.message === 'EMPTY CART') {
             return;
           } else {
             setCartData(res.result);
@@ -77,7 +74,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
           }
         });
     }
-  }, [cartData, isClickedCart]);
+  }, [modalState]);
 
   useEffect(() => {
     setPriceList(Array(cartData.length).fill());
@@ -100,7 +97,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   }, [cartData, totalOrderNum, priceList]);
 
   return (
-    <div className={['cartModal', isClickedCart && 'cartModalOn'].join(' ')}>
+    <div className={['cartModal', modalState && 'cartModalOn'].join(' ')}>
       <div className="cartNav">
         <span>Cart[{totalOrderNum}]</span>
         <span onClick={toggleCart}>Close</span>
@@ -111,21 +108,24 @@ const Cart = ({ toggleCart, isClickedCart }) => {
             <p>장바구니가 비어 있습니다.</p>
           </div>
         )}
-        {cartData.map((cartData, idx) => {
-          return (
-            <ProdInCart
-              key={cartData.id}
-              cartData={cartData}
-              decreaseTotalOrderNum={decreaseTotalOrderNum}
-              increaseTotalOrderNum={increaseTotalOrderNum}
-              priceList={priceList}
-              idx={idx}
-              setPriceList={setPriceList}
-              sendToApiDelete={sendToApiDelete}
-              token={token}
-            />
-          );
-        })}
+        <div className="prodInCartContainer">
+          {cartData.map((cartData, idx) => {
+            return (
+              <ProdInCart
+                key={cartData.id}
+                cartData={cartData}
+                decreaseTotalOrderNum={decreaseTotalOrderNum}
+                increaseTotalOrderNum={increaseTotalOrderNum}
+                priceList={priceList}
+                idx={idx}
+                setPriceList={setPriceList}
+                sendToApiDelete={sendToApiDelete}
+                token={token}
+                modalState={modalState}
+              />
+            );
+          })}
+        </div>
       </div>
       <div className="cartFooter">
         <span>₩{totalPrice},000 VIEW ALL</span>

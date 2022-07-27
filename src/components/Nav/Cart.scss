@@ -1,42 +1,49 @@
 .cartModal {
-  position: fixed;
-  transition: right 0.1s linear;
-  top: 0;
-  right: -22rem;
   display: flex;
   flex-direction: column;
-  width: 340px;
+  position: fixed;
+  top: 0;
+  right: -22rem;
+  transition: right 0.1s linear;
+  overflow-y: scroll;
+  width: 21rem;
   height: 100%;
+  padding: 0 1rem;
   background-color: #000;
 
   .cartNav {
     display: flex;
     justify-content: space-between;
     padding: 15px 20px;
-    color: #fff;
+    color: #ffffff;
     font-size: 1.25rem;
     font-weight: 500;
   }
 
   .cartMain {
-    color: #fff;
+    color: #ffffff;
 
     .empty {
       padding-top: 8.125rem;
       font-size: 1rem;
       text-align: center;
     }
-  }
 
+    .prodInCartContainer {
+      margin-right: -1rem;
+      overflow-y: scroll;
+      height: 84vh;
+    }
+  }
   .cartFooter {
-    position: fixed;
-    bottom: 0;
-    width: 340px;
+    bottom: 0rem;
+    right: 1rem;
+    width: 20rem;
     text-align: center;
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
     font-size: 1.3rem;
-    color: #fff;
+    color: #ffffff;
     font-weight: 600;
     background-color: #000;
   }

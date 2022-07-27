@@ -6,7 +6,8 @@ import SearchPageList from './SearchPageList';
 import './Search.scss';
 
 const Search = () => {
-  const [searchedProdList, setSearchedProdList] = useState([]);
+  const [productList, setProductList] = useState([]);
+  const [searchedProductList, setSearchedProductList] = useState([]);
   const [searchParams] = useSearchParams();
   const [isfilled, setIsfilled] = useState(true);
   const navigate = useNavigate();
@@ -37,25 +38,29 @@ const Search = () => {
   const pgPrev = parseInt(page) - 1 ? parseInt(page) - 1 : 1;
   const pgNext = parseInt(page) === pageNum ? page : parseInt(page) + 1;
 
+  const filterSearchValue = productList.filter(prod => {
+    return prod.title.includes(searchValue) ? prod : '';
+  });
   useEffect(() => {
-    // fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
-    fetch('/data/SearchProd.json')
+    fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+      // fetch('/data/SearchProd.json')
       .then(res => res.json())
       .then(res => {
-        setSearchedProdList(res);
-        setTotal(res.length);
+        setProductList(res.result);
       });
   }, []);
 
   useEffect(() => {
     if (!searchValue) {
       setIsfilled(searchValue ? true : false);
-    } else if (searchedProdList.length === 0) {
+    } else if (productList.length === 0) {
       setIsfilled(false);
     } else {
       setIsfilled(true);
+      setSearchedProductList(filterSearchValue);
+      setTotal(filterSearchValue.length);
     }
-  }, [searchValue, searchedProdList.length]);
+  }, [searchValue, productList.length]);
 
   return (
     <div className="search">
@@ -76,7 +81,7 @@ const Search = () => {
       </form>
       {isfilled && (
         <div className="searchedProdsContainer">
-          {searchedProdList.slice(offset, limit * page).map(prod => {
+          {searchedProductList.slice(offset, limit * page).map(prod => {
             return <SearchedProd key={prod.id} prod={prod} />;
           })}
           <SearchPageList

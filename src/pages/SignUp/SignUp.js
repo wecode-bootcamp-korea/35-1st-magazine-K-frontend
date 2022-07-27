@@ -86,7 +86,7 @@ const SignUp = ({ inputData }) => {
 
   const goToMain = () => {
     if (testValue()) {
-      fetch('http://10.58.4.155:8000/member/join', {
+      fetch('http://10.58.4.114:8000/member/join', {
         method: 'POST',
         body: JSON.stringify({
           username: inputValue.idValue,

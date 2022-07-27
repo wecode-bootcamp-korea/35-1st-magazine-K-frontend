@@ -6,7 +6,7 @@ import Product from './Product';
 import PageList from './PageList';
 import './ProductList.scss';
 
-const ProductList = () => {
+const ProductList = ({ modalState, setModalState }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [prodList, setProdList] = useState([]);
@@ -40,16 +40,13 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.4.155:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `http://10.58.4.114:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
       // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
       .then(res => {
-        const prodNum = res.result.length - 1;
-        const dataList = res.result.slice(0, prodNum);
-        const total = res.result[prodNum].category_total;
-        setTotal(total);
-        setProdList(dataList);
+        setTotal(res.result[0].total_count);
+        setProdList(res.result[0].products);
 
         // setProdList(res);
         // setTotal(36);
@@ -99,10 +96,10 @@ const ProductList = () => {
               }}
             >
               <option>SORT BY</option>
-              <option value="0">최신순</option>
-              <option value="1">오래된 순</option>
-              <option value="2">높은가격 순</option>
-              <option value="3">낮은가격 순</option>
+              <option value="latest_issue">최신순</option>
+              <option value="oldest_issue">오래된 순</option>
+              <option value="high_price">높은가격 순</option>
+              <option value="low_price">낮은가격 순</option>
             </select>
           </div>
         </div>
@@ -110,7 +107,13 @@ const ProductList = () => {
       <div className="prodlistContainer">
         {/* {prodList.slice(offset, limit * page).map(prod => ( */}
         {prodList.map(prod => (
-          <Product key={Math.random()} prod={prod} category={category} />
+          <Product
+            key={Math.random()}
+            prod={prod}
+            category={category}
+            modalState={modalState}
+            setModalState={setModalState}
+          />
         ))}
         <PageList
           total={total}

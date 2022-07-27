@@ -5,17 +5,16 @@ import Cart from './Cart';
 import PopularSearch from './PopularSearch';
 import './Nav.scss';
 
-const Nav = () => {
+const Nav = ({ modalState, setModalState }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem('login-token');
   const [isClickedSearch, setIsClickedSearch] = useState(false);
-  const [isClickedCart, setIsClickedCart] = useState(false);
 
   const toggleSearch = () => {
     isClickedSearch ? setIsClickedSearch(false) : setIsClickedSearch(true);
   };
   const toggleCart = () => {
-    isClickedCart ? setIsClickedCart(false) : setIsClickedCart(true);
+    modalState ? setModalState(false) : setModalState(true);
   };
 
   const moveToSearch = e => {
@@ -88,7 +87,7 @@ const Nav = () => {
           </div>
         </>
       )}
-      <Cart toggleCart={toggleCart} isClickedCart={isClickedCart} />
+      <Cart toggleCart={toggleCart} modalState={modalState} />
     </div>
   );
 };
