@@ -77,7 +77,7 @@ const Pay = () => {
   useEffect(() => {
     let sum = 0;
     productDataList.map(ProductData => {
-      sum += ProductData.quantity * ProductData.price;
+      return (sum += ProductData.quantity * ProductData.price);
     });
     setTotalPrice(sum);
   }, [productDataList]);

@@ -34,6 +34,7 @@ const ProductComponent = ({
   const allCheckHandler = () => setChecked(isAllChecked);
 
   useEffect(() => allCheckHandler(), [isAllChecked]);
+
   //console.log(bChecked);
   return (
     <div className="downChoiceBoxController">
@@ -61,7 +62,7 @@ const ProductComponent = ({
             className="SelectQuantityMinus"
             onClick={() => onDecrease(id)}
           >
-            -
+            &#8722;
           </button>
         </div>
       </div>
