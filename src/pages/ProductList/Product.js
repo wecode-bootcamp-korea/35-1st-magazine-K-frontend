@@ -31,7 +31,13 @@ const Product = ({ prod }) => {
           product: product_id,
           count: 1,
         }),
-      });
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.message === 'SUCCESS') {
+            alert('상품이 장바구니에 담겼습니다.');
+          }
+        });
     } else {
       alert('로그인이 필요한 기능입니다.');
       navigate('/Login');

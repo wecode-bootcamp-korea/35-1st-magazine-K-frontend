@@ -9,7 +9,6 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
   const token = localStorage.getItem('login-token') || '';
-  let pageLoadCount = 0;
 
   function decreaseTotalOrderNum() {
     if (totalOrderNum < 2) {
@@ -25,10 +24,18 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     setTotalOrderNum(totalOrderNum => totalOrderNum + 1);
   }
 
-  const deleteProduct = (
-    product_id
-    // id, orderNum
-  ) => {
+  const deleteProduct = (prodIndex, orderNum) => {
+    setCartData(
+      cartData.filter((prod, idx) => {
+        if (prodIndex === idx) {
+          setTotalOrderNum(totalOrderNum - orderNum);
+        }
+        return prodIndex !== idx;
+      })
+    );
+  };
+
+  const sendToApiDelete = (product_id, prodIndex, orderNum) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
       fetch('http://10.58.4.155:8000/orders/cart', {
         method: 'DELETE',
@@ -40,16 +47,11 @@ const Cart = ({ toggleCart, isClickedCart }) => {
         }),
       })
         .then(res => res.json())
-        .then(result => result);
-
-      // setCartData(
-      //   cartData.filter(prod => {
-      //     if (prod.id === id) {
-      //       setTotalOrderNum(totalOrderNum - orderNum);
-      //     }
-      //     return prod.id !== id;
-      //   })
-      // );
+        .then(res => {
+          if (res.message === 'SUCCESS') {
+            deleteProduct(prodIndex, orderNum);
+          }
+        });
     }
   };
 
@@ -62,29 +64,29 @@ const Cart = ({ toggleCart, isClickedCart }) => {
         },
       })
         .then(res => res.json())
-        .then(data => {
-          if (data.message === 'EMPTY_CART') {
+        .then(res => {
+          if (res.message === 'EMPTY_CART') {
             return;
           } else {
-            setCartData(data.result);
+            setCartData(res.result);
             let sum = 0;
-            data.result.forEach(product => {
+            res.result.forEach(product => {
               sum = sum + product.quantity;
             });
             setTotalOrderNum(sum);
           }
         });
     }
-  }, [cartData]);
+  }, [cartData, isClickedCart]);
 
   useEffect(() => {
     setPriceList(Array(cartData.length).fill());
     setIsEmpty(cartData.length === 0 ? true : false);
-    if (pageLoadCount === 0) {
-    } else {
-      toggleCart();
-    }
-    pageLoadCount++;
+    // if (pageLoadCount === 0) {
+    // } else {
+    //   toggleCart();
+    // }
+    // pageLoadCount++;
   }, [cartData]);
   // console.log(cartData && cartData[0]?.priceList);
   // console.log(cartData && cartData[0]?.priceList.toString().slice(0, 2));
@@ -119,7 +121,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
               priceList={priceList}
               idx={idx}
               setPriceList={setPriceList}
-              deleteProduct={deleteProduct}
+              sendToApiDelete={sendToApiDelete}
               token={token}
             />
           );

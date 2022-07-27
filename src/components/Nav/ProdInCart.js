@@ -9,7 +9,7 @@ const ProdInCart = ({
   priceList,
   setPriceList,
   idx,
-  deleteProduct,
+  sendToApiDelete,
   token,
 }) => {
   const { product_id } = cartData;
@@ -76,7 +76,7 @@ const ProdInCart = ({
         </div>
         <p
           onClick={() => {
-            deleteProduct(cartData.id, orderNum);
+            sendToApiDelete(cartData.id, idx, orderNum);
           }}
           className="delete"
         >
