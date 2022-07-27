@@ -31,22 +31,14 @@ const SignUp = ({ inputData }) => {
   const handleChangeCheckstate = e => {
     const { name } = e.target;
     const { checked } = e.currentTarget;
-
-    if (checked) {
-      setInputValue({
-        ...inputValue,
-        [name]: checked,
-      });
-    } else {
-      setInputValue({
-        ...inputValue,
-        [name]: checked,
-      });
-    }
+    setInputValue({
+      ...inputValue,
+      [name]: checked,
+    });
   };
 
   const testValue = () => {
-    if (inputValue.idValue.length === 0 || !testId.test(inputValue.idValue)) {
+    if (!testId.test(inputValue.idValue)) {
       alert('아이디 항목은 필수 입력값입니다.');
       return false;
     } else if (!testPassword.test(inputValue.passwordValue)) {
@@ -115,27 +107,33 @@ const SignUp = ({ inputData }) => {
         {signUpInputData.map(inputData => {
           //console.log(inputData);
           return (
-            <div key={inputData.id}>
-              <p className="signUpItem">
-                {inputData.text}
-                <span
-                  className={
-                    (inputValue.idValue.length === 0 &&
-                      inputData.name === 'idValue') ||
-                    (inputValue.passwordValue.length === 0 &&
-                      inputData.name === 'passwordValue')
-                      ? inputData.warningClassName
-                      : inputData.noneWarningClassName
-                  }
-                >
-                  {inputData.warningMessage}
-                </span>
-              </p>
+            <div key={inputData.id} className="signUpInputMap">
+              <p className="signUpItem">{inputData.text}</p>
               <input
-                className="signUpItem"
+                className={
+                  (!testId.test(inputValue.idValue) &&
+                    inputData.name === 'idValue') ||
+                  (!testPassword.test(inputValue.passwordValue) &&
+                    inputData.name === 'passwordValue')
+                    ? 'signUpItemActive'
+                    : 'signUpItem'
+                }
                 name={inputData.name}
                 onChange={handleChangestate}
+                type={inputData.password}
               />
+              <span
+                className={
+                  (!testId.test(inputValue.idValue) &&
+                    inputData.name === 'idValue') ||
+                  (!testPassword.test(inputValue.passwordValue) &&
+                    inputData.name === 'passwordValue')
+                    ? inputData.warningClassName
+                    : inputData.noneWarningClassName
+                }
+              >
+                {inputData.warningMessage}
+              </span>
             </div>
           );
         })}
