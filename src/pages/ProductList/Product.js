@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod, category }) => {
+const Product = ({ prod }) => {
   const {
     main_category,
     main_img_url_1,

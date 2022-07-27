@@ -19,15 +19,15 @@ const ProdInCart = ({
     setOrderNum(cartData.quantity);
   }, []);
 
-  const sendToApi = () => {
+  const sendToApi = change => {
     fetch('http://10.58.4.155:8000/orders/cart', {
-      method: 'POST',
+      method: 'PATCH',
       headers: {
         AUTHORIZATION: token,
       },
       body: JSON.stringify({
         product: product_id,
-        calculation: 'addition',
+        calculation: change,
       }),
     });
   };
@@ -35,7 +35,7 @@ const ProdInCart = ({
   const increaseOrderNum = () => {
     setOrderNum(prev => prev + 1);
     increaseTotalOrderNum();
-    sendToApi();
+    sendToApi('addition');
   };
 
   const decreasseOrderNum = e => {
@@ -44,7 +44,7 @@ const ProdInCart = ({
     } else {
       setOrderNum(prev => prev - 1);
       decreaseTotalOrderNum();
-      sendToApi();
+      sendToApi('subtraction');
     }
   };
   priceList[idx] = cartData.price.toString().slice(0, 2) * orderNum;

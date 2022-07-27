@@ -9,6 +9,7 @@ const Cart = ({ toggleCart, isClickedCart }) => {
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
   const token = localStorage.getItem('login-token') || '';
+  let pageLoadCount = 0;
 
   function decreaseTotalOrderNum() {
     if (totalOrderNum < 2) {
@@ -24,16 +25,31 @@ const Cart = ({ toggleCart, isClickedCart }) => {
     setTotalOrderNum(totalOrderNum => totalOrderNum + 1);
   }
 
-  const deleteProduct = (id, orderNum) => {
+  const deleteProduct = (
+    product_id
+    // id, orderNum
+  ) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
-      setCartData(
-        cartData.filter(prod => {
-          if (prod.id === id) {
-            setTotalOrderNum(totalOrderNum - orderNum);
-          }
-          return prod.id !== id;
-        })
-      );
+      fetch('http://10.58.4.155:8000/orders/cart', {
+        method: 'DELETE',
+        headers: {
+          AUTHORIZATION: token,
+        },
+        body: JSON.stringify({
+          product: product_id,
+        }),
+      })
+        .then(res => res.json())
+        .then(result => result);
+
+      // setCartData(
+      //   cartData.filter(prod => {
+      //     if (prod.id === id) {
+      //       setTotalOrderNum(totalOrderNum - orderNum);
+      //     }
+      //     return prod.id !== id;
+      //   })
+      // );
     }
   };
 
@@ -59,11 +75,16 @@ const Cart = ({ toggleCart, isClickedCart }) => {
           }
         });
     }
-  }, []);
+  }, [cartData]);
 
   useEffect(() => {
     setPriceList(Array(cartData.length).fill());
     setIsEmpty(cartData.length === 0 ? true : false);
+    if (pageLoadCount === 0) {
+    } else {
+      toggleCart();
+    }
+    pageLoadCount++;
   }, [cartData]);
   // console.log(cartData && cartData[0]?.priceList);
   // console.log(cartData && cartData[0]?.priceList.toString().slice(0, 2));
