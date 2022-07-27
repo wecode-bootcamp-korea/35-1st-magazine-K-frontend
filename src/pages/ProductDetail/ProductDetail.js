@@ -6,8 +6,8 @@ import Review from './Review';
 
 const ProductDetail = () => {
   const [prdDetailData, setPrdDetailData] = useState([]);
-
   let { product_id } = useParams();
+  // console.log(product_id);
 
   // useEffect(() => {
   //   fetch('/data/ProductDetailData.json')
@@ -18,11 +18,11 @@ const ProductDetail = () => {
   // }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.155:8000/products/${product_id}`)
+    fetch(`http://10.58.4.114:8000/products/${product_id}`)
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
-        console.log(data.RESULTS);
+        // console.log(data.RESULTS);
         // setReviewData(data.RESULTS.reviews);
         // console.log(data.RESULTS);
       });
@@ -35,6 +35,7 @@ const ProductDetail = () => {
           <Detail
             key={prdDetailData.issue_number}
             prdDetailData={prdDetailData}
+            product_id={product_id}
           />
         );
       })}

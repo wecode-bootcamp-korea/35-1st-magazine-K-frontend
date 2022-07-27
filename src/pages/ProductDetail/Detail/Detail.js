@@ -1,8 +1,10 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState } from 'react';
 import './Detail.scss';
+import { useNavigate } from 'react-router-dom';
 
-const Detail = ({ prdDetailData }) => {
+const Detail = ({ prdDetailData, product_id }) => {
+  const navigate = useNavigate();
   const {
     published_date,
     description,
@@ -15,9 +17,8 @@ const Detail = ({ prdDetailData }) => {
     price,
     size,
     title,
-    product_id,
   } = prdDetailData;
-
+  // console.log(product_id);
   const priceThousand = price.toString().slice(0, 2);
 
   const [orderQuantity, setOrderQuantity] = useState(1);
@@ -72,16 +73,29 @@ const Detail = ({ prdDetailData }) => {
         <div className="prdDetailRight">
           <button
             onClick={() => {
-              fetch(`http://10.58.4.28:8000/orders/cart/${orderQuantity}`, {
-                method: 'POST',
-                headers: {
-                  AUTHORIZATION:
-                    'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6Mn0.jZsIe7OpUqOR0sOxxZCIOlb4yvTSSNJ0sDwCQqPZ6HU',
-                },
-                body: JSON.stringify({
-                  product: product_id,
-                }),
-              });
+              const token =
+                'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.Jj0ttgfscDSnVEHNxufaNCAfEtnw0aQiLhBt9t3KZRI' ||
+                '';
+
+              if (token) {
+                fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+                  method: 'POST',
+                  headers: {
+                    AUTHORIZATION: token,
+                  },
+                  body: JSON.stringify({ quantity: orderQuantity }),
+                })
+                  .then(res => res.json())
+                  .then(res => {
+                    // console.log(res);
+                    if (res.result === 'SUCCESS') {
+                      alert('상품이 장바구니에 담겼습니다.');
+                    }
+                  });
+              } else {
+                alert('로그인이 필요한 기능입니다.');
+                navigate('/Login');
+              }
             }}
           >
             ₩{priceThousand * orderQuantity},000 ADD TO CART
