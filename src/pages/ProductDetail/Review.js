@@ -42,12 +42,10 @@ function Review() {
         content: commentText,
         rating: rating,
       };
-      const copyComment = [...comment, textareaObj];
-      setComment(copyComment);
-      setCommentText('');
+
       // window.location.reload();
 
-      fetch(`http://10.58.4.155:8000/products/${product_id}/reviews`, {
+      fetch(`http://10.58.3.49:8000/products/${product_id}/reviews`, {
         //사용할 http 메소드
         method: 'POST',
         //토큰
@@ -60,9 +58,18 @@ function Review() {
           rating: rating,
           content: commentText,
         }),
-      });
-      // .then(res => res.json())
-      // .then(data => console.log(data));
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.MESSAGE === 'SUCCESS') {
+            const copyComment = [...comment, textareaObj];
+            setComment(copyComment);
+            setCommentText('');
+          } else {
+            alert('구매하셔야 리뷰등록 가능합니다!');
+            setCommentText('');
+          }
+        });
     }
   };
 
