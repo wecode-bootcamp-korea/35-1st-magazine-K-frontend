@@ -2,12 +2,13 @@
 
 .product {
   margin-bottom: 5rem;
+  width: 100%;
 
   .prodImgContainer {
     display: flex;
 
     .prodImgWrapper {
-      width: 50%;
+      width: 100%;
       padding: 0 0.5rem;
 
       .prodImage {

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ProdInCart from './ProdInCart';
 import './Cart.scss';
 
@@ -8,6 +9,7 @@ const Cart = ({ toggleCart, modalState }) => {
   const [priceList, setPriceList] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [isEmpty, setIsEmpty] = useState(true);
+  const navigate = useNavigate();
   const token = localStorage.getItem('login-token') || '';
 
   function decreaseTotalOrderNum() {
@@ -127,7 +129,17 @@ const Cart = ({ toggleCart, modalState }) => {
           })}
         </div>
       </div>
-      <div className="cartFooter">
+      <div
+        className="cartFooter"
+        onClick={() => {
+          if (token) {
+            navigate('/Pay');
+          } else {
+            alert('로그인이 필요한 기능입니다.');
+            navigate('/Login');
+          }
+        }}
+      >
         <span>₩{totalPrice},000 VIEW ALL</span>
       </div>
     </div>
