@@ -22,9 +22,9 @@ const Cart = ({ toggleCart, modalState }) => {
     }
   }
 
-  function increaseTotalOrderNum() {
+  const increaseTotalOrderNum = () => {
     setTotalOrderNum(totalOrderNum => totalOrderNum + 1);
-  }
+  };
 
   const deleteProduct = (prodIndex, orderNum) => {
     setCartData(
@@ -81,14 +81,7 @@ const Cart = ({ toggleCart, modalState }) => {
   useEffect(() => {
     setPriceList(Array(cartData.length).fill());
     setIsEmpty(cartData.length === 0 ? true : false);
-    // if (pageLoadCount === 0) {
-    // } else {
-    //   toggleCart();
-    // }
-    // pageLoadCount++;
   }, [cartData]);
-  // console.log(cartData && cartData[0]?.priceList);
-  // console.log(cartData && cartData[0]?.priceList.toString().slice(0, 2));
 
   useEffect(() => {
     let sum = 0;

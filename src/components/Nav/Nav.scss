@@ -22,26 +22,27 @@
 
     .firstMenuContainer {
       @include flex(center, center);
-      flex: 0.2;
+      flex: 0.25;
 
       .magazinIcon {
         width: 19px;
         height: 22px;
-        @include hoverWithMargin(0 20px);
+        @include hoverWithMargin(0 2rem);
       }
 
       .magazineMenu {
-        @include hoverWithMargin(0 20px);
+        @include hoverWithMargin(0 2rem);
       }
     }
 
     .secondMenuContainer {
       @include flex(center, center);
-      flex: 0.2;
+      flex: 0.25;
       margin-right: 50px;
 
       .menus {
-        @include hoverWithMargin(0 10px);
+        @include hoverWithMargin(0 1rem);
+        text-align: center;
       }
     }
   }

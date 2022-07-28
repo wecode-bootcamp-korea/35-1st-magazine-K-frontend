@@ -31,6 +31,7 @@ const SearchPageList = ({
               key={idx}
               className="pageLink"
               onClick={() => {
+                console.log(idx + 1);
                 movePage(idx + 1);
                 scrollUp();
               }}

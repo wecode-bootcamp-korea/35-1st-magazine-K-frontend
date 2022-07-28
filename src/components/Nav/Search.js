@@ -7,16 +7,20 @@ import './Search.scss';
 
 const Search = () => {
   const [productList, setProductList] = useState([]);
-  const [searchedProductList, setSearchedProductList] = useState([]);
+  // const [searchedProductList, setSearchedProductList] = useState([]);
   const [searchParams] = useSearchParams();
   const [isfilled, setIsfilled] = useState(true);
-  const navigate = useNavigate();
-  const searchValue = searchParams.get('keyword');
   const [total, setTotal] = useState(0);
   const [page, setPage] = useState(1);
+
+  const navigate = useNavigate();
+  const searchValue = searchParams.get('keyword');
   const limit = 12;
   const pageNum = Math.ceil(total / limit);
   let offset = (page - 1) * limit;
+
+  const pgPrev = parseInt(page) - 1 ? parseInt(page) - 1 : 1;
+  const pgNext = parseInt(page) === pageNum ? page : parseInt(page) + 1;
 
   const moveToSearch = e => {
     const searchValue = e.target.keyword.value;
@@ -35,20 +39,21 @@ const Search = () => {
     offset = (page - 1) * limit;
   };
 
-  const pgPrev = parseInt(page) - 1 ? parseInt(page) - 1 : 1;
-  const pgNext = parseInt(page) === pageNum ? page : parseInt(page) + 1;
+  // const filterSearchValue = productList.filter(prod => {
+  //   return prod.title.includes(searchValue) ? prod : '';
+  // });
 
-  const filterSearchValue = productList.filter(prod => {
-    return prod.title.includes(searchValue) ? prod : '';
-  });
   useEffect(() => {
-    fetch(`http://10.58.4.28:8000/search?keyword=${searchValue}`)
+    fetch(
+      `http://10.58.4.114:8000/products?offset=${offset}&limit=${limit}&keyword=${searchValue}`
+    )
       // fetch('/data/SearchProd.json')
       .then(res => res.json())
       .then(res => {
-        setProductList(res.result);
+        setProductList(res.result[0].products);
+        setTotal(res.result[0].total_count);
       });
-  }, []);
+  }, [offset, limit, searchValue]);
 
   useEffect(() => {
     if (!searchValue) {
@@ -57,8 +62,6 @@ const Search = () => {
       setIsfilled(false);
     } else {
       setIsfilled(true);
-      setSearchedProductList(filterSearchValue);
-      setTotal(filterSearchValue.length);
     }
   }, [searchValue, productList.length]);
 
@@ -81,7 +84,7 @@ const Search = () => {
       </form>
       {isfilled && (
         <div className="searchedProdsContainer">
-          {searchedProductList.slice(offset, limit * page).map(prod => {
+          {productList.map(prod => {
             return <SearchedProd key={prod.id} prod={prod} />;
           })}
           <SearchPageList
