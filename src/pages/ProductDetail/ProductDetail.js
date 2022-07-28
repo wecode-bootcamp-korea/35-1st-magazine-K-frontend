@@ -41,7 +41,6 @@ const ProductDetail = ({ setModalState }) => {
         );
       })}
       <Review />
-      {/* reviewData={reviewData} */}
     </>
   );
 };

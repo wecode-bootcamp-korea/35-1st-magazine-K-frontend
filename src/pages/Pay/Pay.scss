@@ -1,0 +1,25 @@
+@import '../../styles/variable.scss';
+.payPageWrapper {
+  @include flex(none, center, column);
+  min-height: 100vh;
+  padding-top: 15vh;
+  //min-width: 1500px;
+
+  .payPageBox {
+    @include flex(none, flex-start, row);
+    flex-wrap: wrap;
+    width: 85%;
+    gap: 7em;
+
+    .choiceBox {
+      @include flex(none, none, column);
+      flex-grow: 1;
+      flex-basis: 300px;
+    }
+  }
+  @media (max-width: 1360px) {
+    .payPageBox {
+      gap: 3em;
+    }
+  }
+}
