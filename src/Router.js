@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
@@ -16,10 +15,8 @@ import ProductList from './pages/ProductList/ProductList';
 import Cart from './pages/Cart/Cart';
 import Pay from './pages/Pay/Pay';
 
-// import 한 컴포넌트에 대한 경로를 각각 설정해줍니다.
 const Router = () => {
   const [modalState, setModalState] = useState(false);
-
   return (
     <BrowserRouter>
       <Nav modalState={modalState} setModalState={setModalState} />
@@ -28,7 +25,10 @@ const Router = () => {
         <Route path="/Search" element={<Search />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/Products/:product_id" element={<ProductDetail />} />
+        <Route
+          path="/Products/:product_id"
+          element={<ProductDetail setModalState={setModalState} />}
+        />
         <Route
           path="/ProductList"
           element={
@@ -38,6 +38,7 @@ const Router = () => {
             />
           }
         />
+        <Route path="/Cart" element={<Cart />} />
         <Route path="/Pay" element={<Pay />} />
       </Routes>
       <Footer />

@@ -1,28 +1,47 @@
-/* eslint-disable react/jsx-key */
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
+// import { render } from 'react-dom';
+import { useParams } from 'react-router-dom';
 import Detail from './Detail/Detail';
+import Review from './Review';
 
-const ProductDetail = () => {
+const ProductDetail = ({ setModalState }) => {
   const [prdDetailData, setPrdDetailData] = useState([]);
-  const location = useLocation();
-  // const cate_no = searchParams.get('cate_no');
-  // const issue_number = searchParams.get('issue_number');
-  // console.log(location.search);
+  let { product_id } = useParams();
+  // console.log(product_id);
+
+  // useEffect(() => {
+  //   fetch('/data/ProductDetailData.json')
+  //     .then(res => res.json())
+  //     .then(data => {
+  //       setPrdDetailData(data);
+  //     });
+  // }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.114:8000/products/detail${location.search}`)
+    fetch(`http://10.58.4.114:8000/products/${product_id}`)
       .then(res => res.json())
       .then(data => {
-        // console.log(data);
-        setPrdDetailData(data.result);
+        setPrdDetailData([data.RESULTS]);
+        // console.log(data.RESULTS);
+        // setReviewData(data.RESULTS.reviews);
+        // console.log(data.RESULTS);
       });
   }, []);
 
-  return prdDetailData.map(prdDetailData => {
-    return (
-      <Detail key={prdDetailData.issue_number} prdDetailData={prdDetailData} />
-    );
-  });
+  return (
+    <>
+      {prdDetailData.map(prdDetailData => {
+        return (
+          <Detail
+            key={prdDetailData.issue_number}
+            prdDetailData={prdDetailData}
+            product_id={product_id}
+            setModalState={setModalState}
+          />
+        );
+      })}
+      <Review />
+    </>
+  );
 };
 export default ProductDetail;

@@ -1,0 +1,93 @@
+
+
+.reviewContainer {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: auto;
+
+  .reviewTitle {
+    width: 900px;
+    padding-top: 6rem;
+    padding-bottom: 3rem;
+    text-align: center;
+
+    .review {
+      padding-bottom: 1.5rem ;
+      font-size: 2rem;
+    }
+
+    .reviewH1 {
+      padding-bottom: 1rem ;
+      font-size: 1.4rem;
+    }
+
+    .starRating {
+      padding-top: 0.8rem;
+      padding-bottom: 2.1rem;
+      
+      button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        cursor: pointer;
+      }
+        .on {
+          color: #000;
+        }
+        .off {
+          color: #ccc;
+        }
+
+      .star {
+        font-size: 4rem;
+      }
+      
+
+
+
+    }
+
+  }
+
+  .reviewForm {
+    text-align: center;
+    width: 900px;
+
+    #reviewTextarea {
+      border: 1px solid #BFBFBF;
+      
+      width: 900px;
+      height: 150px;
+      padding: 1rem;
+    }
+
+    #reviewTextarea::placeholder {
+      color: #BFBFBF;
+
+    }
+
+    .click {
+      display: flex;
+      justify-content: flex-end;
+      padding-top: 0.35rem;
+      padding-bottom: 1.5rem;
+      
+      .reviewSubmit{
+        padding-right: 0.5rem;
+        border: 1px solid black;
+        background-color: black;
+        color: white;
+        font-size: 0.75rem;
+        width: 260px;
+        height: 35px;
+      }
+    }
+  }
+
+  .reviewHr {
+    width: 900px;
+  }
+
+}
