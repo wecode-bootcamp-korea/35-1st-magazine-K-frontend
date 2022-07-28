@@ -130,12 +130,14 @@
     .orderItem {
       width: 130px;
       height: 180px;
+      object-fit: cover;
     }
 
     @media (max-width: 1360px) {
       .orderItem {
         width: 100px;
         height: 150px;
+        object-fit: cover;
       }
     }
 
