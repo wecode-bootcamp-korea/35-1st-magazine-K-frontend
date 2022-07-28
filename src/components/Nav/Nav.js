@@ -87,7 +87,11 @@ const Nav = ({ modalState, setModalState }) => {
           </div>
         </>
       )}
-      <Cart toggleCart={toggleCart} modalState={modalState} />
+      <Cart
+        toggleCart={toggleCart}
+        modalState={modalState}
+        setModalState={setModalState}
+      />
     </div>
   );
 };

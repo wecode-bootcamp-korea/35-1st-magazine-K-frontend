@@ -7,10 +7,11 @@ import './Pay.scss';
 
 const Pay = () => {
   const [productDataList, setProductDataList] = useState([]);
+  const [userpoint, setUserpoint] = useState(0);
   const token = localStorage.getItem('login-token') || '';
 
   useEffect(() => {
-    fetch(`http://10.58.4.114:8000/orders/cart`, {
+    fetch(`http://10.58.3.49:8000/orders/cart`, {
       method: 'GET',
       headers: {
         AUTHORIZATION: token,
@@ -18,12 +19,13 @@ const Pay = () => {
     })
       .then(res => res.json())
       .then(result => {
+        setUserpoint(result.result[0].user_point);
         setProductDataList(result.result[0].product);
       });
   }, [productDataList.length]);
 
   const patchOrderChange = (product_id, target) => {
-    fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+    fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
       method: 'PATCH',
       headers: {
         AUTHORIZATION: token,
@@ -36,7 +38,7 @@ const Pay = () => {
 
   const onDelete = product_id => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
-      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+      fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
         method: 'DELETE',
         headers: {
           AUTHORIZATION: token,
@@ -144,7 +146,11 @@ const Pay = () => {
               );
             })}
         </div>
-        <CashComponent totalPrice={totalPrice} />
+        <CashComponent
+          totalPrice={totalPrice}
+          userpoint={userpoint}
+          token={token}
+        />
       </div>
     </div>
   );

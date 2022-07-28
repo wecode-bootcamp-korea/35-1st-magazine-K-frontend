@@ -34,25 +34,25 @@ const ProductList = ({ modalState, setModalState }) => {
     });
   };
 
-  useEffect(() => {
-    setSearchParams({ category: 1 });
-  }, []);
-
-  useEffect(() => {
+  const getProductList = () => {
     fetch(
-      `http://10.58.4.114:8000/products?category=${parseInt(
+      `http://10.58.3.49:8000/products?category=${parseInt(
         category
       )}&offset=${offset}&limit=${limit}&sort_by=${sort}`
-      // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
       .then(res => {
         setTotal(res.result[0].total_count);
         setProdList(res.result[0].products);
-
-        // setProdList(res);
-        // setTotal(36);
       });
+  };
+
+  useEffect(() => {
+    setSearchParams({ category: 1 });
+  }, []);
+
+  useEffect(() => {
+    getProductList();
   }, [category, offset, limit, sort]);
 
   useEffect(() => {

@@ -76,7 +76,7 @@ const Detail = ({ prdDetailData, product_id, setModalState }) => {
               const token = localStorage.getItem('login-token') || '';
 
               if (token) {
-                fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+                fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
                   method: 'POST',
                   headers: {
                     AUTHORIZATION: token,

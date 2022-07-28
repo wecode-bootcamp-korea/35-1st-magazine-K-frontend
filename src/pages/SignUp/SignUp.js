@@ -15,6 +15,12 @@ const SignUp = () => {
     checkAll: '',
   });
 
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+    });
+  };
+
   const handleChangestate = (e, data) => {
     const { name, value } = e.target;
 
@@ -122,7 +128,7 @@ const SignUp = () => {
 
   const goToMain = () => {
     if (testValue()) {
-      fetch('http://10.58.4.114:8000/member/join', {
+      fetch('http://10.58.3.49:8000/member/join', {
         method: 'POST',
         body: JSON.stringify({
           username: inputValue.idValue,
@@ -138,6 +144,7 @@ const SignUp = () => {
             localStorage.setItem('login-token', result.ACCESS_TOKEN);
             alert('회원가입성공');
             navigate('/Login');
+            scrollUp();
           }
         });
     } else {

@@ -1,26 +1,26 @@
 [
   {
-  "id" : 1,
-  "img" : "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVnb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "main_category_name" : "MAGAZINE K",
-  "issue_number" : 17,
-  "title" : "LEGO",
-  "desc" : "전 세계인의 장난감 레고는 1932년 덴마크 빌룬 지역의 목공소에서 나무 장난감을 만드는 회사로 시작했습니다. 레고에 숨은 과학적 원리는 사용자들이 더욱 다양한 방식으로 제품을 사용하게 하고, 성별과 연령, 지식의 많고 적음과 관계없이 폭넓은 사랑을 받게 만든 원동력입니다."
-},
-{
-  "id" : 2,
-  "img" : "https://images.unsplash.com/photo-1592842414859-bca1263fabc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNoYW5lbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "main_category_name" : "MAGAZINE K",
-  "issue_number" : 5,
-  "title" : "CHANEL",
-  "desc" : "샤넬은 가브리엘 샤넬이 20세기 초 프랑스에 세운 세계적 럭셔리 기업으로, 파리 깡봉가 31번지라는 상징적 장소를 포함해 전 세계 190여 개에 달하는 패션 부티크를 두고 레디투웨어와 핸드백, 액세서리, 아이웨어부터 향수와 코스메틱, 화인 주얼리, 워치까지 다양한 범주의 제품을 선보입니다."
-},
-{
-  "id" : 3,
-  "img" : "https://images.unsplash.com/photo-1530115443702-c801f3e9937d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBhdGFnb25pYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
-  "main_category_name" : "MAGAZINE K",
-  "issue_number" : 2,
-  "title" : "PATAGONIA",
-  "desc" : "이본 쉬나드는 1964년 암벽등반 시 암벽을 해치지 않는 금속 못(피톤)을 제작하다, 1973년 친환경 아웃도어 의류 브랜드 파타고니아를 설립하게 됩니다. 최고의 품질을 고집하면서도 친환경 소재 개발에 매진하고 매년 매출의 1%를 사회 공헌 활동에 사용하는"
-}
+    "id": 1,
+    "img": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bGVnb3xlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "main_category_name": "MAGAZINE K",
+    "issue_number": 17,
+    "title": "LEGO",
+    "desc": "전 세계인의 장난감 레고는 1932년 덴마크 빌룬 지역의 목공소에서 나무 장난감을 만드는 회사로 시작했습니다. 레고에 숨은 과학적 원리는 사용자들이 더욱 다양한 방식으로 제품을 사용하게 하고, 성별과 연령, 지식의 많고 적음과 관계없이 폭넓은 사랑을 받게 만든 원동력입니다."
+  },
+  {
+    "id": 2,
+    "img": "https://images.unsplash.com/photo-1592842414859-bca1263fabc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTV8fGNoYW5lbHxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "main_category_name": "MAGAZINE K",
+    "issue_number": 5,
+    "title": "CHANEL",
+    "desc": "샤넬은 가브리엘 샤넬이 20세기 초 프랑스에 세운 세계적 럭셔리 기업으로, 파리 깡봉가 31번지라는 상징적 장소를 포함해 전 세계 190여 개에 달하는 패션 부티크를 두고 레디투웨어와 핸드백, 액세서리, 아이웨어부터 향수와 코스메틱, 화인 주얼리, 워치까지 다양한 범주의 제품을 선보입니다."
+  },
+  {
+    "id": 3,
+    "img": "https://images.unsplash.com/photo-1530115443702-c801f3e9937d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTJ8fHBhdGFnb25pYXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60",
+    "main_category_name": "MAGAZINE K",
+    "issue_number": 1,
+    "title": "PATAGONIA",
+    "desc": "이본 쉬나드는 1964년 암벽등반 시 암벽을 해치지 않는 금속 못(피톤)을 제작하다, 1973년 친환경 아웃도어 의류 브랜드 파타고니아를 설립하게 됩니다. 최고의 품질을 고집하면서도 친환경 소재 개발에 매진하고 매년 매출의 1%를 사회 공헌 활동에 사용하는"
+  }
 ]

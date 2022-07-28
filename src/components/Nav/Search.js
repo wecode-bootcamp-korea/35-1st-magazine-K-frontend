@@ -7,7 +7,6 @@ import './Search.scss';
 
 const Search = () => {
   const [productList, setProductList] = useState([]);
-  // const [searchedProductList, setSearchedProductList] = useState([]);
   const [searchParams] = useSearchParams();
   const [isfilled, setIsfilled] = useState(true);
   const [total, setTotal] = useState(0);
@@ -39,23 +38,7 @@ const Search = () => {
     offset = (page - 1) * limit;
   };
 
-  // const filterSearchValue = productList.filter(prod => {
-  //   return prod.title.includes(searchValue) ? prod : '';
-  // });
-
-  useEffect(() => {
-    fetch(
-      `http://10.58.4.114:8000/products?offset=${offset}&limit=${limit}&keyword=${searchValue}`
-    )
-      // fetch('/data/SearchProd.json')
-      .then(res => res.json())
-      .then(res => {
-        setProductList(res.result[0].products);
-        setTotal(res.result[0].total_count);
-      });
-  }, [offset, limit, searchValue]);
-
-  useEffect(() => {
+  const confirmSearchValueIsVaild = () => {
     if (!searchValue) {
       setIsfilled(searchValue ? true : false);
     } else if (productList.length === 0) {
@@ -63,6 +46,25 @@ const Search = () => {
     } else {
       setIsfilled(true);
     }
+  };
+
+  const getSearchData = () => {
+    fetch(
+      `http://10.58.3.49:8000/products?offset=${offset}&limit=${limit}&keyword=${searchValue}`
+    )
+      .then(res => res.json())
+      .then(res => {
+        setProductList(res.result[0].products);
+        setTotal(res.result[0].total_count);
+      });
+  };
+
+  useEffect(() => {
+    getSearchData();
+  }, [offset, limit, searchValue]);
+
+  useEffect(() => {
+    confirmSearchValueIsVaild();
   }, [searchValue, productList.length]);
 
   return (

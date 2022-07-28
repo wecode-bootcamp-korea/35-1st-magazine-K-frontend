@@ -18,7 +18,7 @@ const ProductDetail = ({ setModalState }) => {
   // }, []);
 
   useEffect(() => {
-    fetch(`http://10.58.4.114:8000/products/${product_id}`)
+    fetch(`http://10.58.3.49:8000/products/${product_id}`)
       .then(res => res.json())
       .then(data => {
         setPrdDetailData([data.RESULTS]);
