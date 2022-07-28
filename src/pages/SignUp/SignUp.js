@@ -26,7 +26,8 @@ const SignUp = ({ inputData }) => {
 
   const testPhoneNumber = /^\d+$/;
   const testId = /^[a-z0-9]{4,16}$/;
-  const testPassword = /[/?.,;:|*~`!^-_[\]+<>@#$%&='")(}{]/gi;
+  const testPassword =
+    /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
 
   const handleChangeCheckstate = e => {
     const { name } = e.target;
@@ -128,8 +129,8 @@ const SignUp = ({ inputData }) => {
                     inputData.name === 'idValue') ||
                   (!testPassword.test(inputValue.passwordValue) &&
                     inputData.name === 'passwordValue')
-                    ? inputData.warningClassName
-                    : inputData.noneWarningClassName
+                    ? 'idWarningMessageAtive'
+                    : 'WarningMessageNoneAtive'
                 }
               >
                 {inputData.warningMessage}
