@@ -11,7 +11,7 @@ const ProductDetail = () => {
   // console.log(location.search);
 
   useEffect(() => {
-    fetch(`http://10.58.4.28:8000/products/detail${location.search}`)
+    fetch(`http://10.58.4.114:8000/products/detail${location.search}`)
       .then(res => res.json())
       .then(data => {
         // console.log(data);

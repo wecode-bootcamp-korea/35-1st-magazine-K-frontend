@@ -86,7 +86,7 @@ const SignUp = ({ inputData }) => {
 
   const goToMain = () => {
     if (testValue()) {
-      fetch('http://10.58.6.169:8000/user/signup', {
+      fetch('http://10.58.4.114:8000/member/join', {
         method: 'POST',
         body: JSON.stringify({
           username: inputValue.idValue,
@@ -98,7 +98,7 @@ const SignUp = ({ inputData }) => {
       })
         .then(response => response.json())
         .then(result => {
-          if (result.ACCESS_TOKEN) {
+          if (result.MESSAGE === 'SUCCESS') {
             localStorage.setItem('login-token', result.ACCESS_TOKEN);
             alert('회원가입성공');
             navigate('/Login');

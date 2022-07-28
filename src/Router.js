@@ -1,31 +1,43 @@
 import React from 'react';
+import { useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Nav from './components/Nav/Nav';
 import Footer from './components/Footer/Footer';
 
 import ProductDetail from './pages/ProductDetail/ProductDetail';
 import Main from './pages/Main/Main';
-
+import Search from './components/Nav/Search';
 import Login from './pages/Login/Login';
 import SignUp from './pages/SignUp/SignUp';
 
 import ProductList from './pages/ProductList/ProductList';
+
 
 import Cart from './pages/Cart/Cart';
 import Pay from './pages/Pay/Pay';
 
 // import 한 컴포넌트에 대한 경로를 각각 설정해줍니다.
 const Router = () => {
+  const [modalState, setModalState] = useState(false);
+
   return (
     <BrowserRouter>
-      <Nav />
+      <Nav modalState={modalState} setModalState={setModalState} />
       <Routes>
         <Route path="/" element={<Main />} />
+        <Route path="/Search" element={<Search />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/ProductDetail" element={<ProductDetail />} />
-        <Route path="/ProductList" element={<ProductList />} />
-        <Route path="/Cart" element={<Cart />} />
+        <Route path="/Products/:product_id" element={<ProductDetail />} />
+        <Route
+          path="/ProductList"
+          element={
+            <ProductList
+              modalState={modalState}
+              setModalState={setModalState}
+            />
+          }
+        />
         <Route path="/Pay" element={<Pay />} />
       </Routes>
       <Footer />

@@ -6,7 +6,7 @@ import Product from './Product';
 import PageList from './PageList';
 import './ProductList.scss';
 
-const ProductList = () => {
+const ProductList = ({ modalState, setModalState }) => {
   const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams();
   const [prodList, setProdList] = useState([]);
@@ -14,6 +14,7 @@ const ProductList = () => {
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(10);
   const [sort, setSort] = useState(0);
+  const [isClickedList, setIsClickedList] = useState([]);
 
   const category = searchParams.get('category');
   const pageNum = Math.ceil(total / limit);
@@ -26,6 +27,12 @@ const ProductList = () => {
     offset = (page - 1) * limit;
     navigate(`?category=${category}`);
   };
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   useEffect(() => {
     setSearchParams({ category: 1 });
@@ -33,27 +40,35 @@ const ProductList = () => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.4.28:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `http://10.58.4.114:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
       // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())
       .then(res => {
-        const prodNum = res.result.length - 1;
-        const dataList = res.result.slice(0, prodNum);
-        const total = res.result[prodNum].category_total;
-        setTotal(total);
-        setProdList(dataList);
+        setTotal(res.result[0].total_count);
+        setProdList(res.result[0].products);
 
         // setProdList(res);
         // setTotal(36);
       });
   }, [category, offset, limit, sort]);
 
+  useEffect(() => {
+    setIsClickedList(Array(MENU_LIST.length).fill(true));
+  }, []);
+
   return (
     <div className="productListPage">
       <div className="menuTapContainer">
-        {MENU_LIST.map(menu => (
-          <MenuTap key={menu.category} menu={menu} movePage={movePage} />
+        {MENU_LIST.map((menu, idx) => (
+          <MenuTap
+            key={menu.category}
+            menu={menu}
+            movePage={movePage}
+            isClickedList={isClickedList}
+            idx={idx}
+            scrollUp={scrollUp}
+          />
         ))}
         <div className="prodNumPerPage">
           <span className="totalNum">TOTAL {total}</span>
@@ -63,6 +78,7 @@ const ProductList = () => {
               className="numPerPage"
               onChange={e => {
                 setLimit(e.target.value);
+                scrollUp();
               }}
               defaultValue="10"
             >
@@ -76,13 +92,14 @@ const ProductList = () => {
               className="sort"
               onChange={e => {
                 setSort(e.target.value);
+                scrollUp();
               }}
             >
               <option>SORT BY</option>
-              <option value="0">최신순</option>
-              <option value="1">오래된 순</option>
-              <option value="2">높은가격 순</option>
-              <option value="3">낮은가격 순</option>
+              <option value="latest_issue">최신순</option>
+              <option value="oldest_issue">오래된 순</option>
+              <option value="high_price">높은가격 순</option>
+              <option value="low_price">낮은가격 순</option>
             </select>
           </div>
         </div>
@@ -90,7 +107,13 @@ const ProductList = () => {
       <div className="prodlistContainer">
         {/* {prodList.slice(offset, limit * page).map(prod => ( */}
         {prodList.map(prod => (
-          <Product key={Math.random()} prod={prod} category={category} />
+          <Product
+            key={Math.random()}
+            prod={prod}
+            category={category}
+            modalState={modalState}
+            setModalState={setModalState}
+          />
         ))}
         <PageList
           total={total}
@@ -99,6 +122,7 @@ const ProductList = () => {
           pgPrev={pgPrev}
           category={category}
           limit={limit}
+          scrollUp={scrollUp}
         />
       </div>
     </div>

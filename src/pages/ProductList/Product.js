@@ -2,7 +2,7 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Product.scss';
 
-const Product = ({ prod, category }) => {
+const Product = ({ prod, setModalState }) => {
   const {
     main_category,
     main_img_url_1,
@@ -22,15 +22,21 @@ const Product = ({ prod, category }) => {
     const token = localStorage.getItem('login-token') || '';
 
     if (token) {
-      fetch('http://10.58.4.28:8000/orders/cart', {
+      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
         method: 'POST',
         headers: {
           AUTHORIZATION: token,
         },
         body: JSON.stringify({
-          product: product_id,
+          quantity: 1,
         }),
-      });
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.result === 'SUCCESS') {
+            setModalState(true);
+          }
+        });
     } else {
       alert('로그인이 필요한 기능입니다.');
       navigate('/Login');

@@ -11,6 +11,8 @@
 .menuTapOff {
   margin-bottom: 0.5rem;
   color: #cccccc;
+  transition: color 0.2s linear;
+
   &:hover {
     cursor: pointer;
   }

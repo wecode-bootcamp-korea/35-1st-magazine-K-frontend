@@ -2,12 +2,13 @@
 
 .product {
   margin-bottom: 5rem;
+  width: 100%;
 
   .prodImgContainer {
     display: flex;
 
     .prodImgWrapper {
-      width: 50%;
+      width: 100%;
       padding: 0 0.5rem;
 
       .prodImage {
@@ -15,11 +16,15 @@
         height: 100%;
         object-fit: cover;
       }
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 
   .prodInfoContainer {
-    @include flex(space-between, '', null);
+    @include flex(space-between);
     padding: 0.7rem 0.5rem 0.7rem 0.5rem;
     font-size: 1rem;
     font-weight: 500;

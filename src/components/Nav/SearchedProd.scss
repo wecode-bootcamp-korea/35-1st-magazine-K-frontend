@@ -1,0 +1,40 @@
+@import '../../styles/variables.scss';
+
+@mixin hover {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.prodContainer {
+  @include flex();
+  width: 33.3333%;
+  margin-bottom: 7rem;
+
+  .prodImgWrapper {
+    flex: 1;
+
+    .prodImg {
+      width: 100%;
+      object-fit: cover;
+
+      @include hover();
+    }
+  }
+  .prodInfoWrapper {
+    flex: 2;
+    margin-left: 1.5rem;
+    font-size: 1.3rem;
+    font-weight: 520;
+
+    .prodInfoTitle {
+      padding: 0.2rem;
+
+      @include hover();
+    }
+
+    .prodInfo {
+      padding: 0.2rem;
+    }
+  }
+}

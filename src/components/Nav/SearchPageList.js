@@ -1,14 +1,13 @@
 import React from 'react';
-import './PageList.scss';
+import './SearchPageList.scss';
 
-const PageList = ({
+const SearchPageList = ({
   total,
   limit,
-  movePage,
   pgNext,
   pgPrev,
-  category,
   scrollUp,
+  movePage,
 }) => {
   const pageNum = Math.ceil(total / limit);
 
@@ -20,7 +19,7 @@ const PageList = ({
           src="/images/prev.png"
           alt="prev"
           onClick={() => {
-            movePage(category, pgPrev);
+            movePage(pgPrev);
           }}
         />
       </li>
@@ -32,7 +31,8 @@ const PageList = ({
               key={idx}
               className="pageLink"
               onClick={() => {
-                movePage(category, idx + 1);
+                console.log(idx + 1);
+                movePage(idx + 1);
                 scrollUp();
               }}
             >
@@ -46,7 +46,7 @@ const PageList = ({
           src="/images/next.png"
           alt="next"
           onClick={() => {
-            movePage(category, pgNext);
+            movePage(pgNext);
           }}
         />
       </li>
@@ -54,4 +54,4 @@ const PageList = ({
   );
 };
 
-export default PageList;
+export default SearchPageList;
