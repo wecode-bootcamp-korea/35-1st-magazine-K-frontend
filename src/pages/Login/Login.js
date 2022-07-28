@@ -59,7 +59,7 @@ const Login = () => {
       <div className="loginBox">
         <div>
           <input
-            className="idInput"
+            className="input"
             name="idValue"
             placeholder="아이디"
             value={inputValue.idValue}
@@ -69,7 +69,7 @@ const Login = () => {
         </div>
         <div>
           <input
-            className="passwordInput"
+            className="input"
             name="passwordValue"
             type="password"
             placeholder="패스워드"

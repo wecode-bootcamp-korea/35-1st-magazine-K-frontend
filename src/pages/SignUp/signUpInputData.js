@@ -1,6 +1,3 @@
-//import React from 'react';
-//import SignUp from './SignUp';
-
 export const signUpInputData = [
   {
     id: 1,
@@ -10,7 +7,7 @@ export const signUpInputData = [
     value: 'idValue',
     warningClassName: 'idWarningMessageAtive',
     noneWarningClassName: 'WarningMessageNoneAtive',
-    warningMessage: '아이디는 영문소문자 또는 숫자 4~16자로 입력해주세요',
+    warningMessage: '아이디는 영문소문자 또는 숫자 4~16자로 입력해주세요.',
   },
   {
     id: 2,
@@ -21,7 +18,8 @@ export const signUpInputData = [
     onchange: 'handleChangestate',
     warningClassName: 'passwordWarningMessageAtive',
     noneWarningClassName: 'WarningMessageNoneAtive',
-    warningMessage: '대소문자/숫자/특수문자 중 3가지 이상 조합,8자~16자',
+    warningMessage: '대소문자/숫자/특수문자 중 3가지 이상 조합, 8자~16자',
+    password: 'password',
   },
   {
     id: 3,
@@ -29,6 +27,7 @@ export const signUpInputData = [
     name: 'rePasswordValue',
     text: '비밀번호 확인 * ',
     value: 'rePasswordValue',
+    password: 'password',
   },
   {
     id: 4,

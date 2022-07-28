@@ -4,17 +4,19 @@
   min-height: 100vh;
   .loginBox {
     @include flex(center, center, column);
-    .idInput {
-      border: 1px solid rgb(233, 233, 233);
-      width: 364px;
-      height: 42px;
-      margin-bottom: 15px;
+    .Input {
+      font-size: 1rem;
+      border: 1px solid #f2f2f2;
+      width: 470px;
+      height: 58px;
+      margin-bottom: 20px;
       padding-left: 15px;
     }
-    .passwordInput {
-      border: 1px solid rgb(233, 233, 233);
-      width: 364px;
-      height: 42px;
+    .input {
+      font-size: 1rem;
+      border: 1px solid #f2f2f2;
+      width: 470px;
+      height: 58px;
       margin-bottom: 15px;
       padding-left: 15px;
     }
@@ -24,24 +26,28 @@
       cursor: pointer;
     }
     .loginButton {
+      font-size: 1rem;
+      margin-top: 2.9rem;
+      // margin-bottom: 1rem;
       background-color: black;
       color: white;
-      width: 364px;
-      height: 42px;
-      border-radius: 7px;
+      width: 470px;
+      height: 58px;
+      border-radius: 4px;
       cursor: pointer;
     }
     .linkButton {
       button {
         color: rgb(184, 184, 184);
         font-weight: bold;
+        font-size: 1rem;
       }
 
       .borderLeftLine {
         margin-top: 40px;
-        margin-left: 12px;
-        padding-left: 12px;
-        border-left: 1px solid rgb(232, 232, 232);
+        margin-left: 1.3rem;
+        padding-left: 1.3rem;
+        border-left: 1px solid #f2f2f2;
       }
     }
   }
