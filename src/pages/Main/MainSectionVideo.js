@@ -4,7 +4,7 @@ import './MainSectionVideo.scss';
 export default function MainSectionVideo() {
   const videoEl = useRef(null);
 
-  const attemptPlay = () => {
+  const mainVideoPlay = () => {
     videoEl &&
       videoEl.current &&
       videoEl.current.play().catch(error => {
@@ -13,7 +13,7 @@ export default function MainSectionVideo() {
   };
 
   useEffect(() => {
-    attemptPlay();
+    mainVideoPlay();
   }, []);
 
   return (
