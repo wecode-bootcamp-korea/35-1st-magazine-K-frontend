@@ -20,7 +20,7 @@ const CashComponent = ({ totalPrice }) => {
         <p>총 결제금액</p>
         <p>
           <span>₩</span>
-          {totalPrice}
+          {totalPrice.toLocaleString('ko-KR')}
         </p>
       </div>
       <div className="Paybutton">

@@ -17,7 +17,7 @@ function Review() {
   // console.log(reviewData);
 
   useEffect(() => {
-    fetch(`http://10.58.4.155:8000/products/${product_id}/reviews`)
+    fetch(`http://10.58.4.114:8000/products/${product_id}/reviews`)
       .then(res => res.json())
       .then(data => {
         setReviewData(data.RESULTS);
@@ -45,7 +45,7 @@ function Review() {
 
       // window.location.reload();
 
-      fetch(`http://10.58.3.49:8000/products/${product_id}/reviews`, {
+      fetch(`http://10.58.4.114:8000/products/${product_id}/reviews`, {
         //사용할 http 메소드
         method: 'POST',
         //토큰

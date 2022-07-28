@@ -38,7 +38,7 @@ const Nav = ({ modalState, setModalState }) => {
           <div
             className="magazineMenu"
             onClick={() => {
-              navigate('/ProductList');
+              navigate('/ProductList?category=1');
               window.location.reload();
             }}
           >

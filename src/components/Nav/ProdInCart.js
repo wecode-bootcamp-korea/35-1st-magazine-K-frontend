@@ -43,6 +43,7 @@ const ProdInCart = ({
       sendToApi('subtraction');
     }
   };
+
   priceList[idx] = cartData.price.toString().slice(0, 2) * orderNum;
 
   useEffect(() => {

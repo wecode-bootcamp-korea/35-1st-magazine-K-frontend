@@ -13,9 +13,8 @@ const ProductList = ({ modalState, setModalState }) => {
   const [page, setPage] = useState(1);
   const [total, setTotal] = useState(0);
   const [limit, setLimit] = useState(10);
-  const [sort, setSort] = useState(0);
+  const [sort, setSort] = useState('latest_issue');
   const [isClickedList, setIsClickedList] = useState([]);
-
   const category = searchParams.get('category');
   const pageNum = Math.ceil(total / limit);
   let offset = (page - 1) * limit;
@@ -27,6 +26,7 @@ const ProductList = ({ modalState, setModalState }) => {
     offset = (page - 1) * limit;
     navigate(`?category=${category}`);
   };
+
   const scrollUp = () => {
     window.scroll({
       top: 0,
@@ -40,7 +40,9 @@ const ProductList = ({ modalState, setModalState }) => {
 
   useEffect(() => {
     fetch(
-      `http://10.58.4.114:8000/products?category=${category}&offset=${offset}&limit=${limit}&sort=${sort}`
+      `http://10.58.4.114:8000/products?category=${parseInt(
+        category
+      )}&offset=${offset}&limit=${limit}&sort_by=${sort}`
       // `/data/cate_no=44&pg=1.json`
     )
       .then(res => res.json())

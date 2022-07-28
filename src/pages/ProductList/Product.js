@@ -14,8 +14,16 @@ const Product = ({ prod, setModalState }) => {
   } = prod;
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
+
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+    });
+  };
+
   const moveDetailPage = () => {
     navigate(`/Products/${product_id}`);
+    scrollUp();
   };
 
   const addToCart = () => {

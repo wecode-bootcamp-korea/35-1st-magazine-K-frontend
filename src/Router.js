@@ -11,8 +11,6 @@ import SignUp from './pages/SignUp/SignUp';
 
 import ProductList from './pages/ProductList/ProductList';
 
-
-import Cart from './pages/Cart/Cart';
 import Pay from './pages/Pay/Pay';
 
 const Router = () => {
@@ -38,7 +36,6 @@ const Router = () => {
             />
           }
         />
-        <Route path="/Cart" element={<Cart />} />
         <Route path="/Pay" element={<Pay />} />
       </Routes>
       <Footer />

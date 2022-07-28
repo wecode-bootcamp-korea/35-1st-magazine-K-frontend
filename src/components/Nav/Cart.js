@@ -67,9 +67,9 @@ const Cart = ({ toggleCart, modalState }) => {
           if (res.message === 'EMPTY CART') {
             return;
           } else {
-            setCartData(res.result);
+            setCartData(res.result[0].product);
             let sum = 0;
-            res.result.forEach(product => {
+            res.result[0].product.forEach(product => {
               sum = sum + product.quantity;
             });
             setTotalOrderNum(sum);
@@ -107,7 +107,7 @@ const Cart = ({ toggleCart, modalState }) => {
           {cartData.map((cartData, idx) => {
             return (
               <ProdInCart
-                key={cartData.id}
+                key={cartData.product_id}
                 cartData={cartData}
                 decreaseTotalOrderNum={decreaseTotalOrderNum}
                 increaseTotalOrderNum={increaseTotalOrderNum}
@@ -127,6 +127,7 @@ const Cart = ({ toggleCart, modalState }) => {
         onClick={() => {
           if (token) {
             navigate('/Pay');
+            window.location.reload();
           } else {
             alert('로그인이 필요한 기능입니다.');
             navigate('/Login');
