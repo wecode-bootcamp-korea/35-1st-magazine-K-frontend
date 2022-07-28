@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 import Detail from './Detail/Detail';
 import Review from './Review';
 
-const ProductDetail = () => {
+const ProductDetail = ({ setModalState }) => {
   const [prdDetailData, setPrdDetailData] = useState([]);
   let { product_id } = useParams();
   // console.log(product_id);
@@ -36,6 +36,7 @@ const ProductDetail = () => {
             key={prdDetailData.issue_number}
             prdDetailData={prdDetailData}
             product_id={product_id}
+            setModalState={setModalState}
           />
         );
       })}

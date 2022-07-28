@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './Detail.scss';
 import { useNavigate } from 'react-router-dom';
 
-const Detail = ({ prdDetailData, product_id }) => {
+const Detail = ({ prdDetailData, product_id, setModalState }) => {
   const navigate = useNavigate();
   const {
     published_date,
@@ -89,7 +89,7 @@ const Detail = ({ prdDetailData, product_id }) => {
                   .then(res => {
                     // console.log(res);
                     if (res.result === 'SUCCESS') {
-                      alert('상품이 장바구니에 담겼습니다.');
+                      setModalState(true);
                     }
                   });
               } else {
