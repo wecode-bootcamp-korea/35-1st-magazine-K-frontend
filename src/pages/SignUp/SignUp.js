@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { signUpInputData } from './signUpInputData';
 import './SignUp.scss';
 
-const SignUp = ({ inputData }) => {
+const SignUp = () => {
   const navigate = useNavigate();
   const [inputValue, setInputValue] = useState({
     idValue: '',
@@ -15,19 +15,32 @@ const SignUp = ({ inputData }) => {
     checkAll: '',
   });
 
-  const handleChangestate = e => {
+  const handleChangestate = (e, data) => {
     const { name, value } = e.target;
 
     setInputValue({
       ...inputValue,
       [name]: value,
     });
+    //WarningMessageMarginFuntion(e, data);
   };
 
   const testPhoneNumber = /^\d+$/;
   const testId = /^[a-z0-9]{4,16}$/;
   const testPassword =
     /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/;
+
+  const conditions = {
+    phoneNumber: /^\d+$/.test(inputValue.phoneNumber),
+    idValue: /^[a-z0-9]{4,16}$/.test(inputValue.idValue),
+    passwordValue:
+      /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,}$/.test(
+        inputValue.passwordValue
+      ),
+    rePasswordValue: true,
+    name: true,
+    email: true,
+  };
 
   const handleChangeCheckstate = e => {
     const { name } = e.target;
@@ -77,6 +90,36 @@ const SignUp = ({ inputData }) => {
     return true;
   };
 
+  // const [WarningMessageMargin, setWarningMessageMargin] =
+  //   useState('signUpItemActive');
+
+  // const WarningMessageMarginFuntion = (e, inputData) => {
+  //   if (e.target.name === inputData) {
+  //     setWarningMessageMargin('signUpItem');
+  //   }
+  //   // console.log(inputData);
+  //   // if (testId.test(inputValue.idValue) && inputData.name === 'idValue') {
+  //   //   return setWarningMessageMargin('signUpItem');
+  //   // } else if (
+  //   //   testPassword.test(inputValue.passwordValue) &&
+  //   //   inputData.name === 'passwordValue'
+  //   // ) {
+  //   //   return setWarningMessageMargin('signUpItem');
+  //   // } else {
+  //   //   setWarningMessageMargin('signUpItemActive');
+  //   // }
+  // };
+  // className={
+  //   (!testId.test(inputValue.idValue) &&
+  //     inputData.name === 'idValue') ||
+  //   (!testPassword.test(inputValue.passwordValue) &&
+  //     inputData.name === 'passwordValue')
+  //     ? 'signUpItemActive'
+  //     : 'signUpItem'
+  // }
+
+  //const WarningMessageClassName =
+
   const goToMain = () => {
     if (testValue()) {
       fetch('http://10.58.4.155:8000/member/join', {
@@ -111,16 +154,11 @@ const SignUp = ({ inputData }) => {
             <div key={inputData.id} className="signUpInputMap">
               <p className="signUpItem">{inputData.text}</p>
               <input
-                className={
-                  (!testId.test(inputValue.idValue) &&
-                    inputData.name === 'idValue') ||
-                  (!testPassword.test(inputValue.passwordValue) &&
-                    inputData.name === 'passwordValue')
-                    ? 'signUpItemActive'
-                    : 'signUpItem'
-                }
+                className={`signUpItem ${
+                  conditions[inputData.name] ? '' : 'signUpItemActive'
+                }`}
                 name={inputData.name}
-                onChange={handleChangestate}
+                onChange={e => handleChangestate(e, inputData.name)}
                 type={inputData.password}
               />
               <span
