@@ -1,0 +1,19 @@
+@import '../../styles/variables.scss';
+
+.menuTapOn {
+  margin-bottom: 0.5rem;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.menuTapOff {
+  margin-bottom: 0.5rem;
+  color: #cccccc;
+  transition: color 0.2s linear;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

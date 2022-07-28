@@ -1,0 +1,52 @@
+@import '../../styles/variables.scss';
+
+.productListPage {
+  @include flex(center, flex-start);
+  position: relative;
+  height: 100%;
+  padding: 0 5rem 0 5rem;
+  margin-top: 5rem;
+
+  .menuTapContainer {
+    @include flex(flex-start, flex-start, column);
+    flex: 1;
+    position: sticky;
+    height: 98vh;
+    top: 9rem;
+    margin: 4rem 0 0 0;
+    font-size: 2.7rem;
+    font-weight: 500;
+
+    .prodNumPerPage {
+      @include flex(space-between, center);
+      position: absolute;
+      bottom: 12rem;
+      margin-top: 30rem;
+      width: 25rem;
+      height: 2rem;
+      font-size: 1rem;
+
+      .numPerPageWrapper {
+        .numPerPage {
+          border: none;
+          margin-left: 0.5rem;
+        }
+      }
+
+      .sortWrapper {
+        .sort {
+          border: none;
+        }
+      }
+    }
+  }
+
+  .prodlistContainer {
+    @include flex(center, flex-start);
+    flex-wrap: wrap;
+    flex: 1;
+    width: 10rem;
+    height: auto;
+    margin-top: 4rem;
+  }
+}
