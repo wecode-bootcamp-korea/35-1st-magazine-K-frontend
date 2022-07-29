@@ -1,11 +1,18 @@
 /* eslint-disable no-nested-ternary */
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './MainSectionMenu.scss';
 
 function MainSectionMenu() {
   const [MagaZineK, setMagaZineK] = useState([]);
   const [Design, setDesign] = useState([]);
+  const navigate = useNavigate();
+
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+    });
+  };
 
   useEffect(() => {
     fetch('/data/MagazineKData.json')
@@ -41,39 +48,36 @@ function MainSectionMenu() {
         {MagaZineK.map(
           ({ id, img, main_category_name, issue_number, title, desc }, i) => {
             return (
-              <Link
-                to={
-                  id === 1
-                    ? '/Products/17'
-                    : id === 2
-                    ? '/Products/5'
-                    : '/Products/2'
-                }
-                key={id}
-              >
-                <div className="info">
-                  <img
-                    className={i === 1 ? 'halfImg' : null}
-                    src={img}
-                    alt="1"
-                  />
-                  <div className="category">
-                    <span className="cate">{main_category_name}</span>
-                    <span className="issueNum">ISSUE NO.{issue_number}</span>
-                  </div>
-
-                  <div className="title">{title}</div>
-                  <p className="desc">{desc}</p>
+              <div key={id} className="info">
+                <img
+                  className={i === 1 ? 'halfImg' : null}
+                  src={img}
+                  alt="1"
+                  onClick={() => {
+                    navigate(`Products/${issue_number}`);
+                    scrollUp();
+                  }}
+                />
+                <div className="category">
+                  <span className="cate">{main_category_name}</span>
+                  <span className="issueNum">ISSUE NO.{issue_number}</span>
                 </div>
-              </Link>
+
+                <div className="title">{title}</div>
+                <p className="desc">{desc}</p>
+              </div>
             );
           }
         )}
       </div>
-      <div className="sectionShopLink">
-        <Link to="/ProductList">
-          Shop<span className="Arrow">➡️</span>
-        </Link>
+      <div
+        className="sectionShopLink"
+        onClick={() => {
+          navigate(`/ProductList?category=1`);
+          scrollUp();
+        }}
+      >
+        Shop<span className="Arrow">➡️</span>
       </div>
     </div>
   );

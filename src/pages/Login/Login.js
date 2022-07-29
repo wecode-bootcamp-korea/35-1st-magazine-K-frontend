@@ -33,7 +33,7 @@ const Login = () => {
 
   const goToMain = () => {
     if (testValue()) {
-      fetch('http://10.58.4.114:8000/member/login', {
+      fetch('http://10.58.3.49:8000/member/login', {
         method: 'POST',
         body: JSON.stringify({
           username: inputValue.idValue,

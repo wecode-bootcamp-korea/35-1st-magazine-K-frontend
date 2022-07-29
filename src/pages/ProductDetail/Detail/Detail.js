@@ -73,12 +73,10 @@ const Detail = ({ prdDetailData, product_id, setModalState }) => {
         <div className="prdDetailRight">
           <button
             onClick={() => {
-              const token =
-                'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MX0.Jj0ttgfscDSnVEHNxufaNCAfEtnw0aQiLhBt9t3KZRI' ||
-                '';
+              const token = localStorage.getItem('login-token') || '';
 
               if (token) {
-                fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+                fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
                   method: 'POST',
                   headers: {
                     AUTHORIZATION: token,

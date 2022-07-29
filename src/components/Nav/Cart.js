@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import ProdInCart from './ProdInCart';
 import './Cart.scss';
 
-const Cart = ({ toggleCart, modalState }) => {
+const Cart = ({ toggleCart, modalState, setModalState }) => {
   const [cartData, setCartData] = useState([]);
   const [totalOrderNum, setTotalOrderNum] = useState(0);
   const [priceList, setPriceList] = useState([]);
@@ -12,7 +12,14 @@ const Cart = ({ toggleCart, modalState }) => {
   const navigate = useNavigate();
   const token = localStorage.getItem('login-token') || '';
 
-  function decreaseTotalOrderNum() {
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const decreaseTotalOrderNum = () => {
     if (totalOrderNum < 2) {
       setTotalOrderNum(1);
     } else if (totalOrderNum < cartData.length + 1) {
@@ -20,7 +27,7 @@ const Cart = ({ toggleCart, modalState }) => {
     } else {
       setTotalOrderNum(totalOrderNum => totalOrderNum - 1);
     }
-  }
+  };
 
   const increaseTotalOrderNum = () => {
     setTotalOrderNum(totalOrderNum => totalOrderNum + 1);
@@ -37,9 +44,9 @@ const Cart = ({ toggleCart, modalState }) => {
     );
   };
 
-  const sendToApiDelete = (product_id, prodIndex, orderNum) => {
+  const deleteCartData = (product_id, prodIndex, orderNum) => {
     if (window.confirm('선택하신 상품을 삭제하시겠습니까?')) {
-      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+      fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
         method: 'DELETE',
         headers: {
           AUTHORIZATION: token,
@@ -54,9 +61,9 @@ const Cart = ({ toggleCart, modalState }) => {
     }
   };
 
-  useEffect(() => {
+  const getCartData = () => {
     if (token) {
-      fetch('http://10.58.4.114:8000/orders/cart', {
+      fetch('http://10.58.3.49:8000/orders/cart', {
         method: 'GET',
         headers: {
           AUTHORIZATION: token,
@@ -67,15 +74,27 @@ const Cart = ({ toggleCart, modalState }) => {
           if (res.message === 'EMPTY CART') {
             return;
           } else {
-            setCartData(res.result);
+            setCartData(res.result[0].product);
             let sum = 0;
-            res.result.forEach(product => {
+            res.result[0].product.forEach(product => {
               sum = sum + product.quantity;
             });
             setTotalOrderNum(sum);
           }
         });
     }
+  };
+
+  const calculateTotalPrice = () => {
+    let sum = 0;
+    priceList.forEach(el => {
+      sum = el + sum;
+    });
+    setTotalPrice(sum);
+  };
+
+  useEffect(() => {
+    getCartData();
   }, [modalState]);
 
   useEffect(() => {
@@ -84,11 +103,7 @@ const Cart = ({ toggleCart, modalState }) => {
   }, [cartData]);
 
   useEffect(() => {
-    let sum = 0;
-    priceList.forEach(el => {
-      sum = el + sum;
-    });
-    setTotalPrice(sum);
+    calculateTotalPrice();
   }, [cartData, totalOrderNum, priceList]);
 
   return (
@@ -107,14 +122,14 @@ const Cart = ({ toggleCart, modalState }) => {
           {cartData.map((cartData, idx) => {
             return (
               <ProdInCart
-                key={cartData.id}
+                key={cartData.product_id}
                 cartData={cartData}
                 decreaseTotalOrderNum={decreaseTotalOrderNum}
                 increaseTotalOrderNum={increaseTotalOrderNum}
                 priceList={priceList}
                 idx={idx}
                 setPriceList={setPriceList}
-                sendToApiDelete={sendToApiDelete}
+                deleteCartData={deleteCartData}
                 token={token}
                 modalState={modalState}
               />
@@ -127,6 +142,8 @@ const Cart = ({ toggleCart, modalState }) => {
         onClick={() => {
           if (token) {
             navigate('/Pay');
+            scrollUp();
+            setModalState(false);
           } else {
             alert('로그인이 필요한 기능입니다.');
             navigate('/Login');

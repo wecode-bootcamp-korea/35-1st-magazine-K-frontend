@@ -14,15 +14,23 @@ const Product = ({ prod, setModalState }) => {
   } = prod;
   const navigate = useNavigate();
   const priceThousand = price.toString().slice(0, 2);
-  const moveDetailPage = () => {
-    navigate(`/Products/${product_id}`);
+
+  const scrollUp = () => {
+    window.scroll({
+      top: 0,
+    });
   };
 
-  const addToCart = () => {
+  const moveDetailPage = () => {
+    navigate(`/Products/${product_id}`);
+    scrollUp();
+  };
+
+  const postCartData = () => {
     const token = localStorage.getItem('login-token') || '';
 
     if (token) {
-      fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+      fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
         method: 'POST',
         headers: {
           AUTHORIZATION: token,
@@ -73,7 +81,7 @@ const Product = ({ prod, setModalState }) => {
         <div
           className="addToCart"
           onClick={() => {
-            addToCart();
+            postCartData();
           }}
         >
           ADD TO CART

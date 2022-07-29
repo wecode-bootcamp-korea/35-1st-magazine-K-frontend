@@ -10,6 +10,7 @@ const ProductComponent = ({
   checkedItems,
   onIncrease,
   onDecrease,
+  patchOrderChange,
 }) => {
   const [bChecked, setChecked] = useState(false);
 
@@ -32,38 +33,40 @@ const ProductComponent = ({
             checked={bChecked}
             onChange={e => checkHandler(e)}
           />
-          {ProductData.name}
+          {ProductData.title}
         </label>
         <p>
           <span>₩</span>
-          {ProductData.price * ProductData.quantity}
+          {(ProductData.price * ProductData.quantity).toLocaleString('ko-KR')}
         </p>
         <div className="SelectQuantityBox">
           {ProductData.quantity}
-          <button className="SelectQuantityPlus" onClick={() => onIncrease(id)}>
+          <button
+            className="SelectQuantityPlus"
+            onClick={() => {
+              onIncrease(id);
+              patchOrderChange(id, 'addition');
+            }}
+          >
             +
           </button>
           <button
             className="SelectQuantityMinus"
-            onClick={() => onDecrease(id)}
+            onClick={() => {
+              onDecrease(id);
+              patchOrderChange(id, 'subtraction');
+            }}
           >
             &#8722;
           </button>
         </div>
       </div>
       <div className="SelectQuantityImgBox">
-        <img src={ProductData.src} className="orderItem" alt="Product" />
+        <img src={ProductData.picture} className="orderItem" alt="Product" />
         <button
           className="SelectQuantityClearButton"
           onClick={() => {
-            if (
-              window.confirm(
-                `${ProductData.id}번째 선택하신 상품을 삭제하시겠습니까?`
-              )
-            ) {
-              checkedItems.delete(ProductData.id);
-              onDelete(ProductData.id);
-            }
+            onDelete(id);
           }}
         >
           <img src="/images/Close.png" alt="close" className="closeButton" />

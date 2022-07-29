@@ -5,7 +5,6 @@
   top: 0;
   right: -22rem;
   transition: right 0.1s linear;
-  overflow-y: scroll;
   width: 21rem;
   height: 100%;
   padding: 0 1rem;
@@ -33,6 +32,10 @@
       margin-right: -1rem;
       overflow-y: scroll;
       height: 84vh;
+
+      &::-webkit-scrollbar {
+        display: none;
+      }
     }
   }
   .cartFooter {

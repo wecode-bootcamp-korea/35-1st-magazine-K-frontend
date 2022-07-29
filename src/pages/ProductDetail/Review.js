@@ -10,6 +10,7 @@ function Review() {
   const [comment, setComment] = useState([]);
   const [reviewData, setReviewData] = useState([]);
   let { product_id } = useParams();
+  const token = localStorage.getItem('login-token') || '';
 
   useEffect(() => {
     setComment(reviewData);
@@ -17,7 +18,7 @@ function Review() {
   // console.log(reviewData);
 
   useEffect(() => {
-    fetch(`http://10.58.4.155:8000/products/${product_id}/reviews`)
+    fetch(`http://10.58.3.49:8000/products/${product_id}/reviews`)
       .then(res => res.json())
       .then(data => {
         setReviewData(data.RESULTS);
@@ -50,8 +51,7 @@ function Review() {
         method: 'POST',
         //토큰
         headers: {
-          Authorization:
-            'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJJRCI6Mn0.o_wFDI-SqSVi5OEw7Bzjv7cKOJHc85ErxtbMyNz1S1c',
+          Authorization: token,
         },
         //서버에 보낼 데이터 (별점, 리뷰)
         body: JSON.stringify({
@@ -65,6 +65,7 @@ function Review() {
             const copyComment = [...comment, textareaObj];
             setComment(copyComment);
             setCommentText('');
+            window.location.reload();
           } else {
             alert('구매하셔야 리뷰등록 가능합니다!');
             setCommentText('');

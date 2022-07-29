@@ -9,14 +9,14 @@ const ProdInCart = ({
   priceList,
   setPriceList,
   idx,
-  sendToApiDelete,
+  deleteCartData,
   token,
 }) => {
   const { product_id } = cartData;
   const [orderNum, setOrderNum] = useState(cartData.quantity);
 
-  const sendToApi = change => {
-    fetch(`http://10.58.4.114:8000/orders/cart/${product_id}`, {
+  const patchCartData = change => {
+    fetch(`http://10.58.3.49:8000/orders/cart/${product_id}`, {
       method: 'PATCH',
       headers: {
         AUTHORIZATION: token,
@@ -31,7 +31,7 @@ const ProdInCart = ({
   const increaseOrderNum = () => {
     setOrderNum(prev => prev + 1);
     increaseTotalOrderNum();
-    sendToApi('addition');
+    patchCartData('addition');
   };
 
   const decreasseOrderNum = e => {
@@ -40,9 +40,10 @@ const ProdInCart = ({
     } else {
       setOrderNum(prev => prev - 1);
       decreaseTotalOrderNum();
-      sendToApi('subtraction');
+      patchCartData('subtraction');
     }
   };
+
   priceList[idx] = cartData.price.toString().slice(0, 2) * orderNum;
 
   useEffect(() => {
@@ -76,7 +77,7 @@ const ProdInCart = ({
         </div>
         <p
           onClick={() => {
-            sendToApiDelete(product_id, idx, orderNum);
+            deleteCartData(product_id, idx, orderNum);
           }}
           className="delete"
         >

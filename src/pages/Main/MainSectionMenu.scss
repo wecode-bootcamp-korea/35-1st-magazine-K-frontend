@@ -3,7 +3,7 @@
 
   .sectionTitle {
     margin-bottom: 2.5rem;
-    color: #BFBFBF;
+    color: #bfbfbf;
     font-size: 1.75rem;
   }
 
@@ -13,51 +13,47 @@
     font-weight: bold;
     padding-bottom: 4rem;
     font-size: 4rem;
-    
-    .mainMenu{
+
+    .mainMenu {
       padding-bottom: 0.5rem;
       .mainMenuTitle {
         &:hover {
           transition: all 0.3s ease-in-out;
           border-bottom: solid 0.35rem #222;
-          }
+        }
         &:active {
           transition: all 0.3s ease-in-out;
           border-bottom: solid 0.35rem #222;
-          }  
+        }
       }
-      
     }
-    
-    .subMenu{
-      padding-top: 0.7rem;
-      .subMenu1{
-        &:hover {
-          transition: all 0.3s ease-in-out;
-          border-bottom: solid 0.35rem #222;
-          }
-        &:active {
-          transition: all 0.3s ease-in-out;
-          border-bottom: solid 0.35rem #222;
-          }  
-      }
-      .subMenu2{
-        &:hover {
-          transition: all 0.3s ease-in-out;
-          border-bottom: solid 0.35rem #222;
-          }
-        &:active {
-          transition: all 0.3s ease-in-out;
-          border-bottom: solid 0.35rem #222;
-          }  
-      }
 
+    .subMenu {
+      padding-top: 0.7rem;
+      .subMenu1 {
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+        }
+        &:active {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+        }
+      }
+      .subMenu2 {
+        &:hover {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+        }
+        &:active {
+          transition: all 0.3s ease-in-out;
+          border-bottom: solid 0.35rem #222;
+        }
+      }
     }
-    
-    
   }
-  
-  .menuInfo{
+
+  .menuInfo {
     display: flex;
 
     .info {
@@ -75,28 +71,32 @@
 
       .halfImg {
         height: 200px;
+
+        &:hover {
+          cursor: pointer;
+        }
       }
-        
+
       .category {
         display: flex;
         margin-top: 1.25rem;
         font-size: 1rem;
 
-        .cate {         
+        .cate {
           margin-right: 1rem;
         }
       }
-      
-      .title{
+
+      .title {
         padding-top: 1rem;
         line-height: 1.2;
         font-size: 1.75rem;
         font-weight: 500;
       }
-      .desc{
+      .desc {
         width: 260px;
-        max-height:180px;
-        margin-top:1px;
+        max-height: 180px;
+        margin-top: 1px;
         font-size: 1rem;
         line-height: 1.6;
         white-space: normal;
@@ -116,7 +116,7 @@
 
     .Arrow {
       position: relative;
-      top: .8rem;
+      top: 0.8rem;
       padding-left: 1rem;
     }
   }
