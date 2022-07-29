@@ -66,5 +66,9 @@
 
 3. Notion
 회의정리 기록, 오늘의 공유/질문 사항, 현재 진행 사항, blocker 공유, 기능 단위 페이지 셍성 후 공유 및 기록
- 
+ <img width="666" alt="노정은01" src="https://user-images.githubusercontent.com/98936671/181712824-0bef2c9c-2d4f-4366-a1c6-b3cb902c4a6c.png">
+<img width="518" alt="노정은02" src="https://user-images.githubusercontent.com/98936671/181712830-d63e20f0-44f1-425d-af41-cdcb4eaf467d.png">
+<img width="321" alt="노정은03" src="https://user-images.githubusercontent.com/98936671/181712833-a8c7efd4-bfbb-42d2-9a40-42d827b24866.png">
+<img width="308" alt="노정은04" src="https://user-images.githubusercontent.com/98936671/181712835-e4037e1f-78e4-4062-9fba-06c0eb8fbbc0.png">
+
  
