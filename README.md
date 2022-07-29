@@ -23,14 +23,11 @@
  
  - 구현기능
  구현한 기능을 간략하게 소개하자면
- <br />
  회원가입 후 로그인 -> 로그인 한 사용자 장바구니에 담은 후 결제 -> 베송받은 후 리뷰기능 작성
-  <br />
  커머스 사이트의 기본적인 FLOW를 갖추고 있습니다.
  
  - 사용기술
  Front-end: HTML, SCSS, Javascript, React, React-Router
-  <br />
  Back-end: Phython, Django, MySQL
  
  
@@ -38,13 +35,9 @@
  
  ## 팀원 소개
  - FRONT
-  <br />
  주원영, 노정은, 길현민
-  <br />
-  <br />
-
+ 
  - BACK
-  <br />
  김동규, 황유정
  
  
