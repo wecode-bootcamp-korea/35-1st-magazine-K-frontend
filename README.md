@@ -44,15 +44,44 @@
  ------
  
  ## FRONTEND 필수구현 기능
- 1. 회원가입 페이지
- 2. 로그인 페이지
- 3. 메인 페이지
- 4. 제품 리스트 페이지
- 5. 제품 상세 페이지
- 6. 장바구니 모달
- 7. 장바구니 메인 & 결제
- 8. 네브바
- 9. 푸터
+ 
+ ### 1. 회원가입 페이지
+ 
+ ### 2. 로그인 페이지
+ 
+ ### 3. 메인 페이지
+ 
+ ### 4. 제품 리스트 페이지
+ #### 카테고리 메뉴 탭 포커스온 기능 구현
+  - 각 카테고리 메뉴 탭을 컴포넌트화 시키고 부모 컴포넌트에서 useState값 선언, 이 state를 props로 각 컴포넌트에 넘겨준다.
+  - state값(true or false)을 활용하여 메뉴 탭이 포커스 on or off되도록 css를 설정.
+  - 한 카테고리 메뉴 탭이 클릭되면 true, 나머지 메뉴 탭들은 false가 되도록 로직 구현. 
+  
+ #### query parameter를 이용한 카테고리별 데이터 호출
+  - 카테고리 메뉴탭을 클릭하면 url에 ?category={number}의 형식으로 나타나게끔 로직을 구현하고
+  - searchParams를 이용해 category 값을 받아 API의 endpoint로 요청한다.
+  - 백엔드 API는 해당하는 데이터들을 전송해준다.
+  
+ #### pagenation 및 sort 기능 구현
+  - page당 상품 갯수(limit) 버튼을 추가해 사용자가 값을 입력하면, 이 값을 API endpoint로 전달한다.
+  - 이때 API로부터 전체 상품 갯수(total)를 전달받아, total과 limit을 사용해 전체 페이지 수를 구한다.
+  - 전체 페이지수를 기준으로 페이지네이션 로직을 구현하고, 페이지 수를 클릭할 때마다 이값도 API에 전달해준다.
+  - 백엔드 API는 limit, page, category 값을 받아 해당하는 데이터리스트를 전송한다.
+  - sort 버튼을 추가해 사용자가 값을 입력하면 백엔드와 약속한 string을 API에 보내준다.
+  - 백엔드 API에서 해당하는 정렬 순서로 데이터리스트를 보내준다.
+  
+ ### 5. 제품 상세 페이지
+ 
+ ### 6. 네비게이션 바 
+  - 로그인 토큰 값을 기준으로 메뉴 탭 구성이 변경되는 기능 구현
+ 
+  - 검색 기능 구현
+ 
+  - 장바구니 모달창 기능 구현
+ 
+ ### 7. 장바구니 메인 & 결제
+ 
+ ### 8. 푸터
 
 
 -------
@@ -60,13 +89,15 @@
 ## 프로젝트 협업 도구
 1. Trello
 기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
+![image](https://user-images.githubusercontent.com/97422072/181877342-8c063ea9-3554-477b-b2b8-31b9fd5ba3bc.png)
 
 2. Slack
 팀원간의 실시간 소통 창구
+![image](https://user-images.githubusercontent.com/97422072/181877235-1fb94559-52a4-403c-a3f9-4daf4c8e7b0c.png)
 
 3. Notion
 회의정리 기록, 오늘의 공유/질문 사항, 현재 진행 사항, blocker 공유, 기능 단위 페이지 셍성 후 공유 및 기록
- <img width="666" alt="노정은01" src="https://user-images.githubusercontent.com/98936671/181712824-0bef2c9c-2d4f-4366-a1c6-b3cb902c4a6c.png">
+<img width="666" alt="노정은01" src="https://user-images.githubusercontent.com/98936671/181712824-0bef2c9c-2d4f-4366-a1c6-b3cb902c4a6c.png">
 <img width="518" alt="노정은02" src="https://user-images.githubusercontent.com/98936671/181712830-d63e20f0-44f1-425d-af41-cdcb4eaf467d.png">
 <img width="321" alt="노정은03" src="https://user-images.githubusercontent.com/98936671/181712833-a8c7efd4-bfbb-42d2-9a40-42d827b24866.png">
 <img width="308" alt="노정은04" src="https://user-images.githubusercontent.com/98936671/181712835-e4037e1f-78e4-4062-9fba-06c0eb8fbbc0.png">
