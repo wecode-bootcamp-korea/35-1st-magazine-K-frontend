@@ -106,15 +106,15 @@
 -------
 
 ## 프로젝트 협업 도구
-1. Trello
-기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
+### 1. Trello
+- 기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
 ![image](https://user-images.githubusercontent.com/97422072/181877342-8c063ea9-3554-477b-b2b8-31b9fd5ba3bc.png)
 
-2. Slack
-팀원간의 실시간 소통 창구
+### 2. Slack
+- 팀원간의 실시간 소통 창구
 ![image](https://user-images.githubusercontent.com/97422072/181877235-1fb94559-52a4-403c-a3f9-4daf4c8e7b0c.png)
 
-3. Notion
+### 3. Notion
 회의정리 기록, 오늘의 공유/질문 사항, 현재 진행 사항, blocker 공유, 기능 단위 페이지 셍성 후 공유 및 기록
 <img width="666" alt="노정은01" src="https://user-images.githubusercontent.com/98936671/181712824-0bef2c9c-2d4f-4366-a1c6-b3cb902c4a6c.png">
 <img width="518" alt="노정은02" src="https://user-images.githubusercontent.com/98936671/181712830-d63e20f0-44f1-425d-af41-cdcb4eaf467d.png">
