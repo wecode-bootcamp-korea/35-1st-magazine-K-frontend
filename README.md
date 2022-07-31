@@ -10,7 +10,8 @@
  
   
  - Magazine B 웹사이트의 장점 <br />
-  2주라는 제한된 시간 안에 <br />
+  2주라는 제한된 시간 안에 커머스 웹사이트를 구현해야합니다.<br />
+  Magazine B 웹사이트는 간단한 웹사이트처럼 보이지만 <br />
   회원가입, 로그인, 장바구니, 결제, 배송, 찜하기, 리뷰 등 <br /> 
   커머스 웹사이트라면 꼭 구현해야하는 기능을 모두 갖추고 있고 <br />
   디자인도 매우 따뜻하고 감각적인 웹사이트입니다.
@@ -54,7 +55,16 @@
  - setinterval 함수 사용하여 3초 마다 슬라이드 이미지가 자동 변환되도록 구현했고 useState로 숫자 3이 넘어가면 1부터 다시 시작하도록 설정했다.
  - 슬라이드 이미지의 오른쪽을 누르면 앞의 이미지로, 왼쪽을 누르면 뒤의 이미지로 변환하는데 이는 button태그로 오른쪽 반, 왼쪽 반 각각 넓이를 50%씩 주고 opacity: 0으로 안보이게 처리하였다.
  - 또한 const isFirstSlide = slide === 1; const isLastSlide = slide === 3;로 변수를 만들어 1과 3에서는 버튼을 눌러도 안넘어 가도록 disabled에 할당해주었다.
- 
+ - 슬라이드가 변환될 때 각 이미지에 맞는 데이터가 출력되도록 해야한다. 이는 데이터에 filter메서드를 걸어 data.id와 slide의 숫자가 같을 때만 리턴하도록 해서 구현할 수 았었다.
+  
+#### MainSectionMenu 페이지 이동 기능 구현
+- MainSectionMenu에 이미지를 누르면 navigate함수가 실행되어 해당 제품의 issue_number로 이동하도록 설정했다. -> navigate(`Products/${issue_number}`);
+- MainSectionMenu 하단의 Shop버튼을 누르면 상품리스트 페이지로 이동하는데 이도 navigate함수를 이용하였다. -> navigate(`/ProductList?category=1`);
+
+#### 동영상 자동재생 기능 구현
+- useRef훅을 사용하여 스크롤이 동영상에 도달했을 때 자동재생되도록 구현하였고 video속성으로 playsInline, loop, muted을 할당했다.
+- 또한 동영상이 화면에 가득 차도록 구현하여야 했는데 이는 SCSS로 부모요소에 width: 100%;, object-fit: cover;을 주고 자식요소에 width: 100%;, height: 100%;를 줘서 구현할 수 있었다.
+
  ### 4. 제품 리스트 페이지
  #### 카테고리 메뉴 탭 포커스온 기능 구현
   - 각 카테고리 메뉴 탭을 컴포넌트화 시키고 부모 컴포넌트에서 useState값 선언, 이 state를 props로 각 컴포넌트에 넘겨준다.
@@ -75,6 +85,16 @@
   - 백엔드 API에서 해당하는 정렬 순서로 데이터리스트를 보내준다.
   
  ### 5. 제품 상세 페이지
+ #### 상세페이지
+ - -, +를 누를때 마다 상품의 개수가 변하며 가격도 함께 변동하는데 이는 useState로 구현했다.
+ - 상품 리스트 페이지에서 상품을 눌렀을 때 해당 상품의 상세 페이지로 이동할 수 있게 하기위해 path parameter를 이용하여 backend와 api 통신을 했다.
+ - ADD TO CART 누르면 장바구니 모당창이 켜지며 -와 +한 만큼의 상품이 추가된다. 이것 또한 path parameter를 이용하여 backend와 api 통신을 했으며 대신 POST로, body에 { quantity: orderQuantity }를 담아 전송했다. 
+ - back에게 받은 데이터가 'SUCCESS' 일 때만 장바구니 모달창이 켜지며 'SUCCESS' 가 아니라면 alert를 띄워준 후 navigate로 로그인 창으로 이동하게 구현했다.
+ - 
+ #### 리뷰 기능
+ - 호버, 클릭하면 별점이 채워지며 클릭을 해야지만 state가 변경한다. 이는 [...Array(5)].map으로 빈 별을 채워줬고 클릭하면 rating state가 바뀌어 index와 비교해서 작거나 같을 시 className으로 on을 줘서 별이 채워지도록 했다.
+ - '리뷰등록' 버튼을 누르면 선택한 별점, 입력한 댓글, 아이디명이 등록된다. 이는 POST로 사용자가 해당 제품을 구매했는지 토큰으로 인가 후 rating, commentText를 담아 back에게 전송해주었다.
+
  
  ### 6. 네비게이션 바 
  
