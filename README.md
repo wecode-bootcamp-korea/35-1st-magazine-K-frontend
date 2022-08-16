@@ -1,6 +1,6 @@
 # 35기 1차 프로젝트 "Magazine K"
 
-> [Magazine B 웹 사이트](http://freepass2.s3-website.ap-northeast-2.amazonaws.com/)<br/>
+> [Magazine B 웹 사이트](http://foaflsawsbucket.s3-website.ap-northeast-2.amazonaws.com/)<br/>
 
 
 ## 🌟 프로젝트 소개
