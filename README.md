@@ -1,8 +1,11 @@
 # 35기 1차 프로젝트 "Magazine K"
-http://freepass2.s3-website.ap-northeast-2.amazonaws.com/
+
+> [Magazine B 웹 사이트](http://freepass2.s3-website.ap-northeast-2.amazonaws.com/)<br/>
 
 
-## 프로젝트 소개
+## 🌟 프로젝트 소개
+<img width="1439" alt="스크린샷 2022-08-16 오후 2 19 36" src="https://user-images.githubusercontent.com/78889402/184803568-0e8fb77a-e3b2-4ace-a9e6-69b5af173b29.png">
+
  Magazine B라는 웹 사이트를 클론코딩하는 프로젝트.
  
  - Magazine B 웹사이트에 대한 소개 <br />
@@ -20,7 +23,7 @@ http://freepass2.s3-website.ap-northeast-2.amazonaws.com/
   
  -------
  
- ## 작업기간,  구현기능, 사용기술 소개
+ ## 📅 작업기간,  구현기능, 사용기술 소개
  - 작업기간 <br />
  7월 18일 ~ 7월 29일 => 약 2주간의 기간동안 작업하였습니다.
  
@@ -36,17 +39,21 @@ http://freepass2.s3-website.ap-northeast-2.amazonaws.com/
 
  ------
  
- ## 팀원 소개
+ ## 👩🏻‍💻 팀원 소개
  - FRONT
  주원영, 노정은, 길현민
  
  - BACK
  김동규, 황유정
  
- 
+ ## 👩🏻‍💻 FRONTEND 각 담당페이지
+ #### [주원영님](), [노정은님](https://jeongeuni.tistory.com/47), [길현민님]() - (클릭 시 블로그로 이동!) <br> 
+ 주원영 : 네비게이션 바 , 상품 리스트 페이지, 장바구니 모달, 검색, 결제
+ 노정은 : 메인 페이지, 상품 상세 페이지, 장바구니 모달, 푸터, 리뷰
+ 길현민 : 로그인, 회원가입, 장바구니 메인, 결제
  ------
  
- ## FRONTEND 필수구현 기능
+ ## 👍🏻 FRONTEND 필수구현 기능
  
  ### 1. 회원가입 페이지
  
@@ -132,7 +139,7 @@ http://freepass2.s3-website.ap-northeast-2.amazonaws.com/
 
 -------
 
-## 프로젝트 협업 도구
+## 👀 프로젝트 협업 도구
 ### 1. Trello
 - 기능 단위로 카드를 생성하여 프로젝트가 sprint 미팅대로 잘 이루어졌는지 파악하고 stand up 미팅 활용한 도구로 활용
 <img width="666" src="https://user-images.githubusercontent.com/97422072/181877342-8c063ea9-3554-477b-b2b8-31b9fd5ba3bc.png">
@@ -149,7 +156,7 @@ http://freepass2.s3-website.ap-northeast-2.amazonaws.com/
 <img width="1367" alt="스크린샷 2022-07-31 오후 1 11 47" src="https://user-images.githubusercontent.com/78889402/182009689-a6b7a855-8c35-4576-a473-566983dad21a.png"> 
 -------
 
-## 프로젝트 회고
+## ✍🏻 프로젝트 회고
 ### 주원영
 - 아쉬웠던 점
     - 팀원간의 정보공유  
